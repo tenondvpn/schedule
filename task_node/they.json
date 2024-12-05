@@ -1,0 +1,1 @@
+{"debug": false, "executor": "oozie", "source": "wetao_sku_search", "isStreaming": false, "stage": "oss2hive", "tdate": "2018-09-16", "type": "common", "job_id": 479185, "name": "WetaoSearchSkuOss2Hive"}

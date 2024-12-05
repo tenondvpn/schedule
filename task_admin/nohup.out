@@ -1,0 +1,10689 @@
+__kafka_manager start.
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+Traceback (most recent call last):
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 198, in <module>
+    if not admin_main.start():
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 82, in start
+    self.__admin_http_server.start()
+  File "/home/merak/xl/schedule/task_admin/admin_http_server.py", line 145, in start
+    self.__app.listen(self.__admin_http_port)
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/tornado/web.py", line 2211, in listen
+    server.listen(
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/tornado/tcpserver.py", line 183, in listen
+    sockets = bind_sockets(
+              ^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/tornado/netutil.py", line 162, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+Traceback (most recent call last):
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 197, in <module>
+    admin_main = AdminMain(config)
+                 ^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 61, in __init__
+    self.__admin_http_server = admin_http_server.AdminHttpServer(
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/admin_http_server.py", line 117, in __init__
+    producer.send("admin_all_message", data)
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/kafka/producer/kafka.py", line 579, in send
+    self._wait_on_metadata(topic, self.config['max_block_ms'] / 1000.0)
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/kafka/producer/kafka.py", line 705, in _wait_on_metadata
+    raise Errors.KafkaTimeoutError(
+kafka.errors.KafkaTimeoutError: KafkaTimeoutError: Failed to update metadata after 60.0 secs.
+__kafka_manager start.
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+10.109.112.6:True
+10.109.112.6:True
+o 1
+o 2
+o 3
+o 4
+9
+10.109.112.6:True
+10.109.112.6:True
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+10.109.112.6:True
+10.109.112.6:True
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+/home/merak/xl/schedule/task_admin/../common/task_util.py:272: SyntaxWarning: invalid escape sequence '\$'
+  """
+Traceback (most recent call last):
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 27, in <module>
+    import check_unexpect_status_tasks
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 22, in <module>
+    from common.qq_mail import send_mail
+ModuleNotFoundError: No module named 'common.qq_mail'
+Traceback (most recent call last):
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 27, in <module>
+    import check_unexpect_status_tasks
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 22, in <module>
+    from common.qq_mail import send_mail
+ModuleNotFoundError: No module named 'common.qq_mail'
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/configparser.py", line 767, in get
+    value = d[option]
+            ~^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/collections/__init__.py", line 1015, in __getitem__
+    return self.__missing__(key)            # support subclasses that define __missing__
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/collections/__init__.py", line 1007, in __missing__
+    raise KeyError(key)
+KeyError: 'odps'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 192, in <module>
+    admin_main = AdminMain(config)
+                 ^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 46, in __init__
+    self.__task_node_mgr = task_node_manager.TaskNodeManager(
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/task_node_manager.py", line 54, in __init__
+    self.__get_path_info_from_conf(config)
+  File "/home/merak/xl/schedule/task_admin/task_node_manager.py", line 140, in __get_path_info_from_conf
+    zk_path = config.get("zk", task_type_name)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/configparser.py", line 770, in get
+    raise NoOptionError(option, section)
+configparser.NoOptionError: No option 'odps' in section: 'zk'
+__kafka_manager start.
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+__kafka_manager start.
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+/home/merak/xl/schedule/task_admin/../common/task_util.py:278: SyntaxWarning: invalid escape sequence '\$'
+  """
+not support kafka
+Traceback (most recent call last):
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 192, in <module>
+    admin_main = AdminMain(config)
+                 ^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 56, in __init__
+    self.__admin_http_server = admin_http_server.AdminHttpServer(
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/admin_http_server.py", line 121, in __init__
+    self.__kafka_manager)
+    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AdminHttpServer' object has no attribute '_AdminHttpServer__kafka_manager'. Did you mean: '_AdminHttpServer__task_dispacher'?
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/configparser.py", line 767, in get
+    value = d[option]
+            ~^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/collections/__init__.py", line 1015, in __getitem__
+    return self.__missing__(key)            # support subclasses that define __missing__
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/collections/__init__.py", line 1007, in __missing__
+    raise KeyError(key)
+KeyError: 'kafka_servers'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 192, in <module>
+    admin_main = AdminMain(config)
+                 ^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 56, in __init__
+    self.__admin_http_server = admin_http_server.AdminHttpServer(
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/admin_http_server.py", line 118, in __init__
+    self.__http_param = HttpHandlerParams(
+                        ^^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/admin_http_server.py", line 171, in __init__
+    self.kafka_servers = config.get("admin", "kafka_servers")
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/configparser.py", line 770, in get
+    raise NoOptionError(option, section)
+configparser.NoOptionError: No option 'kafka_servers' in section: 'admin'
+not support kafka
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/configparser.py", line 767, in get
+    value = d[option]
+            ~^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/collections/__init__.py", line 1015, in __getitem__
+    return self.__missing__(key)            # support subclasses that define __missing__
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/collections/__init__.py", line 1007, in __missing__
+    raise KeyError(key)
+KeyError: 'kafka_servers'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 192, in <module>
+    admin_main = AdminMain(config)
+                 ^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 56, in __init__
+    self.__admin_http_server = admin_http_server.AdminHttpServer(
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/admin_http_server.py", line 118, in __init__
+    self.__http_param = HttpHandlerParams(
+                        ^^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/admin_http_server.py", line 171, in __init__
+    self.kafka_servers = config.get("admin", "kafka_servers")
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/configparser.py", line 770, in get
+    raise NoOptionError(option, section)
+configparser.NoOptionError: No option 'kafka_servers' in section: 'admin'
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+9
+Exception in thread Thread-6:
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 53, in run
+    self.__handle_unexp_tasks()
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 212, in __handle_unexp_tasks
+    if not self.__handle_failed_tasks(unexp_task):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 196, in __handle_failed_tasks
+    self.__send_monitor(unexp_task)
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 170, in __send_monitor
+    read_list, write_list = admin_sql_manager.get_owner_id_list(unexp_task.pid)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'admin_sql_manager' has no attribute 'get_owner_id_list'
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+get monitor list read
+Exception in thread Thread-6:
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 53, in run
+    self.__handle_unexp_tasks()
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 214, in __handle_unexp_tasks
+    if not self.__handle_failed_tasks(unexp_task):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 198, in __handle_failed_tasks
+    self.__send_monitor(unexp_task)
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 172, in __send_monitor
+    read_list, write_list = admin_sql_manager.get_owner_id_list(unexp_task.pid)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'admin_sql_manager' has no attribute 'get_owner_id_list'
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+get monitor list read
+Exception in thread Thread-6:
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 53, in run
+    self.__handle_unexp_tasks()
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 214, in __handle_unexp_tasks
+    if not self.__handle_failed_tasks(unexp_task):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 198, in __handle_failed_tasks
+    self.__send_monitor(unexp_task)
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 172, in __send_monitor
+    read_list, write_list = admin_sql_manager.get_owner_id_list(unexp_task.pid)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'admin_sql_manager' has no attribute 'get_owner_id_list'
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+get monitor list read
+get monitor list read: , write: 
+o 1
+o 2
+o 3
+o 4
+9
+get monitor list read
+get monitor list read: , write: 
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+9
+get monitor list read
+get monitor list read: , write: 42
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+9
+Exception in thread Thread-6:
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 53, in run
+    self.__handle_unexp_tasks()
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 216, in __handle_unexp_tasks
+    if not self.__handle_failed_tasks(unexp_task):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 200, in __handle_failed_tasks
+    self.__send_monitor(unexp_task)
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 174, in __send_monitor
+    for user in users:
+TypeError: 'UserInfo' object is not iterable
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+Exception in thread Thread-6:
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 53, in run
+    self.__handle_unexp_tasks()
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 217, in __handle_unexp_tasks
+    if not self.__handle_failed_tasks(unexp_task):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 201, in __handle_failed_tasks
+    self.__send_monitor(unexp_task)
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 174, in __send_monitor
+    self._log.info("get monitor list read end get users: %d" % len(users))
+                                                               ^^^^^^^^^^
+TypeError: object of type 'UserInfo' has no len()
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+1
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+Traceback (most recent call last):
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 193, in <module>
+    if not admin_main.start():
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 77, in start
+    self.__admin_http_server.start()
+  File "/home/merak/xl/schedule/task_admin/admin_http_server.py", line 148, in start
+    self.__app.listen(self.__admin_http_port)
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/tornado/web.py", line 2211, in listen
+    server.listen(
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/tornado/tcpserver.py", line 183, in listen
+    sockets = bind_sockets(
+              ^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/tornado/netutil.py", line 162, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+9
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22\\u78ca, \\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: PDF\\u89e3\\u6790\\n    \\u4efb\\u52a1: PDF\\u89e3\\u6790\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409011000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/52/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca, \\u5e73\\u53f0\\u76d1\\u63a7\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: PDF\\u89e3\\u6790\\n    \\u4efb\\u52a1: PDF\\u89e3\\u6790\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409011000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/52/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca, \\u5e73\\u53f0\\u76d1\\u63a7\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: PDF\\u89e3\\u6790\\n    \\u4efb\\u52a1: PDF\\u89e3\\u6790\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409011000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/52/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca, \\u5e73\\u53f0\\u76d1\\u63a7\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: PDF\\u89e3\\u6790\\n    \\u4efb\\u52a1: PDF\\u89e3\\u6790\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409011000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/52/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca, \\u5e73\\u53f0\\u76d1\\u63a7\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: PDF\\u89e3\\u6790\\n    \\u4efb\\u52a1: PDF\\u89e3\\u6790\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409011000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/52/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca, \\u5e73\\u53f0\\u76d1\\u63a7, chengzongxing\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: PDF\\u89e3\\u6790-v100\\n    \\u4efb\\u52a1: PDF\\u89e3\\u6790\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409010000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/54/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca, \\u5e73\\u53f0\\u76d1\\u63a7, chengzongxing\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: PDF\\u89e3\\u6790-v100\\n    \\u4efb\\u52a1: PDF\\u89e3\\u6790\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409010000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/54/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca, \\u5e73\\u53f0\\u76d1\\u63a7, chengzongxing\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: PDF\\u89e3\\u6790-v100\\n    \\u4efb\\u52a1: PDF\\u89e3\\u6790\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409010000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/54/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca, \\u5e73\\u53f0\\u76d1\\u63a7, chengzongxing, \\u5218\\u6d0b\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: PDF\\u89e3\\u6790-v100\\n    \\u4efb\\u52a1: PDF\\u89e3\\u6790\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409121515\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/54/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca, \\u5e73\\u53f0\\u76d1\\u63a7, chengzongxing, \\u5218\\u6d0b\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: PDF\\u89e3\\u6790-v100\\n    \\u4efb\\u52a1: PDF\\u89e3\\u6790\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409121515\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/54/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca, \\u5e73\\u53f0\\u76d1\\u63a7, chengzongxing, \\u5218\\u6d0b\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: PDF\\u89e3\\u6790-v100\\n    \\u4efb\\u52a1: PDF\\u89e3\\u6790\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409121515\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/54/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+o 1
+o 2
+o 3
+o 4
+9
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca, \\u5e73\\u53f0\\u76d1\\u63a7, chengzongxing, \\u5218\\u6d0b\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: PDF\\u89e3\\u6790-v100\\n    \\u4efb\\u52a1: PDF\\u89e3\\u6790\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409121515\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/54/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca, \\u5e73\\u53f0\\u76d1\\u63a7, chengzongxing, \\u5218\\u6d0b\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: PDF\\u89e3\\u6790-v100\\n    \\u4efb\\u52a1: PDF\\u89e3\\u6790\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409121515\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/54/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca, \\u5e73\\u53f0\\u76d1\\u63a7, chengzongxing, \\u5218\\u6d0b\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: PDF\\u89e3\\u6790-v100\\n    \\u4efb\\u52a1: PDF\\u89e3\\u6790\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409121515\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/54/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+4
+o 1
+o 2
+o 3
+4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+/home/merak/anaconda3/envs/django/bin/python: can't open file '/home/merak/xl/schedule/task_admin/./node_main.py': [Errno 2] No such file or directory
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+--- Logging error ---
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 1160, in emit
+    msg = self.format(record)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 999, in format
+    return fmt.format(record)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 703, in format
+    record.message = record.getMessage()
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 392, in getMessage
+    msg = msg % self.args
+          ~~~~^~~~~~~~~~~
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 193, in <module>
+    if not admin_main.start():
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 77, in start
+    self.__admin_http_server.start()
+  File "/home/merak/xl/schedule/task_admin/admin_http_server.py", line 152, in start
+    tornado.ioloop.IOLoop.instance().start()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/tornado/platform/asyncio.py", line 205, in start
+    self.asyncio_loop.run_forever()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/asyncio/base_events.py", line 641, in run_forever
+    self._run_once()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/asyncio/base_events.py", line 1987, in _run_once
+    handle._run()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/tornado/web.py", line 1788, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/home/merak/xl/schedule/task_admin/admin_http_server.py", line 531, in get
+    logging.info("Access Token:", access_token)
+Message: 'Access Token:'
+Arguments: ('89d8fe453233451caf7e8ca0d5965226',)
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/configparser.py", line 767, in get
+    value = d[option]
+            ~^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/collections/__init__.py", line 1015, in __getitem__
+    return self.__missing__(key)            # support subclasses that define __missing__
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/collections/__init__.py", line 1007, in __missing__
+    raise KeyError(key)
+KeyError: 'docker'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 192, in <module>
+    admin_main = AdminMain(config)
+                 ^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 46, in __init__
+    self.__task_node_mgr = task_node_manager.TaskNodeManager(
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/task_node_manager.py", line 60, in __init__
+    self.__get_path_info_from_conf(config)
+  File "/home/merak/xl/schedule/task_admin/task_node_manager.py", line 152, in __get_path_info_from_conf
+    zk_path = config.get("zk", task_type_name)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/configparser.py", line 770, in get
+    raise NoOptionError(option, section)
+configparser.NoOptionError: No option 'docker' in section: 'zk'
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+2
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+4
+o 1
+o 2
+o 3
+4
+o 1
+o 2
+o 3
+4
+o 1
+o 2
+o 3
+4
+o 1
+o 2
+o 3
+4
+o 1
+o 2
+o 3
+4
+o 1
+o 2
+o 3
+4
+o 1
+o 2
+o 3
+4
+o 1
+o 2
+o 3
+4
+o 1
+o 2
+o 3
+4
+o 1
+o 2
+o 3
+4
+o 1
+o 2
+o 3
+4
+o 1
+o 2
+o 3
+4
+o 1
+o 2
+o 3
+4
+/home/merak/xl/schedule/task_admin/../common/task_util.py:306: SyntaxWarning: invalid escape sequence '\$'
+  """
+Traceback (most recent call last):
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 23, in <module>
+    import task_node_manager
+  File "/home/merak/xl/schedule/task_admin/task_node_manager.py", line 16, in <module>
+    import task_util
+  File "/home/merak/xl/schedule/task_admin/../common/task_util.py", line 163, in <module>
+    TaskType.V100_TYPE_TYPE: MaxTaskNum.MAX_V100_TASK_NUM,
+    ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'TaskType' has no attribute 'V100_TYPE_TYPE'
+/home/merak/xl/schedule/task_admin/../common/task_util.py:306: SyntaxWarning: invalid escape sequence '\$'
+  """
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+Exception in thread Thread-5:
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/networkx/classes/digraph.py", line 899, in successors
+    return iter(self._succ[n])
+                ~~~~~~~~~~^^^
+KeyError: '235'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/home/merak/xl/schedule/task_admin/check_succeeded_tasks.py", line 63, in run
+    self.__call_succeeded_tasks()
+  File "/home/merak/xl/schedule/task_admin/check_succeeded_tasks.py", line 260, in __call_succeeded_tasks
+    successors = list(self.__graph.get_graph().successors(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/networkx/classes/digraph.py", line 901, in successors
+    raise NetworkXError(f"The node {n} is not in the digraph.") from err
+networkx.exception.NetworkXError: The node 235 is not in the digraph.
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+Exception in thread Thread-5:
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/networkx/classes/digraph.py", line 899, in successors
+    return iter(self._succ[n])
+                ~~~~~~~~~~^^^
+KeyError: '166'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/home/merak/xl/schedule/task_admin/check_succeeded_tasks.py", line 63, in run
+    self.__call_succeeded_tasks()
+  File "/home/merak/xl/schedule/task_admin/check_succeeded_tasks.py", line 260, in __call_succeeded_tasks
+    successors = list(self.__graph.get_graph().successors(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/networkx/classes/digraph.py", line 901, in successors
+    raise NetworkXError(f"The node {n} is not in the digraph.") from err
+networkx.exception.NetworkXError: The node 166 is not in the digraph.
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+Exception in thread Thread-5:
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/networkx/classes/digraph.py", line 899, in successors
+    return iter(self._succ[n])
+                ~~~~~~~~~~^^^
+KeyError: '166'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/home/merak/xl/schedule/task_admin/check_succeeded_tasks.py", line 63, in run
+    self.__call_succeeded_tasks()
+  File "/home/merak/xl/schedule/task_admin/check_succeeded_tasks.py", line 260, in __call_succeeded_tasks
+    successors = list(self.__graph.get_graph().successors(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/networkx/classes/digraph.py", line 901, in successors
+    raise NetworkXError(f"The node {n} is not in the digraph.") from err
+networkx.exception.NetworkXError: The node 166 is not in the digraph.
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+Exception in thread Thread-5:
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/networkx/classes/digraph.py", line 899, in successors
+    return iter(self._succ[n])
+                ~~~~~~~~~~^^^
+KeyError: '166'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/home/merak/xl/schedule/task_admin/check_succeeded_tasks.py", line 63, in run
+    self.__call_succeeded_tasks()
+  File "/home/merak/xl/schedule/task_admin/check_succeeded_tasks.py", line 260, in __call_succeeded_tasks
+    successors = list(self.__graph.get_graph().successors(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/networkx/classes/digraph.py", line 901, in successors
+    raise NetworkXError(f"The node {n} is not in the digraph.") from err
+networkx.exception.NetworkXError: The node 166 is not in the digraph.
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+2
+o 1
+o 2
+o 3
+o 4
+9
+2
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+2
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+2
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+8
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409200000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409090000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409100000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/configparser.py", line 767, in get
+    value = d[option]
+            ~^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/collections/__init__.py", line 1015, in __getitem__
+    return self.__missing__(key)            # support subclasses that define __missing__
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/collections/__init__.py", line 1007, in __missing__
+    raise KeyError(key)
+KeyError: 'local_docker'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 192, in <module>
+    admin_main = AdminMain(config)
+                 ^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 46, in __init__
+    self.__task_node_mgr = task_node_manager.TaskNodeManager(
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/task_node_manager.py", line 66, in __init__
+    self.__get_path_info_from_conf(config)
+  File "/home/merak/xl/schedule/task_admin/task_node_manager.py", line 164, in __get_path_info_from_conf
+    zk_path = config.get("zk", task_type_name)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/configparser.py", line 770, in get
+    raise NoOptionError(option, section)
+configparser.NoOptionError: No option 'local_docker' in section: 'zk'
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/configparser.py", line 767, in get
+    value = d[option]
+            ~^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/collections/__init__.py", line 1015, in __getitem__
+    return self.__missing__(key)            # support subclasses that define __missing__
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/collections/__init__.py", line 1007, in __missing__
+    raise KeyError(key)
+KeyError: 'local_docker'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 192, in <module>
+    admin_main = AdminMain(config)
+                 ^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 46, in __init__
+    self.__task_node_mgr = task_node_manager.TaskNodeManager(
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/task_node_manager.py", line 66, in __init__
+    self.__get_path_info_from_conf(config)
+  File "/home/merak/xl/schedule/task_admin/task_node_manager.py", line 164, in __get_path_info_from_conf
+    zk_path = config.get("zk", task_type_name)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/configparser.py", line 770, in get
+    raise NoOptionError(option, section)
+configparser.NoOptionError: No option 'local_docker' in section: 'zk'
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+Exception in thread Thread-5:
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/networkx/classes/digraph.py", line 899, in successors
+    return iter(self._succ[n])
+                ~~~~~~~~~~^^^
+KeyError: '166'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/home/merak/xl/schedule/task_admin/check_succeeded_tasks.py", line 63, in run
+    self.__call_succeeded_tasks()
+  File "/home/merak/xl/schedule/task_admin/check_succeeded_tasks.py", line 260, in __call_succeeded_tasks
+    successors = list(self.__graph.get_graph().successors(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/networkx/classes/digraph.py", line 901, in successors
+    raise NetworkXError(f"The node {n} is not in the digraph.") from err
+networkx.exception.NetworkXError: The node 166 is not in the digraph.
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409011000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202407200000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202407220000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202407250000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202407270000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202407280000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202407300000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202407310000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202408010000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202408020000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202408030000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+登录邮箱服务器失败！
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409200000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+登录邮箱服务器失败！
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409210000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+登录邮箱服务器失败！
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409220000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+登录邮箱服务器失败！
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202408080000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+登录邮箱服务器失败！
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202408090000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+登录邮箱服务器失败！
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202408100000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+o 1
+o 2
+o 3
+o 4
+9
+登录邮箱服务器失败！
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202408050000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+登录邮箱服务器失败！
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202408150000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+登录邮箱服务器失败！
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409040000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+登录邮箱服务器失败！
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409050000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+登录邮箱服务器失败！
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409060000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+登录邮箱服务器失败！
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409070000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+登录邮箱服务器失败！
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409080000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+登录邮箱服务器失败！
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409090000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+登录邮箱服务器失败！
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409100000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+登录邮箱服务器失败！
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409010000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+登录邮箱服务器失败！
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409020000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+登录邮箱服务器失败！
+dinding body: b'{"at": {"isAtAll": "false", "atUserIds": ["", "user002"], "atMobiles": ["15xxx", "xx"]}, "text": {"content": "Databaas\\u76d1\\u63a7\\u62a5\\u8b66\\n\\u8c22 \\u78ca\\uff1a\\n    \\u6267\\u884c\\u5931\\u8d25!\\n    \\u6d41\\u7a0b: \\u57fa\\u5ea7\\u6a21\\u578b\\u7b97\\u6cd5\\n    \\u4efb\\u52a1: padderorcmix\\n    \\u8fd0\\u884c\\u65f6\\u95f4\\u70b9: 202409030000\\n    \\u8bf7\\u767b\\u5f55\\u5e73\\u53f0\\u68c0\\u67e5: http://10.109.112.6:8000/pipeline/history/60/"}, "msgtype": "text"}', response: {"errcode":0,"errmsg":"ok"}
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+Exception in thread Thread-6:
+Traceback (most recent call last):
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 233, in __handle_failed_tasks
+    task = horae.models.Task.objects.get(id=unexp_task.task_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/django/db/models/query.py", line 650, in get
+    raise self.model.DoesNotExist(
+horae.models.Task.DoesNotExist: Task matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 54, in run
+    self.__handle_unexp_tasks()
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 268, in __handle_unexp_tasks
+    if not self.__handle_failed_tasks(unexp_task):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 247, in __handle_failed_tasks
+    self.__log.error("execute sql failed![ex:%s][trace:%s], task_id: %d!" % (
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: not enough arguments for format string
+Exception in thread Thread-5:
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/networkx/classes/digraph.py", line 899, in successors
+    return iter(self._succ[n])
+                ~~~~~~~~~~^^^
+KeyError: '166'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/home/merak/xl/schedule/task_admin/check_succeeded_tasks.py", line 63, in run
+    self.__call_succeeded_tasks()
+  File "/home/merak/xl/schedule/task_admin/check_succeeded_tasks.py", line 260, in __call_succeeded_tasks
+    successors = list(self.__graph.get_graph().successors(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/networkx/classes/digraph.py", line 901, in successors
+    raise NetworkXError(f"The node {n} is not in the digraph.") from err
+networkx.exception.NetworkXError: The node 166 is not in the digraph.
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+Exception in thread Thread-6:
+Traceback (most recent call last):
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 233, in __handle_failed_tasks
+    tasks = horae.models.Readytask.objects.filter(id=unexp_task.task_id)
+            ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'horae.models' has no attribute 'Readytask'. Did you mean: 'ReadyTask'?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 54, in run
+    self.__handle_unexp_tasks()
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 276, in __handle_unexp_tasks
+    if not self.__handle_failed_tasks(unexp_task):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 255, in __handle_failed_tasks
+    self.__log.error("execute sql failed![ex:%s][trace:%s], task_id: %d!" % (
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: not enough arguments for format string
+Exception in thread Thread-5:
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/networkx/classes/digraph.py", line 899, in successors
+    return iter(self._succ[n])
+                ~~~~~~~~~~^^^
+KeyError: '166'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/home/merak/xl/schedule/task_admin/check_succeeded_tasks.py", line 63, in run
+    self.__call_succeeded_tasks()
+  File "/home/merak/xl/schedule/task_admin/check_succeeded_tasks.py", line 260, in __call_succeeded_tasks
+    successors = list(self.__graph.get_graph().successors(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/networkx/classes/digraph.py", line 901, in successors
+    raise NetworkXError(f"The node {n} is not in the digraph.") from err
+networkx.exception.NetworkXError: The node 166 is not in the digraph.
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+Exception in thread Thread-6:
+Traceback (most recent call last):
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 233, in __handle_failed_tasks
+    tasks = horae.models.Readytask.objects.filter(id=unexp_task.task_id)
+            ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'horae.models' has no attribute 'Readytask'. Did you mean: 'ReadyTask'?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 54, in run
+    self.__handle_unexp_tasks()
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 277, in __handle_unexp_tasks
+    if not self.__handle_failed_tasks(unexp_task):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 256, in __handle_failed_tasks
+    self.__log.error("execute sql failed![ex:%s][trace:%s], task_id: %d!" % (
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: not enough arguments for format string
+Exception in thread Thread-5:
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/networkx/classes/digraph.py", line 899, in successors
+    return iter(self._succ[n])
+                ~~~~~~~~~~^^^
+KeyError: '166'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/home/merak/xl/schedule/task_admin/check_succeeded_tasks.py", line 63, in run
+    self.__call_succeeded_tasks()
+  File "/home/merak/xl/schedule/task_admin/check_succeeded_tasks.py", line 260, in __call_succeeded_tasks
+    successors = list(self.__graph.get_graph().successors(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/networkx/classes/digraph.py", line 901, in successors
+    raise NetworkXError(f"The node {n} is not in the digraph.") from err
+networkx.exception.NetworkXError: The node 166 is not in the digraph.
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+Exception in thread Thread-6:
+Traceback (most recent call last):
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 233, in __handle_failed_tasks
+    tasks = horae.models.Readytask.objects.filter(id=unexp_task.task_id)
+            ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'horae.models' has no attribute 'Readytask'. Did you mean: 'ReadyTask'?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 54, in run
+    self.__handle_unexp_tasks()
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 277, in __handle_unexp_tasks
+    if not self.__handle_failed_tasks(unexp_task):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 256, in __handle_failed_tasks
+    self.__log.error("execute sql failed![ex:%s][trace:%s], task_id: %d!" % (
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: not enough arguments for format string
+Exception in thread Thread-5:
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/networkx/classes/digraph.py", line 899, in successors
+    return iter(self._succ[n])
+                ~~~~~~~~~~^^^
+KeyError: '166'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/home/merak/xl/schedule/task_admin/check_succeeded_tasks.py", line 63, in run
+    self.__call_succeeded_tasks()
+  File "/home/merak/xl/schedule/task_admin/check_succeeded_tasks.py", line 260, in __call_succeeded_tasks
+    successors = list(self.__graph.get_graph().successors(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/networkx/classes/digraph.py", line 901, in successors
+    raise NetworkXError(f"The node {n} is not in the digraph.") from err
+networkx.exception.NetworkXError: The node 166 is not in the digraph.
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+Exception in thread Thread-6:
+Traceback (most recent call last):
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 233, in __handle_failed_tasks
+    tasks = horae.models.Readytask.objects.filter(id=unexp_task.task_id)
+            ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'horae.models' has no attribute 'Readytask'. Did you mean: 'ReadyTask'?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 54, in run
+    self.__handle_unexp_tasks()
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 277, in __handle_unexp_tasks
+    if not self.__handle_failed_tasks(unexp_task):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/xl/schedule/task_admin/check_unexpect_status_tasks.py", line 256, in __handle_failed_tasks
+    self.__log.error("execute sql failed![ex:%s][trace:%s], task_id: %d!" % (
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: not enough arguments for format string
+Exception in thread Thread-5:
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/networkx/classes/digraph.py", line 899, in successors
+    return iter(self._succ[n])
+                ~~~~~~~~~~^^^
+KeyError: '166'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/home/merak/xl/schedule/task_admin/check_succeeded_tasks.py", line 63, in run
+    self.__call_succeeded_tasks()
+  File "/home/merak/xl/schedule/task_admin/check_succeeded_tasks.py", line 260, in __call_succeeded_tasks
+    successors = list(self.__graph.get_graph().successors(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/networkx/classes/digraph.py", line 901, in successors
+    raise NetworkXError(f"The node {n} is not in the digraph.") from err
+networkx.exception.NetworkXError: The node 166 is not in the digraph.
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+Exception in thread Thread-5:
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/networkx/classes/digraph.py", line 899, in successors
+    return iter(self._succ[n])
+                ~~~~~~~~~~^^^
+KeyError: '166'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/home/merak/xl/schedule/task_admin/check_succeeded_tasks.py", line 63, in run
+    self.__call_succeeded_tasks()
+  File "/home/merak/xl/schedule/task_admin/check_succeeded_tasks.py", line 260, in __call_succeeded_tasks
+    successors = list(self.__graph.get_graph().successors(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/networkx/classes/digraph.py", line 901, in successors
+    raise NetworkXError(f"The node {n} is not in the digraph.") from err
+networkx.exception.NetworkXError: The node 166 is not in the digraph.
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+Exception in thread Thread-5:
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/networkx/classes/digraph.py", line 899, in successors
+    return iter(self._succ[n])
+                ~~~~~~~~~~^^^
+KeyError: '166'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/home/merak/xl/schedule/task_admin/check_succeeded_tasks.py", line 63, in run
+    self.__call_succeeded_tasks()
+  File "/home/merak/xl/schedule/task_admin/check_succeeded_tasks.py", line 260, in __call_succeeded_tasks
+    successors = list(self.__graph.get_graph().successors(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/networkx/classes/digraph.py", line 901, in successors
+    raise NetworkXError(f"The node {n} is not in the digraph.") from err
+networkx.exception.NetworkXError: The node 166 is not in the digraph.
+not support kafka
+not support kafka
+/dags/schedule_platform/online/admin_ip/10.109.112.6:18791:
+__check_ordered_tasks.start!
+self.__admin_lock.start!
+Exception in thread Thread-5:
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/networkx/classes/digraph.py", line 899, in successors
+    return iter(self._succ[n])
+                ~~~~~~~~~~^^^
+KeyError: '235'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/home/merak/xl/schedule/task_admin/check_succeeded_tasks.py", line 63, in run
+    self.__call_succeeded_tasks()
+  File "/home/merak/xl/schedule/task_admin/check_succeeded_tasks.py", line 260, in __call_succeeded_tasks
+    successors = list(self.__graph.get_graph().successors(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/networkx/classes/digraph.py", line 901, in successors
+    raise NetworkXError(f"The node {n} is not in the digraph.") from err
+networkx.exception.NetworkXError: The node 235 is not in the digraph.
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+o 1
+o 2
+o 3
+o 4
+9
+--- Logging error ---
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 1160, in emit
+    msg = self.format(record)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 999, in format
+    return fmt.format(record)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 703, in format
+    record.message = record.getMessage()
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 392, in getMessage
+    msg = msg % self.args
+          ~~~~^~~~~~~~~~~
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 193, in <module>
+    if not admin_main.start():
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 77, in start
+    self.__admin_http_server.start()
+  File "/home/merak/xl/schedule/task_admin/admin_http_server.py", line 152, in start
+    tornado.ioloop.IOLoop.instance().start()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/tornado/platform/asyncio.py", line 205, in start
+    self.asyncio_loop.run_forever()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/asyncio/base_events.py", line 641, in run_forever
+    self._run_once()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/asyncio/base_events.py", line 1987, in _run_once
+    handle._run()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/tornado/web.py", line 1788, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/home/merak/xl/schedule/task_admin/admin_http_server.py", line 534, in get
+    logging.info("Access Token:", access_token)
+Message: 'Access Token:'
+Arguments: ('f74ee6aa4fef49f6950ad7963a6e18f1',)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 1160, in emit
+    msg = self.format(record)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 999, in format
+    return fmt.format(record)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 703, in format
+    record.message = record.getMessage()
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 392, in getMessage
+    msg = msg % self.args
+          ~~~~^~~~~~~~~~~
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 193, in <module>
+    if not admin_main.start():
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 77, in start
+    self.__admin_http_server.start()
+  File "/home/merak/xl/schedule/task_admin/admin_http_server.py", line 152, in start
+    tornado.ioloop.IOLoop.instance().start()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/tornado/platform/asyncio.py", line 205, in start
+    self.asyncio_loop.run_forever()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/asyncio/base_events.py", line 641, in run_forever
+    self._run_once()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/asyncio/base_events.py", line 1987, in _run_once
+    handle._run()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/tornado/web.py", line 1788, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/home/merak/xl/schedule/task_admin/admin_http_server.py", line 534, in get
+    logging.info("Access Token:", access_token)
+Message: 'Access Token:'
+Arguments: ('b2acce3a95ea4e45985375c56586502d',)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 1160, in emit
+    msg = self.format(record)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 999, in format
+    return fmt.format(record)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 703, in format
+    record.message = record.getMessage()
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 392, in getMessage
+    msg = msg % self.args
+          ~~~~^~~~~~~~~~~
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 193, in <module>
+    if not admin_main.start():
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 77, in start
+    self.__admin_http_server.start()
+  File "/home/merak/xl/schedule/task_admin/admin_http_server.py", line 152, in start
+    tornado.ioloop.IOLoop.instance().start()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/tornado/platform/asyncio.py", line 205, in start
+    self.asyncio_loop.run_forever()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/asyncio/base_events.py", line 641, in run_forever
+    self._run_once()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/asyncio/base_events.py", line 1987, in _run_once
+    handle._run()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/tornado/web.py", line 1788, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/home/merak/xl/schedule/task_admin/admin_http_server.py", line 534, in get
+    logging.info("Access Token:", access_token)
+Message: 'Access Token:'
+Arguments: ('ce4de7b5711c4294866e30aeb55e386a',)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 1160, in emit
+    msg = self.format(record)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 999, in format
+    return fmt.format(record)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 703, in format
+    record.message = record.getMessage()
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 392, in getMessage
+    msg = msg % self.args
+          ~~~~^~~~~~~~~~~
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 193, in <module>
+    if not admin_main.start():
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 77, in start
+    self.__admin_http_server.start()
+  File "/home/merak/xl/schedule/task_admin/admin_http_server.py", line 152, in start
+    tornado.ioloop.IOLoop.instance().start()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/tornado/platform/asyncio.py", line 205, in start
+    self.asyncio_loop.run_forever()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/asyncio/base_events.py", line 641, in run_forever
+    self._run_once()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/asyncio/base_events.py", line 1987, in _run_once
+    handle._run()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/tornado/web.py", line 1788, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/home/merak/xl/schedule/task_admin/admin_http_server.py", line 534, in get
+    logging.info("Access Token:", access_token)
+Message: 'Access Token:'
+Arguments: ('0dd4c93c174247c4832414513de92969',)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 1160, in emit
+    msg = self.format(record)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 999, in format
+    return fmt.format(record)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 703, in format
+    record.message = record.getMessage()
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 392, in getMessage
+    msg = msg % self.args
+          ~~~~^~~~~~~~~~~
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 193, in <module>
+    if not admin_main.start():
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 77, in start
+    self.__admin_http_server.start()
+  File "/home/merak/xl/schedule/task_admin/admin_http_server.py", line 152, in start
+    tornado.ioloop.IOLoop.instance().start()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/tornado/platform/asyncio.py", line 205, in start
+    self.asyncio_loop.run_forever()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/asyncio/base_events.py", line 641, in run_forever
+    self._run_once()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/asyncio/base_events.py", line 1987, in _run_once
+    handle._run()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/tornado/web.py", line 1788, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/home/merak/xl/schedule/task_admin/admin_http_server.py", line 534, in get
+    logging.info("Access Token:", access_token)
+Message: 'Access Token:'
+Arguments: ('d8af38a3dde6415fb2eb5cc27ba31eec',)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 1160, in emit
+    msg = self.format(record)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 999, in format
+    return fmt.format(record)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 703, in format
+    record.message = record.getMessage()
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 392, in getMessage
+    msg = msg % self.args
+          ~~~~^~~~~~~~~~~
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 193, in <module>
+    if not admin_main.start():
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 77, in start
+    self.__admin_http_server.start()
+  File "/home/merak/xl/schedule/task_admin/admin_http_server.py", line 152, in start
+    tornado.ioloop.IOLoop.instance().start()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/tornado/platform/asyncio.py", line 205, in start
+    self.asyncio_loop.run_forever()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/asyncio/base_events.py", line 641, in run_forever
+    self._run_once()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/asyncio/base_events.py", line 1987, in _run_once
+    handle._run()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/tornado/web.py", line 1788, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/home/merak/xl/schedule/task_admin/admin_http_server.py", line 534, in get
+    logging.info("Access Token:", access_token)
+Message: 'Access Token:'
+Arguments: ('3906e6cb92a74a429fa50d021c8258b0',)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 1160, in emit
+    msg = self.format(record)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 999, in format
+    return fmt.format(record)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 703, in format
+    record.message = record.getMessage()
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/logging/__init__.py", line 392, in getMessage
+    msg = msg % self.args
+          ~~~~^~~~~~~~~~~
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 193, in <module>
+    if not admin_main.start():
+  File "/home/merak/xl/schedule/task_admin/./admin_main.py", line 77, in start
+    self.__admin_http_server.start()
+  File "/home/merak/xl/schedule/task_admin/admin_http_server.py", line 152, in start
+    tornado.ioloop.IOLoop.instance().start()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/tornado/platform/asyncio.py", line 205, in start
+    self.asyncio_loop.run_forever()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/asyncio/base_events.py", line 641, in run_forever
+    self._run_once()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/asyncio/base_events.py", line 1987, in _run_once
+    handle._run()
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/merak/anaconda3/envs/django/lib/python3.12/site-packages/tornado/web.py", line 1788, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/home/merak/xl/schedule/task_admin/admin_http_server.py", line 534, in get
+    logging.info("Access Token:", access_token)
+Message: 'Access Token:'
+Arguments: ('67f710fce1c6449b98ef1e5fe224bf64',)

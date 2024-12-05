@@ -1,0 +1,1 @@
+"{\"isStreaming\": false, \"type\": \"common\", \"executor\": \"oozie\", \"source\": \"wetao_sku_search\", \"name\": \"WetaoSearchSkuOss2Hive\", \"stage\": \"oss2hive\", \"debug\": false}"
