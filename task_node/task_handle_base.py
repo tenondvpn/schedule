@@ -35,7 +35,7 @@ class TaskHandleBase(object):
         self._replace_pair_map = {}
         self.__disks = config.get('node', 'disks').split(';')
 
-        self.__package_path = "/home/merak/databaas/packages"
+        self.__package_path = "/root/databaas/packages"
         self.__rerun_path = config.get("node", "rerun_path").strip()
         self._sys_cmd = no_block_sys_cmd.NoBlockSysCommand()
         self._sql_manager = node_sql_manager.SqlManager()

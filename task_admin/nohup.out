@@ -10687,3 +10687,21 @@ Call stack:
     logging.info("Access Token:", access_token)
 Message: 'Access Token:'
 Arguments: ('67f710fce1c6449b98ef1e5fe224bf64',)
+Exception in thread Thread-5:
+Traceback (most recent call last):
+  File "/root/tools/python3.10/lib/python3.10/site-packages/networkx/classes/digraph.py", line 899, in successors
+    return iter(self._succ[n])
+KeyError: '235'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/tools/python3.10/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/root/schedule/task_admin/check_succeeded_tasks.py", line 63, in run
+    self.__call_succeeded_tasks()
+  File "/root/schedule/task_admin/check_succeeded_tasks.py", line 260, in __call_succeeded_tasks
+    successors = list(self.__graph.get_graph().successors(
+  File "/root/tools/python3.10/lib/python3.10/site-packages/networkx/classes/digraph.py", line 901, in successors
+    raise NetworkXError(f"The node {n} is not in the digraph.") from err
+networkx.exception.NetworkXError: The node 235 is not in the digraph.
