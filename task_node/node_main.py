@@ -105,9 +105,21 @@ class NodeMain(object):
 
         return self.__zk_manager.aquire_lock(node_lock, False, None)
 
+def generate_local_network_ip():
+    # 选择一个局域网IP段
+    segments = [(192, 168), (10, ), (172, 16), (172, 17), (172, 18), (172, 19), (172, 20), (172, 21), (172, 22), (172, 23), (172, 24), (172, 25), (172, 26), (172, 27), (172, 28), (172, 29), (172, 30), (172, 31)]
+    first_octet, second_octet = random.choice(segments)
+    third_octet = random.randint(0, 255)
+    fourth_octet = random.randint(0, 255)
+    return f"{first_octet}.{second_octet}.{third_octet}.{fourth_octet}"
+
 if __name__ == "__main__":
     config = configparser.ConfigParser()
     config.read("./conf/node.conf")
+    local_public_ip = config.get("node", "public_ip").strip()
+    if local_public_ip == "":
+        config.set("node", "public_ip", generate_local_network_ip())
+
     ip_lock = config.get("zk", "ip_lock").strip()
     pos = ip_lock.rfind('/')
     zk_path = ip_lock[0: pos]
