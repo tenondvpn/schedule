@@ -88,6 +88,12 @@ class TaskHandleBase(object):
         if '_schedule_id' not in self._config_map:
             self._config_map['_schedule_id'] = str(self._schedule_id)
 
+        if '_pipeline_id' not in self._config_map:
+            self._config_map['_pipeline_id'] = str(self._pipeline_id)
+
+        if '_task_id' not in self._config_map:
+            self._config_map['_task_id'] = str(self._task_id)
+
         if '_pocessor_id' not in self._config_map:
             self._config_map['_pocessor_id'] = str(self._pid)
 
