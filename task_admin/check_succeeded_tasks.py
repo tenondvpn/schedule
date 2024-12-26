@@ -235,32 +235,24 @@ class CheckSucceededTasks(admin_task_base.AdminTaskBase):
 
     # 遍历ready_task表，获取所有成功的任务，调度其依赖任务
     def __call_succeeded_tasks(self):
-        self.__log.error("CheckSuccededTasks 0")
         self.__succ_task_list = self.__sql_manager.get_all_succeeded_tasks()
-        self.__log.error(f"CheckSuccededTasks 1__succ_task_list {len(self.__succ_task_list)}")
         if self.__succ_task_list is None or len(self.__succ_task_list) <= 0:
             return True
 
-        self.__log.error(f"CheckSuccededTasks 2 __succ_task_list {len(self.__succ_task_list)}")
         for succ_task in self.__succ_task_list:
             self.__sql_del_list = []
             self.__sql_save_list = []
             self.__sql_list = []
             user_del_list = []
 		
-            self.__log.error("CheckSuccededTasks 3")
             while True:
-                self.__log.error("CheckSuccededTasks 3 0")
                 self.__sql_del_list.append(succ_task)
-                self.__log.error("CheckSuccededTasks 3 1")
                 user_schedule = self.__sql_manager.get_ordered_schedule(
                         succ_task.task_id, 
                         succ_task.run_time)
-                self.__log.error("CheckSuccededTasks 3 2")
                 if user_schedule is not None:
                     user_del_list.append(user_schedule)
 
-                self.__log.error("CheckSuccededTasks 3 3")
                 successors = None
                 try:
                     successors = list(self.__graph.get_graph().successors(
@@ -272,7 +264,6 @@ class CheckSucceededTasks(admin_task_base.AdminTaskBase):
                 if successors is None:
                     break
 
-                self.__log.error(f"CheckSuccededTasks 4 {len(successors)}")
                 for next_node in successors:
                     if next_node not in self.__task_map:
                         self.__sql_del_list = []
@@ -287,18 +278,15 @@ class CheckSucceededTasks(admin_task_base.AdminTaskBase):
                         self.__sql_del_list = []
                 break
 
-            self.__log.error(f"CheckSuccededTasks 5 {len(user_del_list)}")
             for item in user_del_list:
                 self.__sql_del_list.append(item)
 
-            self.__log.error("CheckSuccededTasks 6")
             if not self.__sql_manager.batch_execute_with_affect_one(
                     self.__sql_save_list, 
                     self.__sql_del_list,
                     self.__sql_list):
                 self.__log.warn("save or del db data failed!")
 
-            self.__log.error("CheckSuccededTasks 7")
 
         return True
 
