@@ -249,17 +249,6 @@ class KafkaRequestManager(threading.Thread):
             producer.send(self.__public_ip, "init")
         self.__config = config
 
-    def generate_local_network_ip(self):
-        # 选择一个局域网IP段
-        segments = [(192, 168), (10, ), (172, 16), (172, 17), (172, 18), (172, 19), (172, 20), (172, 21), (172, 22), (172, 23), (172, 24), (172, 25), (172, 26), (172, 27), (172, 28), (172, 29), (172, 30), (172, 31)]
-        first_octet, second_octet = random.choice(segments)
-        third_octet = random.randint(0, 255)
-        fourth_octet = random.randint(0, 255)
-        return f"{first_octet}.{second_octet}.{third_octet}.{fourth_octet}"
-    
-    # 生成并打印一个IP地址
-    print(generate_local_network_ip())
-
     def run(self):
         if not task_util.StaticFunction.is_lan(self.__public_ip):
             return

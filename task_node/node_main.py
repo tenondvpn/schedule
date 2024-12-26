@@ -170,7 +170,6 @@ if __name__ == "__main__":
                     local_tag))
 
     common_logger.init_log(config.get("log", "log_dir"))
-
     node_main = NodeMain(config)
     if not node_main.start():
         sys.exit(1)
