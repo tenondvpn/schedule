@@ -395,7 +395,7 @@ class TaskHandleBase(object):
                 old_status))
         sql_list.append(schedule_sql)
         run_history_sql = ("update horae_runhistory set status = %d, "
-                "end_time = '%s', schedule_id = %d, %s %s "
+                "end_time = '%s', schedule_id = %d, %s %s, "
                 "cpu = %d, mem = %d where task_id = '%s' "
                 "and status = %d and run_time = '%s' ;" % (
                 task_status, 
