@@ -348,8 +348,7 @@ class TaskHandleBase(object):
             work_dir=None,
             try_times=3,
             cpu=0,
-            mem=0,
-            ret_code=0):
+            mem=0):
         # 这个函数调用十分重要，所以加上重试机制，防止网络抖动对业务的影响
         sql_list = []
         now_format_time = task_util.StaticFunction.get_now_format_time(
@@ -375,30 +374,28 @@ class TaskHandleBase(object):
             update_inittime_field = (" init_time='%s', " % now_time)
 
         ready_task_sql = ("update horae_readytask set status = %d, "
-                        "update_time = '%s', %s %s %s ret_code=%d "
+                        "update_time = '%s', %s %s %s "
                         " where id = %d and status = %d;" % (
                         task_status, 
                         now_format_time, 
                         task_handler_field,
                         work_dir_field,
                         update_inittime_field,
-                        ret_code,
                         self._ready_task_id, 
                         old_status))
         sql_list.append(ready_task_sql)
         # 更新schedule
         schedule_sql = ("update horae_schedule set status = %d, "
-                "end_time = '%s', %s ret_code=%d where id = %d and status = %d;" % (
+                "end_time = '%s', %s where id = %d and status = %d;" % (
                 task_status, 
                 now_format_time,
                 update_starttime_field,
-                ret_code,
                 self._schedule_id, 
                 old_status))
         sql_list.append(schedule_sql)
         run_history_sql = ("update horae_runhistory set status = %d, "
                 "end_time = '%s', schedule_id = %d, %s %s "
-                "cpu = %d, mem = %d, ret_code=%d where task_id = '%s' "
+                "cpu = %d, mem = %d where task_id = '%s' "
                 "and status = %d and run_time = '%s' ;" % (
                 task_status, 
                 now_format_time,
@@ -407,7 +404,6 @@ class TaskHandleBase(object):
                 update_starttime_field,
                 cpu,
                 mem,
-                ret_code,
                 self._task_id,
                 old_status,
                 self._task_run_time))
