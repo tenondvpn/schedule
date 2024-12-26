@@ -198,11 +198,9 @@ class CheckUncalledTasks(admin_task_base.AdminTaskBase):
 
         # 检查所有上游依赖是否完成
         return self._check_prev_tasks_all_succeeded(
-                str_task_id,
                 run_time, 
                 self.__pipeline_map, 
                 self.__task_map, 
-                self.__edge_map,
                 prev_nodes, 
                 prev_max_ct_time)
 
