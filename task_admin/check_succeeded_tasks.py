@@ -185,8 +185,6 @@ class CheckSucceededTasks(admin_task_base.AdminTaskBase):
 
         if prev_max_ct_time is None:
             if not self.__sql_manager.check_all_task_succeeded(
-                    task_id,
-                    self.__edge_map,
                     prev_nodes, 
                     run_time, 
                     run_time):
