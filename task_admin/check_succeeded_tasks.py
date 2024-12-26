@@ -10,6 +10,7 @@ Authors: xielei
 import time
 import sys
 import logging
+import traceback
 
 import horae.models
 
@@ -262,12 +263,17 @@ class CheckSucceededTasks(admin_task_base.AdminTaskBase):
                     user_del_list.append(user_schedule)
 
                 self.__log.error("CheckSuccededTasks 3 3")
-                successors = list(self.__graph.get_graph().successors(
-                        str(succ_task.task_id)))
-                self.__log.error(f"CheckSuccededTasks 4 {len(successors)}")
+                try:
+                    successors = list(self.__graph.get_graph().successors(
+                            str(succ_task.task_id)))
+                except:
+                    self.__log.error(f"CheckSuccededTasks catch error: {traceback.format_exc()}")
+                    pass
+
                 if successors is None:
                     break
 
+                self.__log.error(f"CheckSuccededTasks 4 {len(successors)}")
                 for next_node in successors:
                     if next_node not in self.__task_map:
                         self.__sql_del_list = []
