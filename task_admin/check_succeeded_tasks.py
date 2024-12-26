@@ -263,12 +263,13 @@ class CheckSucceededTasks(admin_task_base.AdminTaskBase):
                     user_del_list.append(user_schedule)
 
                 self.__log.error("CheckSuccededTasks 3 3")
+                successors = None
                 try:
                     successors = list(self.__graph.get_graph().successors(
                             str(succ_task.task_id)))
                 except:
                     self.__log.error(f"CheckSuccededTasks catch error: {traceback.format_exc()}")
-                    pass
+                    successors = None
 
                 if successors is None:
                     break
