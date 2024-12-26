@@ -12,6 +12,8 @@ import sys
 import configparser
 import os
 import logging
+import random
+import argparse
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "db_manager.settings")
 sys.path.append('../common/db_manager')
@@ -114,11 +116,18 @@ def generate_local_network_ip():
     return f"{first_octet}.{second_octet}.{third_octet}.{fourth_octet}"
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.description='please enter two parameters a and b ...'
+    parser.add_argument("-i", "--tag", help="", dest="tag", type=str, default="")
+    args = parser.parse_args()
+    if args.tag.strip() == "":
+        print("请输入--tag 参数，指定本机的算力标签")
+        sys.exit(1)
+
+        
+    local_tag = args.tag.strip()
     config = configparser.ConfigParser()
     config.read("./conf/node.conf")
-    local_public_ip = config.get("node", "public_ip").strip()
-    if local_public_ip == "":
-        config.set("node", "public_ip", generate_local_network_ip())
 
     ip_lock = config.get("zk", "ip_lock").strip()
     pos = ip_lock.rfind('/')
@@ -139,15 +148,18 @@ if __name__ == "__main__":
     if local_public_ip is None or local_public_ip.strip() == "":
         local_public_ip = task_util.StaticFunction.get_local_ip()
 
+    if task_util.StaticFunction.is_lan(local_public_ip):
+        local_public_ip = generate_local_network_ip()
+        config.set("node", "public_ip", local_public_ip)
+
     for tag in tag_list:
-        print(tag)
         if config.has_option("zk", tag):
              config.set(
                     "zk", 
                     tag, 
                     "%s,%s" % (
                     config.get("zk", tag), 
-                    local_public_ip))
+                    local_tag))
         else:
              config.set(
                     "zk", 
@@ -155,7 +167,7 @@ if __name__ == "__main__":
                     "%s/%s:%s" % (
                     zk_path,
                     tag,
-                    local_public_ip))
+                    local_tag))
 
     common_logger.init_log(config.get("log", "log_dir"))
 
