@@ -371,7 +371,7 @@ class TaskHandleBase(object):
         if task_status == task_util.TaskState.TASK_RUNNING and old_status == task_util.TaskState.TASK_READY:
             now_time = task_util.StaticFunction.get_now_format_time(
                 "%Y-%m-%d %H:%M:%S")
-            update_starttime_field = (" start_time='%s', " % now_time)
+            update_starttime_field = (" start_time='%s' " % now_time)
             update_inittime_field = (" init_time='%s' " % now_time)
 
         ready_task_sql = ("update horae_readytask set status = %d, "
