@@ -348,7 +348,8 @@ class TaskHandleBase(object):
             work_dir=None,
             try_times=3,
             cpu=0,
-            mem=0):
+            mem=0,
+            ret_code=0):
         # 这个函数调用十分重要，所以加上重试机制，防止网络抖动对业务的影响
         sql_list = []
         now_format_time = task_util.StaticFunction.get_now_format_time(
@@ -371,7 +372,7 @@ class TaskHandleBase(object):
             now_time = task_util.StaticFunction.get_now_format_time(
                 "%Y-%m-%d %H:%M:%S")
             update_starttime_field = (" start_time='%s', " % now_time)
-            update_inittime_field = (" init_time='%s', " % now_time)
+            update_inittime_field = (" init_time='%s' " % now_time)
 
         ready_task_sql = ("update horae_readytask set status = %d, "
                         "update_time = '%s', %s %s %s "
