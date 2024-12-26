@@ -154,7 +154,8 @@ class SqlManager(object):
                     for sql in sql_src_list:
                         change_row = cursor.execute(sql)
                         if change_row != 1:
-                            raise Exception(
+                            # raise Exception
+                            self.__log.error(
                                 "exe %s failed[changed row[%s]" % (
                                     sql, change_row))
                 return True
