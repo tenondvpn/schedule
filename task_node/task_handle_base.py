@@ -346,7 +346,7 @@ class TaskHandleBase(object):
             old_status, 
             task_handler=None, 
             work_dir=None,
-            try_times=30,
+            try_times=3,
             cpu=0,
             mem=0,
             ret_code=0):
