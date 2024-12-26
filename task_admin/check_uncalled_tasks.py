@@ -166,7 +166,7 @@ class CheckUncalledTasks(admin_task_base.AdminTaskBase):
     def __check_task_uncalled(self, str_task_id, run_time, wait_task_set):
         graph = self._get_graph_by_node(str_task_id, self.__sub_graph_list)
         if graph is None:
-            return 1
+            return False
 #        pipeline_pre = graph.predecessors(str_task_id)
         # 如果其是pipeline的起始节点，则由task_dispacher调度
 #        if len(pipeline_pre) <= 0:
@@ -178,7 +178,7 @@ class CheckUncalledTasks(admin_task_base.AdminTaskBase):
         for prev_node in prev_nodes:
             check_item = '%s_%s' % (prev_node, run_time)
             if check_item in wait_task_set:
-                return 1
+                return False
 
         tmp_prev_nodes = copy.deepcopy(prev_nodes)
         tmp_prev_nodes.append(str_task_id)
@@ -222,15 +222,10 @@ class CheckUncalledTasks(admin_task_base.AdminTaskBase):
             if str(waiting_task.task_id) not in self.__task_map:
                 continue
 
-            ret = self.__check_task_uncalled(
+            if not self.__check_task_uncalled(
                     str(waiting_task.task_id), 
                     waiting_task.run_time,
-                    wait_task_set)
-            if ret == 1:
-                continue
-
-            if ret == 2:
-                self.__update_task_info_to_stop_by_dispatch_tag(waiting_task)
+                    wait_task_set):
                 continue
 
             # 检查任务数限制

@@ -187,14 +187,14 @@ class AdminTaskBase(threading.Thread):
             prev_nodes, 
             max_ct_time):
         if prev_nodes is None or len(prev_nodes) <= 0:
-            return 0
+            return True
 
         max_ct_time = task_util.StaticFunction.strip_with_one_space(
                 max_ct_time)
         ct_time_list = max_ct_time.split(' ')
         ct_time_len = len(ct_time_list)
         if ct_time_len != task_util.CONSTANTS.CT_TIME_SPLIT_NUM:
-            return 1
+            return False
 
         max_ct_time_pos = -1
         for i in range(ct_time_len - 2, -1, -1):
@@ -203,7 +203,7 @@ class AdminTaskBase(threading.Thread):
                 break
 
         if max_ct_time_pos == -1:
-            return 1
+            return False
 
         check_equal_level_list = []
         check_slow_level_list = []
