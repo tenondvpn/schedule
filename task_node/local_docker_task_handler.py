@@ -165,9 +165,9 @@ class LocalDockerTaskHandler(task_handle_base.TaskHandleBase):
         ret_code = 0
         self._update_run_history_end_time(self._schedule_id)
         if self._task_handler is not None and self._task_handler.startswith("jb-aiinference"):
-            ret, ret_code = self.__get_local_docker_job_status(task_info)
+            ret = self.__get_local_docker_job_status(task_info)
         else:
-            ret, ret_code = self.__get_python_status(task_info)
+            ret = self.__get_python_status(task_info)
         
         if ret in (
                 task_util.TaskState.TASK_FAILED,
@@ -379,16 +379,16 @@ class LocalDockerTaskHandler(task_handle_base.TaskHandleBase):
             self._add_error_log(status + "\n")
             self.__get_local_docker_job_monitor(task_info)
             if status == "SUCCEEDED":
-                return task_util.TaskState.TASK_SUCCEED, 0
+                return task_util.TaskState.TASK_SUCCEED
             elif status == "FAILED":
                 reason = response_json['data']['jobErrorInfo']['errorMsg']
                 self._add_error_log(reason + "\n")
-                return task_util.TaskState.TASK_FAILED, 0
+                return task_util.TaskState.TASK_FAILED
             elif status == "PENDING":
                 # monitor
                 self.__pending_monitor(task_info)
             
-            return task_util.TaskState.TASK_RUNNING, 0
+            return task_util.TaskState.TASK_RUNNING
         except urllib.error.HTTPError as ex:
             self._log.error('get job status error:' + str(ex) + traceback.format_exc())
         except urllib.error.URLError as ex:
@@ -396,7 +396,7 @@ class LocalDockerTaskHandler(task_handle_base.TaskHandleBase):
         except Exception as ex:
             self._log.error('get job status error:' + str(ex) + traceback.format_exc())
 
-        return task_util.TaskState.TASK_RUNNING, 0
+        return task_util.TaskState.TASK_RUNNING
     
     def __stop_python_task(self, task_info):
         self.__job_work_dir = self._get_work_dir()
@@ -536,30 +536,35 @@ class LocalDockerTaskHandler(task_handle_base.TaskHandleBase):
             err_log = ("daemon server failed[%s]" % daemon_req_url)
             self._log.error(err_log)
             self._add_error_log(err_log)
-            return task_util.TaskState.TASK_RUNNING, 0
+            return task_util.TaskState.TASK_RUNNING
 
         status = task_util.TaskState.TASK_FAILED
-        json_res = json.loads(http_res)
-        if type(json_res["status"]) == str:
-            res_status = json_res["status"]
-        else:
-            res_status = str(json_res["status"])
-
-        res_code = json_res["ret"]
-        if res_status.startswith("error"):
+        if http_res.startswith("error"):
             err_log = ("run task failed:%s[res:%s]" % (
                 daemon_req_url, http_res))
             self._log.error(err_log)
             self._add_error_log(err_log)
         else:
-            status = int(res_status)
+            status = int(http_res)
 
         if status == task_util.TaskState.TASK_TIMEOUT:
             err_log = ("task time out[%s]" % str(task_info))
             self._log.info(err_log)
             self._add_error_log(err_log)
-            return task_util.TaskState.TASK_TIMEOUT, 0
-        return status, res_code
+            return task_util.TaskState.TASK_TIMEOUT
+
+        if status in (
+                task_util.TaskState.TASK_FAILED,
+                task_util.TaskState.TASK_SUCCEED):
+            if not self._write_task_status_to_db(
+                    status,
+                    task_util.TaskState.TASK_RUNNING):
+                err_log = ("write_start_task_status_to_db failed!")
+                self._log.warn(err_log)
+                self._add_error_log(err_log)
+                status = task_util.TaskState.TASK_FAILED
+
+        return status
     
     def __run_script_job(self):
         prev_cmd = ""
