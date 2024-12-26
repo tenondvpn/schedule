@@ -188,13 +188,13 @@ class CheckUncalledTasks(admin_task_base.AdminTaskBase):
                 self.__task_map)
 
         if prev_max_ct_time is None:
-            ret = self.__sql_manager.check_all_task_succeeded(
-                    str_task_id,
-                    self.__edge_map,
+            if self.__sql_manager.check_all_task_succeeded(
                     prev_nodes, 
                     run_time, 
-                    run_time)
-            return ret
+                    run_time):
+                return True
+
+            return False
 
         # 检查所有上游依赖是否完成
         return self._check_prev_tasks_all_succeeded(

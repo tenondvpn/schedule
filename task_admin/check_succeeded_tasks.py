@@ -204,15 +204,12 @@ class CheckSucceededTasks(admin_task_base.AdminTaskBase):
                     break
 
             # 检查所有上游依赖是否完成
-            ret = self._check_prev_tasks_all_succeeded(
-                    str(task_id),
+            if not self._check_prev_tasks_all_succeeded(
                     run_time, 
                     self.__pipeline_map, 
                     self.__task_map, 
-                    self.__edge_map,
                     prev_nodes, 
-                    prev_max_ct_time)
-            if ret != 0:
+                    prev_max_ct_time):
                 return False
 
         # 检查任务数限制
@@ -264,23 +261,6 @@ class CheckSucceededTasks(admin_task_base.AdminTaskBase):
                 for next_node in successors:
                     if next_node not in self.__task_map:
                         self.__sql_del_list = []
-                        continue
-
-                    dispatch_tag = -1
-                    if succ_task.task_id in self.__edge_map:
-                        for edge in self.__edge_map[succ_task.task_id]:
-                            if str(edge.next_task_id) == next_node:
-                                dispatch_tag = edge.dispatch_tag
-                                break
-
-                    if dispatch_tag != -1 and succ_task.ret_code != dispatch_tag:
-                        schedule = self.__sql_manager.task_is_in_schedule_with_status(
-                                next_node, 
-                                succ_task.run_time, 
-                                task_util.TaskState.TASK_WAITING)
-                        if schedule is not None:
-                            self.__update_task_info_to_stop_by_dispatch_tag(schedule)
-
                         continue
 
                     if not self.__check_task_can_call(

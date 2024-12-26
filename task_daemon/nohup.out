@@ -1,0 +1,274 @@
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+Traceback (most recent call last):
+  File "/root/work/schedule/horae/task_daemon/./daemon_main.py", line 15, in <module>
+    import daemon_http_server
+  File "/root/work/schedule/horae/task_daemon/daemon_http_server.py", line 16, in <module>
+    import tornado.httpserver
+ModuleNotFoundError: No module named 'tornado'
+--- Logging error ---
+Traceback (most recent call last):
+  File "/root/tools/python3.10/lib/python3.10/logging/__init__.py", line 1104, in emit
+    self.flush()
+  File "/root/tools/python3.10/lib/python3.10/logging/__init__.py", line 1084, in flush
+    self.stream.flush()
+OSError: [Errno 28] No space left on device
+Call stack:
+  File "/root/tools/python3.10/lib/python3.10/threading.py", line 973, in _bootstrap
+    self._bootstrap_inner()
+  File "/root/tools/python3.10/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/root/work/schedule/horae/task_daemon/task_manager.py", line 40, in run
+    self.__log.info("TaskManager handle data starting...")
+Message: 'TaskManager handle data starting...'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "/root/tools/python3.10/lib/python3.10/logging/__init__.py", line 1104, in emit
+    self.flush()
+  File "/root/tools/python3.10/lib/python3.10/logging/__init__.py", line 1084, in flush
+    self.stream.flush()
+OSError: [Errno 28] No space left on device
+Call stack:
+  File "/root/tools/python3.10/lib/python3.10/threading.py", line 973, in _bootstrap
+    self._bootstrap_inner()
+  File "/root/tools/python3.10/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/root/work/schedule/horae/task_daemon/task_manager.py", line 48, in run
+    self.__log.info("TaskManager exit.use time[%f]" % use_time)
+Message: 'TaskManager exit.use time[0.017545]'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "/root/tools/python3.10/lib/python3.10/logging/__init__.py", line 1104, in emit
+    self.flush()
+  File "/root/tools/python3.10/lib/python3.10/logging/__init__.py", line 1084, in flush
+    self.stream.flush()
+OSError: [Errno 28] No space left on device
+Call stack:
+  File "/root/work/schedule/horae/task_daemon/./daemon_main.py", line 64, in <module>
+    if not node_main.start():
+  File "/root/work/schedule/horae/task_daemon/./daemon_main.py", line 40, in start
+    self.__http_server.start()
+  File "/root/work/schedule/horae/task_daemon/daemon_http_server.py", line 46, in start
+    tornado.ioloop.IOLoop.instance().start()
+  File "/root/tools/python3.10/lib/python3.10/site-packages/tornado/platform/asyncio.py", line 195, in start
+    self.asyncio_loop.run_forever()
+  File "/root/tools/python3.10/lib/python3.10/asyncio/base_events.py", line 603, in run_forever
+    self._run_once()
+  File "/root/tools/python3.10/lib/python3.10/asyncio/base_events.py", line 1909, in _run_once
+    handle._run()
+  File "/root/tools/python3.10/lib/python3.10/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/root/tools/python3.10/lib/python3.10/site-packages/tornado/web.py", line 1784, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/root/work/schedule/horae/task_daemon/daemon_http_server.py", line 161, in get
+    self.finish()
+  File "/root/tools/python3.10/lib/python3.10/site-packages/tornado/web.py", line 1236, in finish
+    self._log()
+  File "/root/tools/python3.10/lib/python3.10/site-packages/tornado/web.py", line 1819, in _log
+    self.application.log_request(self)
+  File "/root/tools/python3.10/lib/python3.10/site-packages/tornado/web.py", line 2344, in log_request
+    log_method(
+Message: '%d %s %.2fms'
+Arguments: (200, 'GET /get_task_status?schedule_id=59 (10.200.48.58)', 0.560760498046875)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/root/tools/python3.10/lib/python3.10/logging/__init__.py", line 1104, in emit
+    self.flush()
+  File "/root/tools/python3.10/lib/python3.10/logging/__init__.py", line 1084, in flush
+    self.stream.flush()
+OSError: [Errno 28] No space left on device
+Call stack:
+  Fi/home/merak/horae/task_daemon/../common/task_util.py:249: SyntaxWarning: invalid escape sequence '\$'
+  """
+Traceback (most recent call last):
+  File "./daemon_main.py", line 15, in <module>
+    import daemon_http_server
+  File "/root/horae/task_daemon/daemon_http_server.py", line 16, in <module>
+    import tornado.httpserver
+ModuleNotFoundError: No module named 'tornado'

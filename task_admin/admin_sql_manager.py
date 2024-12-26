@@ -266,38 +266,17 @@ class SqlManager(object):
 
     def check_all_task_succeeded(self, next_str_task_id, edge_map, task_id_list, min_time, max_time):
         if task_id_list is None or len(task_id_list) <= 0:
-            return 0
+            return True
 
         try:
-            schedules = horae.models.Schedule.objects.exclude(
+            tasks = horae.models.Schedule.objects.exclude(
                         status=task_util.TaskState.TASK_SUCCEED).filter( 
                         run_time__lte=max_time,
                         run_time__gte=min_time,
                         task_id__in=task_id_list)
-            if schedules is not None and len(schedules) > 0:
-                for schedule in schedules:
-                    if schedule.status == task_util.TaskState.TASK_PREV_FAILED:
-                        self.__log.info("get TASK_PREV_FAILED status min_time: %s, max_time: %s, task id: %d, next task id: %s" % (min_time, max_time, schedule.task_id, next_str_task_id))
-                        return 2
-                    
-                return 1
-            
-            schedules = horae.models.Schedule.objects.filter( 
-                    status=task_util.TaskState.TASK_SUCCEED,
-                    run_time__lte=max_time,
-                    run_time__gte=min_time,
-                    task_id__in=task_id_list)
-            for schedule in schedules:
-                if schedule.task_id in edge_map:
-                    for edge in edge_map[schedule.task_id]:
-                        if str(edge.next_task_id) != next_str_task_id:
-                            continue
-
-                        if edge.dispatch_tag != -1 and edge.dispatch_tag != schedule.ret_code:
-                            self.__log.info("get TASK_PREV_FAILED status edge.dispatch_tag: %d, schedule.ret_code: %d min_time: %s, max_time: %s, task id: %d, next task id: %s" % (edge.dispatch_tag, schedule.ret_code, min_time, max_time, schedule.task_id, next_str_task_id))
-                            return 2
-
-            return 0
+            if tasks is None or len(tasks) <= 0:
+                return True
+            return False
         except django.db.OperationalError as ex:
             django.db.close_old_connections()
             self.__log.error("execute sql failed![ex:%s][trace:%s]!" % (

@@ -242,24 +242,22 @@ class AdminTaskBase(threading.Thread):
 
         if len(check_slow_level_list) > 0:
             # 检查所有上游依赖是否完成
-            ret = self.__sql_manager.check_all_task_succeeded(
+            if not self.__sql_manager.check_all_task_succeeded(
                     str_task_id,
                     edge_map,
                     check_slow_level_list, 
                     min_run_time, 
-                    run_time)
-            if ret != 0:
-                return ret
+                    run_time):
+                return False
 
         if len(check_equal_level_list) > 0:
             # 检查所有上游依赖是否完成
-            ret = self.__sql_manager.check_all_task_succeeded(
+            if not self.__sql_manager.check_all_task_succeeded(
                     str_task_id,
                     edge_map,
                     check_equal_level_list, 
                     middle_run_time, 
-                    run_time)
-            if ret != 0:
-                return ret
+                    run_time):
+                return False
             
-        return 0
+        return True

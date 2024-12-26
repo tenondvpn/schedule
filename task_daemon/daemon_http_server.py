@@ -12,7 +12,6 @@ import traceback
 import urllib.request
 import logging
 import base64
-import json
 
 import tornado.httpserver
 import tornado.web
@@ -149,17 +148,11 @@ class GetTaskStatus(tornado.web.RequestHandler):
                 self.write("error:schedule_id is none")
                 return
             schedule_id = int(schedule_id)
-            status, ret = HttpHandlerParams().task_manager.get_task_status(
+            status = HttpHandlerParams().task_manager.get_task_status(
                     schedule_id)
             if status is None:
                 status = task_util.TaskState.TASK_FAILED
-
-            res_data = {
-                "status": status,
-                "ret": ret
-            }
-            self.write(json.dumps(res_data).encode('utf-8'))
-            logging.info("get task status stuccess schedule_id: %d, status: %d, ret: %d" % (schedule_id, status, ret))
+            self.write(str(status))
         except Exception as ex:
             logging.error("get task status failed![ex:%s][trace:%s]" % (
                     str(ex), traceback.format_exc()))

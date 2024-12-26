@@ -94,15 +94,12 @@ class TaskDispatcher(admin_task_base.AdminTaskBase):
             return False
 
         # 检查所有上游依赖是否完成
-        ret = self._check_prev_tasks_all_succeeded(
-                task_id,
+        if not self._check_prev_tasks_all_succeeded(
                 run_time, 
                 self.__pipeline_map, 
                 self.__task_map, 
-                self.__edge_map,
                 prev_nodes_tmp, 
-                prev_max_ct_time)
-        if ret != 0:
+                prev_max_ct_time):
             return False
         return True
 
