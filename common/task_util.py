@@ -388,11 +388,10 @@ class StaticFunction(object):
 
     @staticmethod
     def is_lan(ip):
-        return False
-        # try:
-        #     res = ipaddress.ip_address(ip.strip()).is_private
-        #     print(ip + ":" + str(res))
-        #     return res
-        # except Exception as e:
-        #     print(ip + ": not valid")
-        #     return False
+        try:
+            res = ipaddress.ip_address(ip.strip()).is_private
+            print(ip + ":" + str(res))
+            return res
+        except Exception as e:
+            print(ip + ": not valid")
+            return False
