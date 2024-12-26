@@ -251,13 +251,17 @@ class CheckSucceededTasks(admin_task_base.AdminTaskBase):
 		
             self.__log.error("CheckSuccededTasks 3")
             while True:
+                self.__log.error("CheckSuccededTasks 3 0")
                 self.__sql_del_list.append(succ_task)
+                self.__log.error("CheckSuccededTasks 3 1")
                 user_schedule = self.__sql_manager.get_ordered_schedule(
                         succ_task.task_id, 
                         succ_task.run_time)
+                self.__log.error("CheckSuccededTasks 3 2")
                 if user_schedule is not None:
                     user_del_list.append(user_schedule)
 
+                self.__log.error("CheckSuccededTasks 3 3")
                 successors = list(self.__graph.get_graph().successors(
                         str(succ_task.task_id)))
                 self.__log.error(f"CheckSuccededTasks 4 {len(successors)}")
