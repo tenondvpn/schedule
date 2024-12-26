@@ -1,0 +1,54 @@
+<workflow-app xmlns="uri:oozie:workflow:0.4" name="work_name">
+
+  <global>
+    <job-tracker>emr2-header-1.ipa.aidigger.com:8050</job-tracker>
+    <name-node>hdfs://emr2-header-1.ipa.aidigger.com:8020</name-node>
+    <configuration>
+        <property>
+            <name>oozie.launcher.mapreduce.map.memory.mb</name>
+            <value>2048</value>
+        </property>
+        <property>
+            <name>oozie.launcher.mapreduce.map.java.opts</name>
+            <value>-Xmx777m</value>
+        </property>
+        <property>
+             <name>mapred.job.queue.name</name>
+             <value>oozie</value>
+         </property>
+         <property>
+            <name>oozie.launcher.yarn.app.mapreduce.am.resource.mb</name>
+            <value>1024</value>
+        </property>
+        <property>
+            <name>oozie.launcher.mapreduce.map.java.opts</name>
+            <value>-Xmx777m</value>
+        </property>
+     </configuration>
+  </global>
+  
+  <start to="work_name"/>
+
+    <action name="work_name">
+    <shell xmlns="uri:oozie:shell-action:0.2">
+        <job-tracker>emr2-header-1.ipa.aidigger.com:8050</job-tracker>
+        <name-node>hdfs://emr2-header-1.ipa.aidigger.com:8020</name-node>
+      <exec>submit_config.sh</exec>
+      <argument>/apps/noah/production/479/configs.json</argument>
+      <file>hdfs://emr2-header-1.ipa.aidigger.com:8020/user/hadoop/ETL/lib</file>
+      <file>hdfs://emr2-header-1.ipa.aidigger.com:8020/user/hadoop/ETL/run.py</file>
+      <file>hdfs://emr2-header-1.ipa.aidigger.com:8020/user/hadoop/ETL/submit_config.sh</file>
+      <file>/apps/noah/production/479/configs.json</file>
+      <capture-output/>
+    </shell>
+        <ok to="finish"/>
+        <error to="fail"/>
+  </action>
+
+  <kill name="fail">
+    <message>Action failed, error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+  </kill>
+
+  <end name="finish"/>
+
+</workflow-app>

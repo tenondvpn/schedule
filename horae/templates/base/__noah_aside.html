@@ -1,0 +1,65 @@
+{% load static %}
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- search form -->
+        <form action="javascript:void(0);" class="sidebar-form">
+            <div class="input-group">
+                <input type="text" class="form-control" id="search_content" autocomplete="off">
+                <span class="input-group-btn">
+                    <button type="button" onclick="search_pipeline()" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+
+        </form>
+        <!-- button type="button" class="btn btn-block btn-default btn-flat" onclick="addPipeline()" style="margin-left: 10px;width: 209px;">新建流程</button-->
+
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+
+        <div id="aside_tree_control" style="width:100%;height:100%;overflow-x:auto;overflow-y:auto">
+            <ul class="sidebar-menu" data-widget="tree">
+                <div class="easyui-panel">
+                    <ul id="tt" class="easyui-tree" data-options="
+                url: '/pipeline/get_project_tree_async',
+                method: 'get',
+                animate: true,
+                formatter:function(node){
+                    var s = node.text;
+                    if (node.is_project != 1) {
+                        s = '<b><font size=\'2\'>' + node.text + '</font></b>';
+                    }
+                    if (node.children && node.is_project == 1){
+                        s += '&nbsp;<span style=\'color:blue\'>(' + node.children.length + ')</span>';
+                    }
+                    return s;
+                },
+                onBeforeLoad: function(node, param) {
+                    return tree_before_load(node, param);
+                },
+                onContextMenu: function(e,node){
+                    e.preventDefault();
+                    $(this).tree('select',node.target);
+                    if (node.is_project == 1) {
+                        $('#cluster_mm').menu('show',{
+                            left: e.pageX,
+                            top: e.pageY
+                        });
+                    } else {
+                        $('#pipeline_mm').menu('show',{
+                            left: e.pageX,
+                            top: e.pageY
+                        });
+                    }
+                },
+                onClick: function(node){
+                    tree_onclick(node);
+                }
+            "></ul>
+                </div>
+            </ul>
+        </div>
+    </section>
+    <!-- /.sidebar -->
+</aside>

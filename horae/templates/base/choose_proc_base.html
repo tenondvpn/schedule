@@ -1,0 +1,23 @@
+{% load static %}
+{% load template_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DataBaas</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Theme style -->
+    {% include "./__noah_css.html" %}
+    {% include "./__noah_js.html" %}
+</head>
+
+<body class="hold-transition skin-blue-light fixed sidebar-mini" style="height: auto; min-height: 100%;">
+    <div id="wrapper">
+        {% include "./__noah_choose_proc_aside.html" %}
+        {% block content %}{% endblock %}
+    </div>
+</body>
+
+</html>

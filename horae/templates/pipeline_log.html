@@ -1,0 +1,71 @@
+{% extends "./base/other_log_base.html" %}
+{% block content %}
+{% load static %}
+{% load horae_filter %}
+<div class="content-wrapper" style="padding: 15px 15px 0 15px; padding-top: 0px;background-color:#FFFFFF;">
+    <ol class="breadcrumb" style="background-color:white;margin-top:10px;width:1000px;float:left;}">
+        <li id="readdocument"><a href="javascript:void(0);">主目录</a></li>
+    </ol>
+    <div>
+        <div class="row" id="addlog">
+            <input id="schedule_p" type="hidden" value="{{ log.schedule_id }}"></input>
+            <input id="task_name" type="hidden" value="{{ log.task_name }}"></input>
+            <input id="pl_id" type="hidden" value="{{ log.pl_id }}"></input>
+            <input id="run_time" type="hidden" value="{{ log.run_time }}"></input>
+            <input id="status" type="hidden" value="{{ log.status }}"></input>
+            <input id="pl_name" type="hidden" value="{{ log.pl_name }}"></input>
+            <input id="file_name" type="hidden"></input>
+            <div class="col-lg-12" style="margin-top: -25px;">
+                <span id="spanmessage" class="text-danger" style="font-size:14px">加载中.....</span>
+                <span id="nulldocument">该文件夹为空</span>
+                <ul id="navultrance" class="nav nav-pills" style="float:left;margin-top:15px;margin-right:40px;">
+                    <!--<li class="firstli" style="margin-top:26px">平台日志:<li>-->
+                </ul>
+                <ul id="navulstdout" class="nav nav-pills" style="float:left;margin-top:15px;margin-right:40px;">
+                    <!--<li class="firstli" style="margin-top:26px">任务日志:</li>-->
+                </ul>
+                <ul id="navulconf" class="nav nav-pills" style="float:left;margin-top:15px;margin-right:40px;">
+                    <!--<li class="firstli" style="margin-top:26px">配置文件:</li>-->
+                </ul>
+                <ul id="navulpy" class="nav nav-pills" style="float:left;margin-top:15px;margin-right:40px;">
+                    <!--<li class="firstli" style="margin-top:26px">执行文件:</li>-->
+                </ul>
+                <ul id="navulother" class="nav nav-pills" style="float:left;margin-top:15px;margin-right:40px;">
+                    <!--<li class="firstli" style="margin-top:26px">其他文件:</li>-->
+                </ul>
+                <ul id="navuldir" class="nav nav-pills" style="float:left;margin-top:15px;margin-right:40px;">
+                    <!--<li class="firstli" style="margin-top:26px">子目录:</li>-->
+                </ul>
+                <div id="tail_btn" style="float:right;margin-top: 15px;margin-right: 10px;"></div>
+                <textarea class="filecontent" id="file_content" style="width:100%;height:800px;margin-top:10px;">
+                    </textarea>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="" class="modal fade" id="messageview" tabindex="-1" role="dialog" aria-labelledby="messageviewLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title" id="messageviewLabel">提示</h5>
+            </div>
+            <div class="modal-body">
+                <h5 class="text-center">返回日志列表失败</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-info  " style="" data-dismiss="modal">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link href="{% static 'css/pipeline.css' %}" rel="stylesheet">
+<link href="{% static 'css/ui-dialog.css' %}" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="{% static 'js/common/dialog-min.js' %}"></script>
+<script type="text/javascript" src="{{ "/static/js/pipeline/pipeline_log.js"|file_time_stamp }}"></script>
+{% endblock %}
+

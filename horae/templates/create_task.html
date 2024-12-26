@@ -1,0 +1,212 @@
+{% extends "base_iframe.html" %}
+{% block content %}
+{% load static %}
+{% load horae_filter %}
+<div id="page-wrapper" style="margin: 0 0 0 0; border-left:0;background-color:white!important;">
+    <input type="hidden" id="pipe_id" name="variable" value="{{ pipe_id }}">
+    <!--<div class="form_div" style="margin:auto;width:80%;">-->
+    <div class="col-lg-10 col-lg-offset-1">
+        <form action="" method="post" id="create_task_form" class="all_form" style="margin-left:40px" autocomplete="off">
+            <fieldset>
+                <div class="form-group">
+                    <label>
+                        <font color="red">*</font>
+                        {{ form.type.label }}:
+                    </label>
+                    <input type="text" class="form-control" style="width:127px" id="id_choosed_proc_type" disabled>
+                    <label>
+                        <font color="red">*</font>
+                        {{ form.name.label }}:
+                    </label>
+                    {{ form.name }}
+                    <a href="javascript:void(0);" target="_blank" title="查看帮助"><span class="glyphicon glyphicon-question-sign" aria-hidden="true" style="color:#9aa0af;"></span></a>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <font color="red">*</font>
+                        已选择算子:
+                    </label>
+                    <input type="text" name="over_time" class="form-control" placeholder="算子名" style="width:335px" id="id_choosed_proc" disabled>
+                    <label style="margin-left: 0px;">
+                        <font color="red">*</font>
+                        版本:
+                    </label>
+                    <input type="text" name="over_time" class="form-control" placeholder="算子版本" style="width:155px" id="id_choosed_version" disabled>
+                </div>
+                <div id="paramDiv" class="form-group">
+                    <label>
+                        <font color="red">*</font>
+                        {{ form.config.label }}:
+                    </label>
+                    <div style="display: inline;" class="param_div">
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <i class="fa fa-plus-square" style="cursor:pointer;color:green" title='添加' onclick='addTemplate()' href='javascript:void(0)'></i>
+                    </div>
+                </div>
+                {{ form.config }}
+                <div id="processor_param" class="form-group" style="display:none">
+                    <label>
+                        <font color="red">*</font>
+                        参数配置:
+                    </label>
+                    <div style="display: inline;">
+                        <input type="text" placeholder="填写参数的key" class="form-control" style="width:180px;">
+                        =
+                        <input type="text" placeholder="填写参数的值" class="form-control" style="width:500px;">
+                    </div>
+                </div>
+                <div id="odps_sql" class="form-group" style="margin-top: 15px;display:none">
+                    <label class="textarea_label">
+                        {{ form.template.label }}:
+                    </label>
+                    {{ form.template }}
+                </div>
+                <div class="form-group">
+                    <label>
+                        <font color="red">*</font>
+                        {{ form.retry_count.label }}:
+                    </label>
+                    {{ form.retry_count }}
+                    <label>
+                        <font color="red">*</font>
+                        {{ form.priority.label }}:
+                    </label>
+                    {{ form.priority }}
+                    <label style="margin-left: 30px;">
+                        <font color="red">*</font>
+                        {{ form.over_time.label }}:
+                    </label>
+                    {{ form.over_time }}
+                </div>
+                <div class="form-group" id="plDiv">
+                    <label>
+                        <font color="red">*</font>
+                        依赖任务:
+                    </label>
+                </div>
+                {{ form.prev_task_ids }}
+                <div class="form-group" style="margin-top: 15px;" id="server_tag_div">
+                    <label class="textarea_label">
+                        {{ form.server_tag.label }}:
+                    </label>
+                    <div style="display: inline;">
+                        <select id="server_tag_select" style="width:350px" class="form-control"></select>
+                    </div>
+                    {{ form.server_tag }}
+                </div>
+                <div class="form-group" style="margin-top: 25px;">
+                    <label class="textarea_label">
+                        {{ form.description.label }}:
+                    </label>
+                    {{ form.description }}
+                </div>
+            </fieldset>
+            <div style="margin-left:80px">
+                <img id="create_busy_icon" src="{% static 'images/busy.gif' %}" style="display:none;">
+                <input type="button" value="保存" id="create_task_btn"
+                       class="btn btn-primary pipe_btn" style="margin-left:36px" />
+                <a href="javascript:void(0)" onclick="$('.modal_iframe', window.parent.document).hide();$('.modal-backdrop', window.parent.document).remove();">取消配置</a>
+            </div>
+        </form>
+    </div>
+    <div style="clear:both"></div>
+    <input type="hidden" id="indexNumber" />
+    <!--数据选择modal-->
+    <div class="modal fade" id="choose_data_modal">
+        <div class="modal-dialog" style="width:600px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="a-title-font">
+                        数据选择
+                        <a class="close" data-dismiss="modal"><img src="{% static 'images/divClose.png' %}" /></a>
+                    </span>
+                </div>
+                <div class="modal-body" style="padding-left:30px;">
+                    <div class="form_div">
+                        <form action="" method="post" id="choose_data_form" class="all_form">
+                            <div class="form-group">
+                                <label>
+                                    <font color="red">*</font>数据类型:
+                                </label>
+                                <div style="display: inline-block;">
+                                    <label class="radio-inline" style="margin-top:-2px;">
+                                        <input class="oss" type="radio" name="data_type" value="1" checked>oss
+                                    </label>
+                                    <label class="radio-inline" style="margin-top:-2px;margin-left:-10px;">
+                                        <input class="odps" type="radio" name="data_type" value="0">odps
+                                    </label>
+                                </div>
+                                <span style="color:#9aa0af;margin-left:50px;">用于筛选指定类型下的数据节点</span>
+                            </div>
+                            <div class="form-group">
+                                <label style="margin-right:10px">
+                                    <font color="red">*</font>数据名:
+                                </label>
+                                <div id="dataDiv" style="display: inline-block;">
+                                    <select id="data_select" style="width:400px;margin-right:0px;margin-left:10px;" class="select2-select-00 full-width-fix choose_data_div">
+                                        <option value="choose">--请选择数据--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- <div class="form-group">
+                                <label>
+                                    <font color="red">*</font>使用类型:
+                                </label>
+                                <div id="dataPath" style="display: inline-block;">
+                                    <label class="radio-inline" style="margin-top:-2px;margin-left:-10px;">
+                                        <input type="radio" name="data_mode" value="0" checked>目录
+                                    </label>
+                                    <label class="radio-inline" style="margin-top:-2px;margin-left:-10px;">
+                                        <input type="radio" name="data_mode" value="1">文件
+                                    </label>
+                                </div>
+                                <span style="color:#9aa0af;margin-left:50px;">选择使用数据节点的方式</span>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <font color="red">*</font>时间偏移:
+                                </label>
+                                <div style="display: inline-block;">
+                                    <input type="text" id="data_offset" placeholder="整数，时间向前的偏移量" class="form-control" style="width:160px;margin-right:5px;">
+                                    <select id="timeType" style="width:140px;margin-right:0px;" class="form-control">
+                                        <option value="hour">小时</option>
+                                        <option value="day">天</option>
+                                    </select>
+                                </div>
+                            </div> -->
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="data-choose-button" class="btn btn-primary pipe_btn">确定</button>
+                    <button class="btn btn-primary pipe_btn" data-dismiss="modal" aria-hidden="true">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript" src="{% static 'js/common/select2.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/common/form_components.js' %}"></script>
+<link href="{% static 'css/select2.css' %}" rel="stylesheet" type="text/css" />
+<link href="{{ "/static/css/bootstrap-combobox.css"|file_time_stamp }}" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript" src="{{ "/static/js/common/bootstrap-combobox.js"|file_time_stamp }}"></script>
+<!-- <link href="{% static '/static/css/bootstrap-combobox.css'|file_time_stamp %}" rel="stylesheet" type="text/css"> -->
+<!-- <script type="text/javascript" src="{% static '/static/js/common/bootstrap-combobox.js'|file_time_stamp %}"></script> -->
+<link href="{{ "/static/css/pipeline.css"|file_time_stamp }}" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript" src="{{ "/static/js/common/dialog-min.js"|file_time_stamp }}"></script>
+<script type="text/javascript" src="{{ "/static/js/pipeline/create_task.js"|file_time_stamp }}"></script>
+<!-- <link href="{% static '/static/css/pipeline.css'|file_time_stamp %}" rel="stylesheet" type="text/css"> -->
+<!-- <script type="text/javascript" src="{% static 'js/common/dialog-min.js'|file_time_stamp %}"></script> -->
+<!-- <script type="text/javascript" src="{% static 'js/pipeline/create_task.js'|file_time_stamp %}"></script> -->
+<style>
+
+    #plDiv .dropdown-menu {
+        left: 10px !important;
+        width: 353px;
+        top: 36px;
+    }
+</style>
+{% endblock %}
+
+

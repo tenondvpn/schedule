@@ -1,0 +1,170 @@
+{% extends "base_iframe.html" %}
+{% block content %}
+{% load static %}
+{% load horae_filter %}
+<div id="page-wrapper" style="margin: 0 0 0 0;padding-top: 0px;">
+    <p style="color:red;display:none" id="error"></p>
+    <div class="col-lg-10 col-lg-offset-1">
+        <form action="" method="post" id="update_pipeline_form" class="all_form" style="margin-left:70px" autocomplete="off">
+            <fieldset>
+                <input type="hidden" id="project_id_hidden_manual" name="variable" value="{{ pipeline.project_id}}">
+                <input type="hidden" id="pipe_principal" name="variable" value="{{ pipeline.owner_id_list }}">
+                <input type="hidden" id="pipe_monitor_way" name="variable" value="{{ pipeline.monitor_way }}">
+                <div class="form-group">
+                    <label>
+                        <font color="red">*</font>
+                        {{ form.name.label }}:
+                    </label>
+                    {{ form.name }}
+                    <span style="color:#9aa0af;">流程的标记名称，方便流程的管理区分</span>
+                </div>
+                <div class="form-group">
+                    <label>
+                        {{ form.ct_time.label }}:
+                    </label>
+                    {{ form.ct_time }}
+                    <span style="color:#9aa0af;">crontab格式，如:10 * * * * 表示每小时10分运行一次</span>
+                </div>
+
+                <div class="form-group">
+                    <label style="margin-right:10px">
+                        负责人:
+                    </label>
+                    <script type="text/javascript" src="{% static 'js/common/select2.min.js' %}"></script>
+                    <script type="text/javascript" src="{% static 'js/common/form_components.js' %}"></script>
+                    <link href="{% static 'css/select2.css' %}" rel="stylesheet" type="text/css" />
+                    <select id="principal" style="width:500px" class="select2-select-00 full-width-fix" multiple="multiple"></select>
+                    {{ form.principal }}
+                </div>
+                <div class="form-group">
+                    <label>
+                        报警方式:
+                    </label>
+
+                    <label class="checkbox-inline">
+                        {{ form.send_mail }}邮件
+                    </label>
+                    <label class="checkbox-inline">
+                        {{ form.send_sms }}钉钉
+                    </label>
+                    <span style="margin-left:335px;color:#9aa0af;">如需钉钉报警请设置注册时设置</span>
+                </div>
+                <div class="form-group">
+                    <label>
+                        {{ form.life_cycle.label }}:
+                    </label>
+                    {{ form.life_cycle }}
+                    <span style="color:#9aa0af;">配置流程的生命周期，会定期清理流程</span>
+                </div>
+                <div class="form-group" id="project_id">
+                    <label>
+                        {{ form.project_id.label }}:
+                    </label> &nbsp;&nbsp;
+                    <input class="easyui-combotree" id="create_pipeline_project_id"
+                           data-options="url:'/pipeline/get_project_tree/',method:'get'"
+                           style="width: 499px;">
+                </div>
+
+                <div class="form-group" style="margin-top: 25px;">
+                    <label class="textarea_label">
+                        {{ form.description.label }}:
+                    </label>
+                    {{ form.description }}
+                </div>
+            </fieldset>
+            <div style="margin-left:80px">
+                <img id="update_busy_icon" src="{% static 'images/busy.gif' %}" style="display:none;">
+                <input type="button" value="保存" id="update_pipeline_btn" onclick='updatePipe({{pipeline.id}})'
+                       class="btn btn-primary pipe_btn" style="margin-left:10px" />
+                <a href="javascript:void(0)" onclick="$('.modal_iframe', window.parent.document).hide();$('.modal-backdrop', window.parent.document).remove();">取消配置</a>
+            </div>
+        </form>
+    </div>
+    <div style="clear:both"></div>
+</div>
+<div class="modal fade" id="copyModal" tabindex="1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document" style="width:500px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>消息</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <font class="modal-title a-title-font" id="myGeneralTitle"></font>
+            </div>
+            <div class="modal-body">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary pipe_btn" data-dismiss="modal" aria-hidden="true" onclick="hrefindex()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="messageModal" tabindex="1" role="dialog" aria-labelledby="messageLabel">
+    <div class="modal-dialog" role="document" style="width:500px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>消息</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary pipe_btn" data-dismiss="modal" aria-hidden="true">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    var reportTo = "";
+    var url = "/pipeline/get_user_list/";
+    $.ajax({
+        type : "post",
+        url  : url,
+        async: false,
+        dataType:"json",
+        success : function(result) {
+            if(result.status){
+                alert(result.msg);
+            }else{
+                users = result.user_list;
+                for(i = 0;i<users.length;i++){
+                    reportTo += "<option value='"+users[i].id+"' >"+
+                    users[i].name+"</option>";
+                }
+            }
+            $("#principal").append(reportTo);
+        }
+    });
+
+    var principal = [{{pipeline.principal_id_list}}]
+    $("#principal").val(principal);
+    var monitor_way = {{pipeline.monitor_way}};
+
+    switch(monitor_way){
+        case -1:
+            $("#id_send_mail").prop("checked",false);
+            $("#id_send_sms").prop("checked",false);
+            break;
+        case 0:
+            $("#id_send_mail").prop("checked",true);
+            $("#id_send_sms").prop("checked",false);
+            break;
+        case 1:
+            $("#id_send_mail").prop("checked",false);
+            $("#id_send_sms").prop("checked",true);
+            break;
+        case 2:
+            $("#id_send_mail").prop("checked",true);
+            $("#id_send_sms").prop("checked",true);
+            break;
+    }
+</script>
+<link href="{% static 'css/bootstrap-combobox.css' %}" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="{% static 'js/common/bootstrap-combobox.js' %}"></script>
+<link href="{% static 'css/pipeline.css' %}" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="{{ "/static/js/pipeline/update_pipeline.js"|file_time_stamp }}"></script>
+{% endblock %}
+
+

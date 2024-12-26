@@ -1,0 +1,43 @@
+{% load static %}
+<aside class="main-sidebar" style="margin-top:-50px;">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- search form -->
+        <div class="input-group">
+            <input type="text" class="form-control" id="id_search_processor" autocomplete="off">
+            <span class="input-group-btn">
+                <button type="button" onclick="search_processor()" name="search" id="search-btn" class="btn btn-flat"><i
+                        class="fa fa-search"></i>
+                </button>
+            </span>
+        </div>
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <div id="aside_proc_tree_control" style="width:100%;height:100%;overflow-x:auto;overflow-y:auto">
+            <ul class="sidebar-menu" data-widget="tree">
+                <div class="easyui-panel">
+                    <ul id="proc_tt" class="easyui-tree" data-options="
+                    url: '/processor/get_processor_tree_async/',
+                    method: 'get',
+                    animate: true,
+                    formatter:function(node){
+                        var s = node.text;
+                        if (node.is_project == 0) {
+                            s = '<b><font size=\'2\'>' + node.text + '</font></b>';
+                        }
+
+                        if (node.children && node.is_project != 0){
+                            s += '&nbsp;<span style=\'color:blue\'>(' + node.children.length + ')</span>';
+                        }
+                        return s;
+                    },
+                    onClick: function(node){
+                        tree_onclick(node);
+                    }
+                "></ul>
+                </div>
+            </ul>
+        </div>
+    </section>
+    <!-- /.sidebar -->
+</aside>

@@ -1,0 +1,167 @@
+{% load static %}
+<header class="main-header">
+    <!-- Logo -->
+    <a href="/pipeline/" class="logo" style="background-color: #3c8dbc !important;">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini">DataBaas</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg">DataBaas</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top" style="background-color:#3c8dbc !important;">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+        </a>
+
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="/pipeline/" class="sidebar-menu-noah" role="button" style="text-decoration:none;">
+                    流程管理
+                </a>
+            </li>
+            <li>
+                <a href="/pipeline/history/" class="sidebar-menu-noah" role="button" style="text-decoration:none;">
+                    计算任务
+                </a>
+            </li>
+            <li>
+                <a href="/processor/" class="sidebar-menu-noah" role="button" style="text-decoration:none;">
+                    算子管理
+                </a>
+            </li>
+            <li></li>
+        </ul>
+        <div class="navbar-custom-menu" style="margin-right:20px;">
+            <ul class="nav navbar-nav">
+                <!-- Messages: style can be found in dropdown.less-->
+                <li class="dropdown messages-menu" id="li_header_message">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="message_header_click()">
+                        <i class="fa fa-envelope-o"></i>
+                        <span class="label label-success">0</span>
+                    </a>
+                    <ul class="dropdown-menu" style="left: auto!important;"></ul>
+                </li>
+
+                <!-- User Account: style can be found in dropdown.less -->
+                <li class="dropdown user user-menu" id="li_header_user">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="user_header_click()">
+                        <img src="/static/AdminLTE-2.4.5/dist/img/user2-160x160.jpg" class="user-image"
+                             alt="User Image">
+                        <span class="hidden-xs" id="id_username"></span>
+                    </a>
+                    <ul class="dropdown-menu" style="left: auto!important;">
+                        <!-- User image -->
+                        <li class="user-header">
+                            <img src="/static/AdminLTE-2.4.5/dist/img/user2-160x160.jpg" class="img-circle"
+                                 alt="User Image">
+
+                            <p id="id_user_info">
+                            </p>
+                        </li>
+
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                <a href="#" class="btn btn-default btn-flat">详情</a>
+                            </div>
+                            <div class="pull-right">
+                                <a href="#" class="btn btn-default btn-flat" onclick="logout()">退出</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<script>
+    function logout() {
+        var url = "/logout?next=" + window.location.pathname;
+        $.ajax({
+            type: 'get',
+            url: url,
+            dataType: 'json',
+            success: function (result) {
+                if (result.status) {
+                    new PNotify({
+                        title: '通知',
+                        text: "退出失败：" + result.msg,
+                        type: 'warn',
+                        hide: true,
+                        closer: true,
+                        addclass: 'custom'
+                    });
+                } else {
+                    window.location = result.next ? result.next : "/login/";
+                }
+            }
+        });
+    }
+
+    function message_header_click() {
+        var pathname = window.location.pathname;
+        if (pathname.indexOf("/pipeline/history/") >= 0) {
+            return;
+        }
+
+        $("#li_header_message").addClass("open");
+        $("#li_header_user").removeClass("open");
+    }
+
+    function user_header_click() {
+        var pathname = window.location.pathname;
+        if (pathname.indexOf("/pipeline/history/") >= 0) {
+            return;
+        }
+
+        $("#li_header_message").removeClass("open");
+        $("#li_header_user").addClass("open");
+    }
+
+    $(function () {
+        var url = "/get_user_info/";
+        $.ajax({
+            type: 'get',
+            url: url,
+            dataType: 'json',
+            success: function (result) {
+                if (result.status) {
+                    new PNotify({
+                        title: '通知',
+                        text: "失败：" + result.msg,
+                        type: 'warn',
+                        hide: true,
+                        closer: true,
+                        addclass: 'custom'
+                    });
+                } else {
+                    $("#id_username").html(result.realname)
+                    $("#id_user_info").html(result.realname + '<small>注册时间：' + result.date_joined + '</small>')
+                }
+            }
+        });
+
+        var pathname = window.location.pathname;
+        var tmp_path = "/pipeline/";
+        if (pathname.indexOf("/pipeline/history/") >= 0) {
+            tmp_path = "/pipeline/history/";
+        } else if (pathname.indexOf("/pipeline/pindex/") >= 0) {
+            tmp_path = "/pipeline/pindex/";
+        } else if (pathname.indexOf("/pipeline/") >= 0) {
+            tmp_path = "/pipeline/";
+        } else if (pathname.indexOf("/processor/") >= 0) {
+            tmp_path = "/processor/";
+        } else if (pathname.indexOf("/picker/") >= 0) {
+            tmp_path = "/picker/picker_header/";
+        }
+
+        var item = $("a[href='" + tmp_path + "']");
+        item.parent().addClass('active');
+
+    });
+</script>
+{% block scripts %}
+{% endblock %}
+

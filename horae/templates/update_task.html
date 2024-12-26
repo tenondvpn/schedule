@@ -1,0 +1,256 @@
+{% extends "base_iframe.html" %}
+{% block content %}
+{% load static %}
+{% load horae_filter %}
+<div id="page-wrapper" style="margin: 0 0 0 0;background-color:white!important">
+    <input type="hidden" id="pipe_id" name="variable" value="{{ pipe_id }}">
+    <input type="hidden" id="config" name="variable" value="{{ config }}">
+    <input type="hidden" id="type" name="variable" value="{{ processor.type }}">
+    <input type="hidden" id="template" name="variable" value="{{ processor.template }}">
+    <input type="hidden" id="prev_task_ids" name="variable" value="{{ task.prev_task_ids }}">
+    <input type="hidden" id="rely_tasks" name="variable" value="{{ rely_tasks }}">
+    <input type="hidden" id="server_tag" name="variable" value="{{ server_tag }}">
+    <input type="hidden" id="retry_count" name="variable" value="{{ task.retry_count }}">
+    <input type="hidden" id="quote_num" name="variable" value="{{ quote_num }}">
+    <input type="hidden" id="proc_name" name="variable" value="{{ processor.name }}">
+    <input type="hidden" id="task_id" name="variable" value="{{ task.id }}">
+    <input type="hidden" id="version_list" name="variable" value="{{ version_list }}">
+    <input type="hidden" id="version_id" name="variable" value="{{ task.version_id }}">
+
+    <a id="seachprocess" href="javascript:void(0)" url="/processor/{{processor.id}}/" style="float:right;margin-right:10px;color:#01579b;" title="查看算子">查看算子</a>
+    <div>
+        <form action="" method="post" id="create_task_form" class="all_form" style="margin-left:40px" autocomplete="off">
+            <fieldset>
+                <div class="form-group">
+                    <label>
+                        <font color="red">*</font>
+                        {{ form.type.label }}:
+                    </label>
+                    {% if processor.type == 1 %}
+                    <input type="text" class="form-control" style="width:127px" id="id_choosed_proc_type" disabled value="script">
+                    {% elif processor.type == 2 %}
+                    <input type="text" class="form-control" style="width:127px" id="id_choosed_proc_type" disabled value="spark">
+                    {% elif processor.type == 3 %}
+                    <input type="text" class="form-control" style="width:127px" id="id_choosed_proc_type" disabled value="oozie">
+                    {% elif processor.type == 4 %}
+                    <input type="text" class="form-control" style="width:127px" id="id_choosed_proc_type" disabled value="odps">
+                    {% elif processor.type == 5 %}
+                    <input type="text" class="form-control" style="width:127px" id="id_choosed_proc_type" disabled value="shell">
+                    {% elif processor.type == 6 %}
+                    <input type="text" class="form-control" style="width:127px" id="id_choosed_proc_type" disabled value="docker">
+                    {% elif processor.type == 7 %}
+                    <input type="text" class="form-control" style="width:127px" id="id_choosed_proc_type" disabled value="clickhouse">                                        
+                    {% endif %}
+
+                    <label>
+                        <font color="red">*</font>
+                        {{ form.name.label }}:
+                    </label>
+                    {{ form.name }}
+                    <a href="javascript:void(0);" target="_blank" title="查看帮助"><span class="glyphicon glyphicon-question-sign" aria-hidden="true" style="color:#9aa0af;"></span></a>
+                </div>
+                <div id="odps_sql_tag" style="display:none">
+                    <label>
+                        <font color="red">*</font>
+                        已选择算子:
+                    </label>
+                    <input type="text" name="over_time" class="form-control" placeholder="算子名" style="width:335px" disabled value="{{processor.name}}">
+                    <label style="margin-left: 0px;">
+                        <font color="red">*</font>
+                        版本:
+                    </label>
+                    <!--input type="text" name="over_time" class="form-control" placeholder="算子版本" style="width:155px" disabled value="{{processor.name}}"-->
+                    <select id="proc_version_select" style="width:155px;margin-right:0px;margin-left:10px;" class="select2-select-00 full-width-fix">
+                        {% for item in version_list %}
+                        {% if task.version_id == item.id %}}
+                        <option value="{{item.id}}" selected>{{item.name}}</option>
+                        {% else %}
+                        <option value="{{item.id}}">{{item.name}}</option>
+                        {% endif %}}
+                        {% endfor %}
+                    </select>
+                </div>
+               
+                <div id="paramDiv" class="form-group">
+                    <label>
+                        <font color="red">*</font>
+                        {{ form.config.label }}:
+                    </label>
+                    <div>
+                        <i class="fa fa-plus-square" style="cursor:pointer;color:green" title='添加' onclick='addTemplate()' href='javascript:void(0)'></i>
+                    </div>
+                </div>
+                {{ form.config }}
+
+                <div id="odps_sql_lable" class="form-group" style="margin-top: 15px;display:none">
+                    <label>
+                        <font color="red">*</font>
+                        执行命令:
+                    </label>
+                </div>
+                <div id="odps_sql" class="form-group" style="margin-top: 15px;display:none">
+                    <label>
+                        <font color="red"></font>
+                    </label>
+                    {{ form.template }}
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        <font color="red">*</font>
+                        {{ form.retry_count.label }}:
+                    </label>
+                    {{ form.retry_count }}
+                    <label>
+                        <font color="red">*</font>
+                        {{ form.priority.label }}:
+                    </label>
+                    {{ form.priority }}
+                    <label style="margin-left: 30px;">
+                        <font color="red">*</font>
+                        {{ form.over_time.label }}:
+                    </label>
+                    {{ form.over_time }}
+                </div>
+                <div class="form-group" id="plDiv">
+                    <label>
+                        <font color="red">*</font>
+                        依赖任务:
+                    </label>
+                </div>
+                {{ form.prev_task_ids }}
+                <div class="form-group" style="margin-top: 15px;" id="server_tag_div">
+                    <label class="textarea_label">
+                        {{ form.server_tag.label }}:
+                    </label>
+                    <div style="display: inline;">
+                        <select id="server_tag_select" style="width:350px" class="form-control"></select>
+                    </div>
+                    {{ form.server_tag }}
+                </div>
+                <div class="form-group" style="margin-top: 25px;">
+                    <label class="textarea_label">
+                        {{ form.description.label }}:
+                    </label>
+                    {{ form.description }}
+                </div>
+            </fieldset>
+            <div style="margin-left:80px">
+                <img id="update_busy_icon" src="{% static 'images/busy.gif' %}" style="display:none;">
+                <input type="button" value="保存" id="update_task_btn" onclick='update_task({{task.id}})'
+                       class="btn btn-primary pipe_btn" style="margin-left:36px" />
+                <a href="javascript:void(0)" onclick="$('.modal_iframe', window.parent.document).hide();$('.modal-backdrop', window.parent.document).remove();">取消配置</a>
+            </div>
+        </form>
+    </div>
+    <div style="clear:both"></div>
+    <input type="hidden" id="indexNumber" />
+    <!--数据选择modal-->
+    <div class="modal fade" id="choose_data_modal">
+        <div class="modal-dialog" style="width:600px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="a-title-font">
+                        数据选择
+                        <a class="close" data-dismiss="modal"><img src="{% static 'images/divClose.png' %}" /></a>
+                    </span>
+                </div>
+                <div class="modal-body" style="padding-left:30px;">
+                    <div class="form_div">
+                        <form action="" method="post" id="choose_data_form" class="all_form">
+                            <div class="form-group">
+                                <label>
+                                    <font color="red">*</font>数据类型:
+                                </label>
+                                <div style="display: inline-block;">
+                                    <label class="radio-inline" style="margin-top:-2px;">
+                                        <input class="oss" type="radio" name="data_type" value="1" checked>oss
+                                    </label>
+                                    <label class="radio-inline" style="margin-top:-2px;margin-left:-10px;">
+                                        <input class="odps" type="radio" name="data_type" value="0">odps
+                                    </label>
+                                </div>
+                                <span style="color:#9aa0af;margin-left:50px;">用于筛选指定类型下的数据节点</span>
+                            </div>
+                            <div class="form-group">
+                                <label style="margin-right:10px">
+                                    <font color="red">*</font>数据节点:
+                                </label>
+                                <div id="dataDiv" style="display: inline-block;">
+                                    <select id="data_select" style="width:400px;margin-right:0px;margin-left:10px;" class="select2-select-00 full-width-fix">
+                                        <option value="choose">--请选择数据--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- <div class="form-group">
+                                <label>
+                                    <font color="red">*</font>使用类型:
+                                </label>
+                                <div id="dataPath" style="display: inline-block;">
+                                    <label class="radio-inline" style="margin-top:-2px;margin-left:-10px;">
+                                        <input type="radio" name="data_mode" value="0" checked>目录
+                                    </label>
+                                    <label class="radio-inline" style="margin-top:-2px;margin-left:-10px;">
+                                        <input type="radio" name="data_mode" value="1">文件
+                                    </label>
+                                </div>
+                                <span style="color:#9aa0af;margin-left:50px;">选择使用数据节点的方式</span>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <font color="red">*</font>时间偏移:
+                                </label>
+                                <div style="display: inline-block;">
+                                    <input type="text" id="data_offset" placeholder="整数，时间向前的偏移量" class="form-control" style="width:160px;margin-right:5px;">
+                                    <select id="timeType" style="width:140px;margin-right:0px;" class="form-control">
+                                        <option value="hour">小时</option>
+                                        <option value="day">天</option>
+                                    </select>
+                                </div>
+                            </div> -->
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="data-choose-button" class="btn btn-primary pipe_btn">确定</button>
+                    <button class="btn btn-primary pipe_btn" data-dismiss="modal" aria-hidden="true">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p id="upload_cmd" style="display:none"></p>
+</div>
+<div class="modal fade" id="messageModal" tabindex="1" role="dialog" aria-labelledby="messageLabel">
+    <div class="modal-dialog" role="document" style="width:500px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>消息</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary pipe_btn" data-dismiss="modal" aria-hidden="true">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="{% static 'js/common/select2.min.js' %}"></script>
+<script type="text/javascript" src="{{ "/static/js/common/form_components.js"|file_time_stamp }}"></script>
+<link href="{% static 'css/select2.css' %}" rel="stylesheet" type="text/css" />
+<link href="{{ "/static/css/bootstrap-combobox.css"|file_time_stamp }}" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript" src="{{ "/static/js/common/bootstrap-combobox.js"|file_time_stamp }}"></script>
+<link href="{{ "/static/css/pipeline.css"|file_time_stamp }}" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript" src="{{ "/static/js/pipeline/update_task.js"|file_time_stamp }}"></script>
+<style>
+
+    #plDiv .dropdown-menu {
+        left: 10px !important;
+        width: 353px;
+        top: 36px;
+    }
+</style>
+{% endblock %}
+
+

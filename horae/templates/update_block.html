@@ -1,0 +1,172 @@
+{% extends "base_iframe.html" %}
+{% block content %}
+{% load static %}
+{% load horae_filter %}
+<div id="page-wrapper" style="margin: 0 0 0 0;background-color:white!important">
+    <input type="hidden" id="block_timestamp" name="variable" value="{{ block_timestamp }}">
+    <input type="hidden" id="from" name="variable" value="{{ from }}">
+    <input type="hidden" id="to" name="variable" value="{{ to }}">
+    <input type="hidden" id="auth_hash" name="variable" value="{{ auth_hash }}">
+    <div>
+        <form action="" method="post" id="create_task_form" class="all_form" style="margin-left:40px" autocomplete="off">
+            <fieldset>
+                <div class="form-group">
+                    <label>
+                        数据地址: 
+                    </label>
+                    <input type="text" name="over_time" value="{{ to }}" class="form-control" style="width:696px" placeholder="单位：秒" id="id_block_timestamp">
+                    <a href="javascript:void(0);" target="_blank" title="查看帮助"><span class="glyphicon glyphicon-question-sign" aria-hidden="true" style="color:#9aa0af;"></span></a>
+                </div>
+                <div class="form-group">
+                    <label>
+                        确权用户: 
+                    </label>
+                    <input type="text" name="over_time" value="{{ from }}" class="form-control" style="width:696px" placeholder="单位：秒" id="id_block_timestamp">
+                    <a href="javascript:void(0);" target="_blank" title="查看帮助"><span class="glyphicon glyphicon-question-sign" aria-hidden="true" style="color:#9aa0af;"></span></a>
+                </div>
+                <div class="form-group">
+                    <label>
+                        确权HASH: 
+                    </label>
+                    <input type="text" name="over_time" value="{{ auth_hash }}" class="form-control" style="width:696px" placeholder="单位：秒" id="id_block_timestamp">
+                    <a href="javascript:void(0);" target="_blank" title="查看帮助"><span class="glyphicon glyphicon-question-sign" aria-hidden="true" style="color:#9aa0af;"></span></a>
+                </div>
+                <div class="form-group">
+                    <label>
+                        块HASH: 
+                    </label>
+                    <input type="text" name="over_time" value="{{ block_hash }}" class="form-control" style="width:696px" placeholder="单位：秒" id="id_block_timestamp">
+                    <a href="javascript:void(0);" target="_blank" title="查看帮助"><span class="glyphicon glyphicon-question-sign" aria-hidden="true" style="color:#9aa0af;"></span></a>
+                </div>
+                <div class="form-group">
+                    <label>
+                        上一个块: 
+                    </label>
+                    <input type="text" name="over_time" value="{{ block_prehash }}" class="form-control" style="width:696px" placeholder="单位：秒" id="id_block_timestamp">
+                    <a href="javascript:void(0);" target="_blank" title="查看帮助"><span class="glyphicon glyphicon-question-sign" aria-hidden="true" style="color:#9aa0af;"></span></a>
+                </div>
+                <div class="form-group">
+                    <label>
+                        打包时间: 
+                    </label>
+                    <input type="text" name="over_time" value="{{ block_timestamp }}" class="form-control" style="width:696px" placeholder="单位：秒" id="id_block_timestamp">
+                </div>
+            </fieldset>
+            <div style="margin-left:701px;margin-top: 40px;">
+                <a href="http://82.156.224.174:4000/" target="_blank"><font color="#337ab7" size="4">区块链浏览器</font></a>
+            </div>
+        </form>
+    </div>
+    <div style="clear:both"></div>
+    <input type="hidden" id="indexNumber" />
+    <!--数据选择modal-->
+    <div class="modal fade" id="choose_data_modal">
+        <div class="modal-dialog" style="width:600px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="a-title-font">
+                        数据选择
+                        <a class="close" data-dismiss="modal"><img src="{% static 'images/divClose.png' %}" /></a>
+                    </span>
+                </div>
+                <div class="modal-body" style="padding-left:30px;">
+                    <div class="form_div">
+                        <form action="" method="post" id="choose_data_form" class="all_form">
+                            <div class="form-group">
+                                <label>
+                                    <font color="red">*</font>数据类型:
+                                </label>
+                                <div style="display: inline-block;">
+                                    <label class="radio-inline" style="margin-top:-2px;">
+                                        <input class="pangu" type="radio" name="data_type" value="1" checked>pangu
+                                    </label>
+                                    <label class="radio-inline" style="margin-top:-2px;margin-left:-10px;">
+                                        <input class="odps" type="radio" name="data_type" value="0">odps
+                                    </label>
+                                </div>
+                                <span style="color:#9aa0af;margin-left:50px;">用于筛选指定类型下的数据节点</span>
+                            </div>
+                            <div class="form-group">
+                                <label style="margin-right:10px">
+                                    <font color="red">*</font>数据节点:
+                                </label>
+                                <div id="dataDiv" style="display: inline-block;">
+                                    <select id="data_select" style="width:400px;margin-right:0px;margin-left:10px;" class="select2-select-00 full-width-fix">
+                                        <option value="choose">--请选择数据--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <font color="red">*</font>使用类型:
+                                </label>
+                                <div id="dataPath" style="display: inline-block;">
+                                    <label class="radio-inline" style="margin-top:-2px;margin-left:-10px;">
+                                        <input type="radio" name="data_mode" value="0" checked>目录
+                                    </label>
+                                    <label class="radio-inline" style="margin-top:-2px;margin-left:-10px;">
+                                        <input type="radio" name="data_mode" value="1">文件
+                                    </label>
+                                </div>
+                                <span style="color:#9aa0af;margin-left:50px;">选择使用数据节点的方式</span>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <font color="red">*</font>时间偏移:
+                                </label>
+                                <div style="display: inline-block;">
+                                    <input type="text" id="data_offset" placeholder="整数，时间向前的偏移量" class="form-control" style="width:160px;margin-right:5px;">
+                                    <select id="timeType" style="width:140px;margin-right:0px;" class="form-control">
+                                        <option value="hour">小时</option>
+                                        <option value="day">天</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="data-choose-button" class="btn btn-primary pipe_btn">确定</button>
+                    <button class="btn btn-primary pipe_btn" data-dismiss="modal" aria-hidden="true">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p id="upload_cmd" style="display:none"></p>
+</div>
+<div class="modal fade" id="messageModal" tabindex="1" role="dialog" aria-labelledby="messageLabel">
+    <div class="modal-dialog" role="document" style="width:500px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>消息</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary pipe_btn" data-dismiss="modal" aria-hidden="true">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="{% static 'js/common/select2.min.js' %}"></script>
+<script type="text/javascript" src="{{ "/static/js/common/form_components.js"|file_time_stamp }}"></script>
+<link href="{% static 'css/select2.css' %}" rel="stylesheet" type="text/css" />
+<link href="{{ "/static/css/bootstrap-combobox.css"|file_time_stamp }}" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript" src="{{ "/static/js/common/bootstrap-combobox.js"|file_time_stamp }}"></script>
+<link href="{{ "/static/css/pipeline.css"|file_time_stamp }}" rel="stylesheet" type="text/css" media="screen" />
+
+
+<script type="text/javascript" src="{{ "/static/js/pipeline/update_block.js"|file_time_stamp }}"></script>
+<style>
+
+    #plDiv .dropdown-menu {
+        left: 10px !important;
+        width: 353px;
+        top: 36px;
+    }
+</style>
+{% endblock %}
+
+

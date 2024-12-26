@@ -1,0 +1,88 @@
+{% load static %}
+{% load template_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>{{ page_title }}</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'AdminLTE-2.4.5/bower_components/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/common/bootstrap-switch.css' %}" rel="stylesheet">
+    <link href="{% static 'css/pipeline.css' %}" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="{% static 'metismenu/dist/metisMenu.min.css' %}" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="{% static 'AdminLTE-2.4.5/bower_components/datatables.net-bs/css/dataTables.bootstrap.css' %}" rel="stylesheet">
+    <!-- DataTables Responsive CSS -->
+    <link href="{% static 'startbootstrap-sb-admin-2-gh-pages/vendor/datatables-responsive/dataTables.responsive.css' %}" rel="stylesheet">
+    <!-- Timeline CSS -->
+    <link href="{% static 'css/dashboard/timeline.css' %}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{% static 'startbootstrap-sb-admin-2-gh-pages/dist/css/sb-admin-2.css' %}" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="{% static 'startbootstrap-sb-admin-2-gh-pages/vendor/morrisjs/morris.css' %}" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="{% static 'AdminLTE-2.4.5/bower_components/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/static/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/static/easyui/themes/icon.css">
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/dms.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/jquery.datetimepicker.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/pnotify.custom.min.css' %}" rel="stylesheet" type="text/css">
+    <style type="text/css" class="init">
+
+        tfoot input {
+            width: 100%;
+            padding: 3px;
+            box-sizing: border-box;
+        }
+
+        #footer {
+            margin-bottom: 8px;
+        }
+    </style>
+
+    <!-- jQuery -->
+    <script src="{% static 'AdminLTE-2.4.5/bower_components/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'js/common/bootstrap-switch.js' %}"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'AdminLTE-2.4.5/bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="{% static 'metismenu/dist/metisMenu.min.js' %}"></script>
+    <!-- Morris Charts JavaScript -->
+    <script src="{% static 'startbootstrap-sb-admin-2-gh-pages/vendor/raphael/raphael.min.js' %}"></script>
+
+    <!-- DataTables JavaScript -->
+    <script src="{% static 'AdminLTE-2.4.5/bower_components/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'AdminLTE-2.4.5/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js' %}"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="{% static 'startbootstrap-sb-admin-2-gh-pages/dist/js/sb-admin-2.js' %}"></script>
+
+    <script src="{% static 'js/common/jquery.datetimepicker.js' %}"></script>
+    <script src="{% static 'js/common/time_range.js' %}"></script>
+    <script src="{% static 'js/common/pnotify.custom.min.js' %}"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    {% include "./base/__noah_js.html" %}
+    {% include "./base/__noah_css.html" %}
+
+</head>
+<body style="background:white">
+    <div id="wrapper">
+        {% block content %}{% endblock %}
+    </div>
+    <!-- /#wrapper -->
+    <link href="{% static 'css/ui-dialog.css' %}" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="{% static 'js/common/dialog-min.js' %}"></script>
+</body>
+</html>

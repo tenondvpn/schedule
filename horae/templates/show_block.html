@@ -1,0 +1,455 @@
+{% extends "base_iframe.html" %}
+{% block content %}
+{% load static %}
+{% load horae_filter %}
+<div id="page-wrapper" style="margin: 0 0 0 0;background-color:white!important">
+
+<input type="hidden" id="block_hash" name="variable" value="{{ block_hash }}">
+<input type="hidden" id="block_hash_type" name="variable" value="{{ type }}">
+
+<div style="padding: 15px 15px 0 15px; padding-top: 30px;background-color:#FFFFFF;">
+    <section class="content" style="padding-top:0px;display: block;border-top:#000000" id="authority_dag">
+        <div class="jtk-page-container" id="noah_content_dag">
+            <div class="jtk-container">
+                <!-- content -->
+                <script type="jtk" id="connectorNode">
+                    <div style="width:${w}px;height:${h}px;" id="${node_id}">
+                        <div id="${input_id}" val="${input_offsets}">
+                            <div data-jtk-node-id="${input_id}_0" class="inout_hide" style="margin-top:-10px;margin-left:10px;width:10px;height:10px;border:1px solid #8b8b8b;border-radius:1px;"><jtk-target port-id="${input_id}_0_port" /></div>
+                            <div data-jtk-node-id="${input_id}_1" class="inout_hide" style="margin-top:-10px;margin-left:30px;width:10px;height:10px;border:1px solid #8b8b8b;border-radius:1px;"><jtk-target port-id="${input_id}_1_port" /></div>
+                            <div data-jtk-node-id="${input_id}_2" class="inout_hide" style="margin-top:-10px;margin-left:50px;width:10px;height:10px;border:1px solid #8b8b8b;border-radius:1px;"><jtk-target port-id="${input_id}_2_port" /></div>
+                            <div data-jtk-node-id="${input_id}_3" class="inout_hide" style="margin-top:-10px;margin-left:70px;width:10px;height:10px;border:1px solid #8b8b8b;border-radius:1px;"><jtk-target port-id="${input_id}_3_port" /></div>
+                        </div>
+
+                        <div class="name">
+                            <div class="delete" title="Click to delete">
+                                <i class="fa fa-times" />
+                            </div>
+                            <span>
+                                ${name}
+                            </span>
+                        </div>
+                        <jtk-source filter=".connect" />
+                        <jtk-target />
+                        <div id="${output_id}">
+                            <div data-jtk-node-id="${output_id}_0" class="inout_hide" style="margin-left:10px;width:10px;height:10px;border:0px solid #bbbbbb;border-radius:1px;background-color: #bbbbbb;position: absolute;cursor: pointer;">
+                                <div class="connect" style="background-color: #bbbbbb;width:10px;height:10px;" />
+                                <jtk-source filter=".connect" port-id="${output_id}_0_port" />
+                            </div>
+                            <div data-jtk-node-id="${output_id}_1" class="inout_hide" style="margin-left:30px;width:10px;height:10px;border:0px solid #bbbbbb;border-radius:1px;background-color: #bbbbbb;position: absolute;cursor: pointer;">
+                                <div class="connect" style="background-color: #bbbbbb;width:10px;height:10px;" />
+                                <jtk-source filter=".connect" port-id="${output_id}_1_port" />
+                            </div>
+                            <div data-jtk-node-id="${output_id}_2" class="inout_hide" style="margin-left:50px;width:10px;height:10px;border:0px solid #bbbbbb;border-radius:1px;background-color: #bbbbbb;position: absolute;cursor: pointer;">
+                                <div class="connect" style="background-color: #bbbbbb;width:10px;height:10px;" />
+                                <jtk-source filter=".connect" port-id="${output_id}_2_port" />
+                            </div>
+                            <div data-jtk-node-id="${output_id}_3" class="inout_hide" style="margin-left:70px;width:10px;height:10px;border:0px solid #bbbbbb;border-radius:1px;background-color: #bbbbbb;position: absolute;cursor: pointer;">
+                                <div class="connect" style="background-color: #bbbbbb;width:10px;height:10px;" />
+                                <jtk-source filter=".connect" port-id="${output_id}_3_port" />
+                            </div>
+                        </div>
+                    </div>
+                </script>
+
+                <script type="jtk" id="tmplNode">
+                    <div style="width:${w}px;height:${h}px;">
+                        <div class="name">
+                            <div class="delete" title="Click to delete">
+                                <i class="fa fa-times" />
+                            </div>
+                            <span>
+                                ${name}
+                            </span>
+                        </div>
+                        <div class="connect" />
+                        <jtk-source filter=".connect" />
+                        <jtk-target />
+                    </div>
+                </script>
+                <div class="jtk-demo-main" id="jtk-demo-absolute">
+                    <div class="jtk-demo-canvas">
+                        <!-- controls -->
+                        <div class="controls">
+                            <a id="create_new_task_btn" class="btn btn-app" onclick="do_transaction();"
+                               style="border:1px solid #AFAFAF;height:35px;margin-left:0px;">
+                                确权
+                            </a>
+                            <a class="btn" reset title="Zoom To Fit" style="border:0px solid #AFAFAF;height:35px;width:35px!important;">
+                                <i class="fa fa-arrows"></i>
+                            </a>
+                        </div>
+                        <!-- miniview -->
+                        <div class="miniview"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>
+</div>
+
+<aside class="control-sidebar control-sidebar-dark" id="right_side_bar">
+    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+        <li class="active"><a href="#control-sidebar-theme-demo-options-tab" data-toggle="tab" aria-expanded="true"><i class="fa fa-wrench"></i>表格数据</a></li>
+        <li class=""><a href="#control-sidebar-home-tab" data-toggle="tab" aria-expanded="false"><i class="fa fa-home">字段信息</i></a></li>
+        <li class=""><a href="#control-sidebar-settings-tab" data-toggle="tab" aria-expanded="false"><i class="fa fa-gears"></i>建表语句</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane" id="control-sidebar-home-tab" style="font-size:12px">
+            <div id="jsGrid3" style="display:block;"></div>
+        </div>
+        <div id="control-sidebar-theme-demo-options-tab" class="tab-pane active" style="font-size:12px">
+            <div id="jsGrid2" style="display:block;"></div>
+        </div>
+
+        <div class="tab-pane" id="control-sidebar-settings-tab">
+            <textarea class="form-control" rows="20" placeholder="" id="table_create" disabled></textarea>
+        </div>
+
+    </div>
+</aside>
+
+<div class="control-sidebar-bg"></div>
+<p id="upload_cmd" style="display:none"></p>
+<!-- 复制包上传命令Modal -->
+<div class="modal fade" id="copyModal" tabindex="1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>包上传命令</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <font class="modal-title a-title-font" id="myGeneralTitle"></font>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary pipe_btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--取消-确定modal-->
+<div class="modal fade" id="quit_ok_modal">
+    <div class="modal-dialog" style="width:500px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="a-title-font">
+                    消息
+                    <a class="close" data-dismiss="modal"><img src="{% static 'images/divClose.png' %}" /></a>
+                </span>
+            </div>
+            <div class="modal-body" style="padding-left:30px;">
+                <div class="form_div" id="modal_content">
+                    <label id="project_label">请选择要放入的分类：</label>
+                    <input class="easyui-combotree" id="processor_project_id"
+                           data-options="url:'/processor/get_proc_project_tree/',method:'get'"
+                           style="width: 450px;">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary pipe_btn" onclick='ok_value()' data-dismiss="modal">确定</button>
+                <button class="btn btn-primary pipe_btn" data-dismiss="modal" aria-hidden="true">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="messageModal" tabindex="1" role="dialog" aria-labelledby="messageLabel">
+    <div class="modal-dialog" role="document" style="width:500px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>消息</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary pipe_btn" data-dismiss="modal" aria-hidden="true">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--创建新DAG流-->
+<div class="modal fade" id="new_pipeline_div">
+    <div class="modal-dialog" style="width:600px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="a-title-font">
+                    创建DAG流
+                    <a class="close" data-dismiss="modal"><img src="{% static 'images/divClose.png' %}" /></a>
+                </span>
+            </div>
+            <div class="modal-body" style="overflow-y:hidden;padding-left:30px;" id="new_pipeline_body">
+                <div class="form-group">
+                    <label>创建一个新的DAG流，并依赖这个算子创建一个新的任务，放入新DAG流。</label>
+                </div>
+                <div class="form-group">
+                    <label>新DAG流名:</label>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" style="width:500px;" type="text" id="new_pl_name" placeholder="填写DAG流名">
+                </div>
+                <div class="form-group">
+                    <label>请选择项目:</label>
+                </div>
+                <div class="form-group">
+                    <input class="easyui-combotree" id="new_pl_select"
+                           data-options="url:'/pipeline/get_project_tree/',method:'get'"
+                           style="width:499px">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <img id="new_busy_icon" src="{% static 'images/busy.gif' %}" style="display:none;">
+                <button id="new_sure" class="btn btn-primary pipe_btn" type="submit" onclick="apply_new_pipeline()">确认</button>
+                <button id="new_cancel" class="btn btn-primary pipe_btn" data-dismiss="modal" aria-hidden="true">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--创建新任务-->
+<div class="modal fade" id="new_task_div">
+    <div class="modal-dialog" style="width:600px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="a-title-font">
+                    创建任务
+                    <a class="close" data-dismiss="modal"><img src="{% static 'images/divClose.png' %}" /></a>
+                </span>
+            </div>
+            <div class="modal-body" style="overflow-y:hidden;padding-left:30px;" id="new_task_body">
+                <h5 class="text-center" id="new_task_hint" style="display:none;">确认要完全重跑吗?</h5>
+                <div id="new_task_hid">
+                    <div class="form-group">
+                        <label>依赖这个算子创建一个新的任务，放入指定DAG流。</label>
+                    </div>
+                    <div class="form-group">
+                        <label>请选择DAG流:</label>
+                    </div>
+                    <div id="copy_task_select_div" style="display: inline-block;">
+                        <select id="pipeline_select" class="easyui-combobox" name="state" style="width:505px;"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <img id="new_task_busy_icon" src="{% static 'images/busy.gif' %}" style="display:none;">
+                <button id="new_task_sure" class="btn btn-primary pipe_btn" type="submit" onclick="apply_new_task()">确认</button>
+                <button id="button_to_other" class="btn btn-primary pipe_btn" type="submit" onclick="skip_new_pipeline()" style="display:none;">跳转到任务所在DAG流</button>
+                <button id="new_task_cancel" class="btn btn-primary pipe_btn" data-dismiss="modal" aria-hidden="true">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="proc_cluster_mm" class="easyui-menu" style="width:120px;">
+    <div onclick="create_processor()" data-options="iconCls:'icon-add'">创建算子</div>
+    <div class="menu-sep"></div>
+    <div onclick="add_brother_project()" data-options="iconCls:'icon-add'">添加同级分类</div>
+    <div onclick="add_child_project()" data-options="iconCls:'icon-add'">添加子分类</div>
+    <div class="menu-sep"></div>
+    <div onclick="edit_node()" data-options="iconCls:'icon-remove'">编辑</div>
+    <div onclick="delete_project()" data-options="iconCls:'icon-remove'">删除</div>
+</div>
+<div id="proc_preset_mm" class="easyui-menu" style="width:120px;">
+    <div onclick="create_processor()" data-options="iconCls:'icon-add'">创建样本筛选</div>
+    <div class="menu-sep"></div>
+    <div onclick="add_child_project()" data-options="iconCls:'icon-add'">添加子分类</div>
+</div>
+<div id="processor_mm" class="easyui-menu" style="width:120px;">
+    <div onclick="removeit()" data-options="iconCls:'icon-remove'">编辑算子</div>
+    <div onclick="removeit()" data-options="iconCls:'icon-remove'">删除算子</div>
+</div>
+<div id="public_parent_proc_cluster_mm" class="easyui-menu" style="width:120px;">
+    <div onclick="add_child_project()" data-options="iconCls:'icon-add'">添加子分类</div>
+</div>
+<div id="public_proc_cluster_mm" class="easyui-menu" style="width:120px;">
+    <div onclick="add_brother_project()" data-options="iconCls:'icon-add'">添加同级分类</div>
+    <div onclick="add_child_project()" data-options="iconCls:'icon-add'">添加子分类</div>
+</div>
+<!--新建项目modal-->
+<div class="modal fade" id="createProjectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">新建项目</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputProjectName" class="col-sm-2 control-label col-sm-offset-1">项目名:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="inputProjectName" placeholder="项目名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputProjectDesc" class="col-sm-2 control-label col-sm-offset-1">描述:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="inputProjectDesc" placeholder="项目描述">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn pipe_btn" onclick="create_project()">确认</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--删除项目modal-->
+<div class="modal fade" id="deleteProjectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">删除项目</h4>
+            </div>
+            <div class="modal-body">
+                <p>您确定要删除此项目吗？</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="do_delete_project()" class="btn pipe_btn">确认</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade modal_iframe" id="modal_iframe" tabindex="-1" role="dialog" aria-labelledby="modal_iframe">
+    <div class="modal-dialog" role="document" style="width:92%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="modal_iframe_title">添加任务</h4>
+            </div>
+            <div class="modal-body">
+                <iframe frameborder="0" scrolling="yes" width="100%" height="820px"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<!--创建新的版本modal-->
+<div class="modal fade" id="create_new_version">
+    <div class="modal-dialog" style="width:800px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="a-title-font">
+                    为算子新建一个版本
+                    <a class="close" data-dismiss="modal"><img src="{% static 'images/divClose.png' %}" /></a>
+                </span>
+            </div>
+            <div class="modal-body" style="padding-left:30px;">
+                <div class="form_div" id="create_new_version_modal_content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="nav-tabs-custom">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#tab_3" data-toggle="tab" aria-expanded="false">命令上传tar.gz包</a></li>
+                                    <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">本地zip包</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="tab_3" style="margin-top:70px;">
+                                        <div id="con">
+                                        </div>
+                                        <br><br>
+                                        <a id="copyBtn" style="cursor:pointer;color:rgb(0,187,154)">点击复制包命令</a><br><br><br>
+                                        <span>描述:</span><br>
+                                        <p>
+                                            命令中所有标红的部分需要手动修改：<br>
+                                            1.${password}   系统的登陆密码，上传是进行权限效验<br>
+                                            2.${package_name}   开发机本地绝对路径或者相对路径比如: /root/test/test.tar.gz<br>
+                                            3.${processor_name}   算子版本名，如果是已有的版本，则直接覆盖；输入新版本名，则新建一个版本<br>
+                                            4.${description}  本次上传包的描述信息，记录操作历史方便管理，可以为空
+                                        </p>
+                                    </div>
+                                    <div class="tab-pane " id="tab_1">
+                                        <div class="form-group" style="margin-top:50px;">
+                                            <label><font color="#AAA">注意：创建时会从git上将代码拷贝，并作为当前创建的版本代码，创建后不会自动从git更新代码，<br>需要重新创建一个版本。<br>如果选择已有的版本，则直接覆盖；输入新版本名，则新建一个版本。</font></label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label style="float:left;margin-top: 10px;"><font color="red">*</font>版本名: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                            <div style="display: inline;">
+                                                <select id="proc_version_name" class="easyui-combobox" name="state" style="width:520px;border-radius: 4px;border: 1px solid #ccc;"></select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label style="float:left;margin-top: 10px;"><font color="red">*</font>git代码url:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                            <input class="form-control" style="width:520px;margin-right:10px;" type="text" id="git_url" placeholder="输入git代码路径，例如：https://github.com/EigenLab/user_project.git">
+                                        </div>
+                                        <div class="form-group">
+                                            <label style="float:left;margin-top: 10px;">&nbsp;&nbsp;描述:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                            <textarea rows="4" cols="65" id="proc_version_desc" style="width:520px;border-radius: 4px;border: 1px solid #ccc;margin-right:10px;" placeholder="  版本描述！"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tab_2">
+                                        <div class="form-group" style="margin-top:50px;">
+                                            <label><font color="#AAA">注意：如果选择已有的版本，则直接覆盖；输入新版本名，则新建一个版本。</font></label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label style="float:left;margin-top: 10px;"><font color="red">*</font>版本名: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                            <div style="display: inline;">
+                                                <select id="local_pg_proc_version_name" class="easyui-combobox" name="state" style="width:520px;border-radius: 4px;border: 1px solid #ccc;"></select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label style="float:left;margin-top: 0px;"><font color="red">*</font>选择zip包: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                            <div style="margin-top: 30px;">
+                                                <input style="" type="file" name="file" id="file_upload">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label style="float:left;margin-top: 10px;">&nbsp;&nbsp;描述:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                            <textarea rows="4" cols="65" id="local_proc_version_desc" style="width:520px;border-radius: 4px;border: 1px solid #ccc;margin-right:10px;" placeholder="  版本描述！"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <img id="update_busy_icon" src="{% static 'images/busy.gif' %}" style="display:none;">
+                <input type="button" value="创建版本" id="update_task_btn" onclick='upload_package()'
+                       class="btn btn-primary pipe_btn" style="margin-left:36px" />
+                <button class="btn btn-primary pipe_btn" data-dismiss="modal" aria-hidden="true">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="/static/AdminLTE-3.1.0/plugins/jsgrid/jsgrid.min.css">
+<link rel="stylesheet" href="/static/AdminLTE-3.1.0/plugins/jsgrid/jsgrid-theme.min.css">
+<script src="/static/AdminLTE-3.1.0/plugins/jsgrid/jsgrid.min.js"></script>
+<script src="/static/js/common/sql-formatter.min.js"></script>
+<link href="{% static 'css/noah/noah_index.css' %}" rel="stylesheet" type="text/css">
+
+<link href="{{ "/static/css/pipeline.css"|file_time_stamp }}" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript" src="{{ "/static/js/common/ZeroClipboard.min.js"|file_time_stamp }}"></script>
+<link href="{{ "/static/css/guiders-1.3.0.css"|file_time_stamp }}" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript" src="{{ "/static/js/common/guiders-1.3.0.js"|file_time_stamp }}"></script>
+
+<script src="/static/js/common/crypto-js.min.js"></script>
+<script src="/static/js/common/umd.min.js"></script>
+<script src="/static/js/common/clipboard.min.js"></script>
+<script src="/static/js/common/xxhash.min.js"></script>
+<script src="/static/js/common/sha3.min.js"></script>
+<script src="/static/js/common/bn.js"></script>
+<script src="/static/js/common/secp256k1.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ethereumjs/browser-builds/dist/ethereumjs-tx/ethereumjs-tx-1.3.3.min.js"></script>
+
+
+<script type="text/javascript" src="{{ "/static/js/picker/chain_block.js"|file_time_stamp }}"></script>
+
+<!--     <link href="{% static 'css/pipeline.css' %}" rel="stylesheet" type="text/css"> -->
+<!--     <script type="text/javascript" src="{% static 'js/common/ZeroClipboard.min.js' %}"></script> -->
+<!--     <script type="text/javascript" src="{% static 'js/pipeline/processor_detail.js' %}"></script> -->
+{% endblock %}

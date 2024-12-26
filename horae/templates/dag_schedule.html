@@ -1,0 +1,470 @@
+{% extends "./base/dag_base.html" %}
+{% block content %}
+{% load static %}
+{% load horae_filter %}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <input type="hidden" id="render_pipeline_id" name="variable" value="{{ pipe_id }}">
+
+    <section class="content-header" style="padding: 15px 15px 0 15px;" id="noah_content_header">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary direct-chat direct-chat-primary"
+                     style="border-top-color: #d4d8e0;    border-radius: 0px;border-top: 2px solid #d2d6de;">
+                    <div class="box-header with-border">
+                        <h3 class="box-title" id="id_pipeline_name">请选择一个流程</h3>
+
+                        <div class="box-tools pull-right">
+                            <div id="btn_op_list" style="position: relative;">
+                                <a id="show_runhistory_btn"
+                                   style="text-decoration:none; position: fixed; right: 334px; border: 2px solid white; padding: 3px 12px; background-color: rgb(205,205,205); color: black; border-radius:5px 0 0 5px;font-size: 15px;"
+                                   href="javascript:void(0);" onclick="show_pipeline_history()">执行状态</a>
+                                <a id="run_pipeline_btn"
+                                   style="text-decoration:none; position: fixed; right: 251px; border: 2px solid white; padding: 3px 12px; background-color: rgb(205,205,205); color: black;font-size: 15px;"
+                                   href="javascript:void(0);" onclick="run_pipeline()">执行流程</a>
+                                <a id="update_pipeline_btn"
+                                   style="text-decoration:none; position: fixed; right: 165px; border: 2px solid white; padding: 3px 12px; background-color: rgb(205,205,205); color: black;font-size: 15px;"
+                                   href="javascript:void(0);" onclick="update_pipeline()">修改流程</a>
+                                <a id="delete_pipeline_btn"
+                                   style="text-decoration:none; position: fixed; right: 79px; border: 2px solid white; padding: 3px 12px; background-color: rgb(205,205,205); color: black;font-size: 15px;"
+                                   href="javascript:void(0);" onclick="remove_pipeline()">删除流程</a>
+                            </div>
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"
+                                    style="padding: 4px 10px;font-size: 13px;">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="id_pipeline_detail" class="box-body" style="">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Main content -->
+    <section class="content" style="padding-top:0px">
+        <div align="center">
+            <button id="id_main_create_pipeline" type="button" class="btn btn-default btn-block btn-flat"
+                    style="margin-top: 150px;width: 200px;height: 50px;" align="center" onclick="addPipeline()">
+                新建流程
+            </button>
+        </div>
+        <div class="jtk-page-container" id="noah_content_dag">
+            <div class="jtk-container">
+                <!-- content -->
+                <script type="jtk" id="connectorNode">
+                    <div style="width:${w}px;height:${h}px;" id="${node_id}">
+                        <div id="${input_id}" val="${input_offsets}">
+                            <div data-jtk-node-id="${input_id}_0" class="inout_hide" style="margin-top:-10px;margin-left:10px;width:10px;height:10px;border:1px solid #8b8b8b;border-radius:1px;"><jtk-target port-id="${input_id}_0_port" /></div>
+                            <div data-jtk-node-id="${input_id}_1" class="inout_hide" style="margin-top:-10px;margin-left:30px;width:10px;height:10px;border:1px solid #8b8b8b;border-radius:1px;"><jtk-target port-id="${input_id}_1_port" /></div>
+                            <div data-jtk-node-id="${input_id}_2" class="inout_hide" style="margin-top:-10px;margin-left:50px;width:10px;height:10px;border:1px solid #8b8b8b;border-radius:1px;"><jtk-target port-id="${input_id}_2_port" /></div>
+                            <div data-jtk-node-id="${input_id}_3" class="inout_hide" style="margin-top:-10px;margin-left:70px;width:10px;height:10px;border:1px solid #8b8b8b;border-radius:1px;"><jtk-target port-id="${input_id}_3_port" /></div>
+                        </div>
+
+                        <div class="name">
+                            <div class="delete" title="Click to delete">
+                                <i class="fa fa-times" />
+                            </div>
+                            <span>
+                                ${name}
+                            </span>
+                        </div>
+                        <jtk-source filter=".connect" />
+                        <jtk-target />
+                        <div id="${output_id}">
+                            <div data-jtk-node-id="${output_id}_0" class="inout_hide" style="margin-left:10px;width:10px;height:10px;border:0px solid #bbbbbb;border-radius:1px;background-color: #bbbbbb;position: absolute;cursor: pointer;">
+                                <div class="connect" style="background-color: #bbbbbb;width:10px;height:10px;" />
+                                <jtk-source filter=".connect" port-id="${output_id}_0_port" />
+                            </div>
+                            <div data-jtk-node-id="${output_id}_1" class="inout_hide" style="margin-left:30px;width:10px;height:10px;border:0px solid #bbbbbb;border-radius:1px;background-color: #bbbbbb;position: absolute;cursor: pointer;">
+                                <div class="connect" style="background-color: #bbbbbb;width:10px;height:10px;" />
+                                <jtk-source filter=".connect" port-id="${output_id}_1_port" />
+                            </div>
+                            <div data-jtk-node-id="${output_id}_2" class="inout_hide" style="margin-left:50px;width:10px;height:10px;border:0px solid #bbbbbb;border-radius:1px;background-color: #bbbbbb;position: absolute;cursor: pointer;">
+                                <div class="connect" style="background-color: #bbbbbb;width:10px;height:10px;" />
+                                <jtk-source filter=".connect" port-id="${output_id}_2_port" />
+                            </div>
+                            <div data-jtk-node-id="${output_id}_3" class="inout_hide" style="margin-left:70px;width:10px;height:10px;border:0px solid #bbbbbb;border-radius:1px;background-color: #bbbbbb;position: absolute;cursor: pointer;">
+                                <div class="connect" style="background-color: #bbbbbb;width:10px;height:10px;" />
+                                <jtk-source filter=".connect" port-id="${output_id}_3_port" />
+                            </div>
+                        </div>
+                    </div>
+                </script>
+
+                <script type="jtk" id="tmplNode">
+                    <div style="width:${w}px;height:${h}px;">
+                        <div class="name">
+                            <div class="delete" title="Click to delete">
+                                <i class="fa fa-times" />
+                            </div>
+                            <span>
+                                ${name}
+                            </span>
+                        </div>
+                        <div class="connect" />
+                        <jtk-source filter=".connect" />
+                        <jtk-target />
+                    </div>
+                </script>
+                <div class="jtk-demo-main" id="jtk-demo-absolute">
+                    <div class="jtk-demo-canvas">
+                        <!-- controls -->
+                        <div class="controls">
+                            <div class="btn-group">
+                                <button type="button" onclick="show_choose_sql_window();" class="btn btn-default">DataX</button>
+                                <button type="button" class="btn btn-default dropdown-toggle" onclick="$(this).parent().addClass('open');" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="javascript:void(0);" onclick="show_choose_proc_window();">算子选择</a></li>
+                                </ul>
+                            </div>
+                            <a class="btn" style="border:0px solid #AFAFAF;height:35px;width:0px!important;margin-left:-10px;">
+                                <i class="fa fa-arrow-right"></i>
+                            </a>
+                            <div class="btn-group">
+                                <button type="button" onclick="show_choose_sql_window();" class="btn btn-default">数据处理</button>
+                                <button type="button" class="btn btn-default dropdown-toggle" onclick="$(this).parent().addClass('open');" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="javascript:void(0);" onclick="show_choose_sql_window();">SQL计算</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="javascript:void(0);" onclick="show_choose_proc_window();">算子选择</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="javascript:void(0);" onclick="show_python_window();">Python插件</a></li>
+                                </ul>
+                            </div>
+                            <a class="btn" style="border:0px solid #AFAFAF;height:35px;width:0px!important;margin-left:-10px;">
+                                <i class="fa fa-arrow-right"></i>
+                            </a>
+                            <a class="btn" reset title="Zoom To Fit" style="border:0px solid #AFAFAF;height:35px;width:35px!important;">
+                                <i class="fa fa-arrows"></i>
+                            </a>
+                        </div>
+                        <!-- miniview -->
+                        <div class="miniview"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+
+<div id="cluster_mm" class="easyui-menu" style="width:120px;">
+    <div onclick="addPipeline()" data-options="iconCls:'icon-add'">新建流程</div>
+    <div class="menu-sep"></div>
+    <div onclick="add_brother_project()" data-options="iconCls:'icon-add'">添加同级分类</div>
+    <div onclick="add_child_project()" data-options="iconCls:'icon-add'">添加子分类</div>
+    <div class="menu-sep"></div>
+    <div onclick="change_parent()" data-options="iconCls:'icon-remove'">编辑</div>
+    <div onclick="delete_project()" data-options="iconCls:'icon-remove'">删除</div>
+</div>
+
+<div id="pipeline_mm" class="easyui-menu" style="width:120px;">
+    <div onclick="show_pipeline_history()" data-options="iconCls:'icon-remove'">执行状态</div>
+    <div onclick="run_pipeline()" data-options="iconCls:'icon-remove'">手动执行</div>
+    <div class="menu-sep"></div>
+    <div onclick="update_pipeline()" data-options="iconCls:'icon-remove'">修改流程</div>
+    <div onclick="remove_pipeline()" data-options="iconCls:'icon-remove'">删除流程</div>
+    <div onclick="copy_pipeline()" data-options="iconCls:'icon-remove'">拷贝流程</div>
+    <div class="menu-sep"></div>
+    <div onclick="removeit()" data-options="iconCls:'icon-remove'">修改分类</div>
+</div>
+
+<div id="task_mm" class="easyui-menu" style="width:120px;">
+    <div onclick="mm_update_task()" data-options="iconCls:'icon-remove'">修改任务</div>
+    <div onclick="mm_copy_task_this()" data-options="iconCls:'icon-remove'">复制到当前流程</div>
+    <div onclick="mm_copy_task_other()" data-options="iconCls:'icon-remove'">复制到其他流程</div>
+    <div onclick="mm_remove_task()" data-options="iconCls:'icon-remove'">删除任务</div>
+    <div class="menu-sep"></div>
+    <div onclick="mm_show_task_runhistory()" data-options="iconCls:'icon-remove'">执行状态</div>
+</div>
+
+<div class="modal fade modal_iframe" id="modal_iframe" tabindex="-1" role="dialog" aria-labelledby="modal_iframe">
+    <div class="modal-dialog" role="document" style="width:92%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="modal_iframe_title">添加任务</h4>
+            </div>
+            <div class="modal-body">
+                <iframe frameborder="0" scrolling="yes" width="100%" height="820px"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--新建项目modal-->
+<div class="modal fade" id="createProjectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">新建项目</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputProjectName" class="col-sm-2 control-label col-sm-offset-1">项目名:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="inputProjectName" placeholder="项目名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputProjectDesc" class="col-sm-2 control-label col-sm-offset-1">描述:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="inputProjectDesc" placeholder="项目描述">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn pipe_btn" onclick="create_project()">确认</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--删除项目modal-->
+<div class="modal fade" id="deleteProjectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">删除项目</h4>
+            </div>
+            <div class="modal-body">
+                <p>您确定要删除此项目吗？</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="do_delete_project()" class="btn pipe_btn">确认</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--拷贝流程modal-->
+<div class="modal fade" id="copy_pipeline_div">
+    <div class="modal-dialog" style="width:600px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="a-title-font">
+                    拷贝流程
+                    <a class="close" data-dismiss="modal"><img src="{% static 'images/divClose.png' %}" /></a>
+                </span>
+            </div>
+
+            <div class="modal-body" style="overflow-y:hidden;padding-left:30px;" id="copy_pipeline_body">
+                <div class="form-group">
+                    <label>新流程名:</label>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" style="width:500px;" type="text" id="copy_pl_name" placeholder="填写流程名">
+                </div>
+
+                <div class="form-group">
+                    <label>请选择项目:</label>
+                </div>
+                <div class="form-group">
+                    <input class="easyui-combotree" id="copy_pipeline_project_id"
+                           data-options="url:'/pipeline/get_project_tree/',method:'get'"
+                           style="width:499px">
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <img id="copy_busy_icon" src="{% static 'images/busy.gif' %}" style="display:none;">
+                <button id="copy_sure" class="btn btn-primary pipe_btn" type="submit" onclick="apply_copy_pipeline()">
+                    确认
+                </button>
+                <button id="copy_cancel" class="btn btn-primary pipe_btn" data-dismiss="modal" aria-hidden="true">
+                    取消
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="execute_task">
+    <div class="modal-dialog" style="width:600px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="a-title-font" style="color: #a3adb5;font-family: Adobe 黑体 Std;font-size: 18px;">
+                    执行任务
+                    <a class="close" data-dismiss="modal"><img src="{% static 'images/divClose.png' %}" /></a>
+                </span>
+            </div>
+
+            <div class="modal-body" style="overflow-y:hidden;padding-left:30px;" id="exec_task_modal">
+                <div class="form-group">
+                    <label>执行时间:</label>
+                    <input class="form-control" style="width:300px;" type="text" id="run_time"
+                           placeholder="以,分隔，如20150101,20150102">
+                </div>
+                <div class="form-group">
+                    <label>并发数:</label>
+                    <input class="form-control" style="width:300px;" type="text" id="ordered_num" value=0>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        任务选择:&nbsp;&nbsp;
+                        <input type="checkbox" id="check_all_task">全选
+                    </label>
+                    <table id="tasks_checkbox"></table>
+                </div>
+
+                <div class="form-group">
+                    <p style="font-weight:bold;">&nbsp;&nbsp;并发数（不能超过10）：</p>
+                    <p>&nbsp;&nbsp;等于0：随机并发执行</p>
+                    <p>&nbsp;&nbsp;大于0：依次按照执行时间串行执行</p>
+                    <p></p>
+                    <p style="font-weight:bold;">&nbsp;&nbsp;重跑时间举例，每次最多24个重跑时间：</p>
+                    <p>&nbsp;&nbsp;天级：20150101</p>
+                    <p>&nbsp;&nbsp;天级批量：20150101,20150102</p>
+                    <p>&nbsp;&nbsp;小时级: 2015010112</p>
+                    <p>&nbsp;&nbsp;天级区间: 20150101-2015040103</p>
+                    <p>&nbsp;&nbsp;小时级级区间: 2015010101-201504010105</p>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <img id="run_task_busy" src="{% static 'images/busy.gif' %}" style="display:none;">
+                <button id="grant_ok" class="btn btn-primary pipe_btn" type="submit" onclick="runTask()">立即执行</button>
+                <button id="grant_cancel" class="btn btn-primary pipe_btn" data-dismiss="modal" aria-hidden="true">
+                    取消
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="run_task_model" tabindex="1" role="dialog" aria-labelledby="messageLabel">
+    <div class="modal-dialog" role="document" style="width:500px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>消息</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="changevalue_runhis btn btn-primary pipe_btn" data-dismiss="modal"
+                        aria-hidden="true">
+                    查看执行状态
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="copy_task_div">
+    <div class="modal-dialog" style="width:600px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="a-title-font">
+                    拷贝任务
+                    <a class="close" data-dismiss="modal"><img src="{% static 'images/divClose.png' %}" /></a>
+                </span>
+            </div>
+
+            <div class="modal-body" style="overflow-y:hidden;padding-left:30px;" id="copy_task_body">
+                <h5 class="text-center" id="copy_task_hint" style="display:none;">确认要完全重跑吗?</h5>
+                <div id="copy_task_hid">
+                    <div class="form-group">
+                        <label>请选择流程:</label>
+                    </div>
+                    <div id="copy_task_select_div" style="display: inline-block;">
+                        <select id="pipeline_select" class="easyui-combobox" name="state" style="width:505px;"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <img id="copy_task_busy_icon" src="{% static 'images/busy.gif' %}" style="display:none;">
+                <button id="copy_task_sure" class="btn btn-primary pipe_btn" type="submit" onclick="apply_copy_task()">
+                    确认
+                </button>
+                <button id="button_to_other" class="btn btn-primary pipe_btn" type="submit"
+                        onclick="skip_copy_pipeline()" style="display:none;">
+                    跳转到复制流程
+                </button>
+                <button id="copy_task_cancel" class="btn btn-primary pipe_btn" data-dismiss="modal" aria-hidden="true">
+                    取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--流程上下线modal-->
+<div class="modal fade" id="online_modal">
+    <div class="modal-dialog" style="width:500px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="a-title-font">
+                    消息
+                    <a class="close" data-dismiss="modal"><img src="{% static 'images/divClose.png' %}" /></a>
+                </span>
+            </div>
+
+            <div class="modal-body" style="padding-left:30px;">
+                <div class="form_div" id="modal_content">
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-primary pipe_btn" onclick='ok_value()' data-dismiss="modal">确定</button>
+                <button class="btn btn-primary pipe_btn" data-dismiss="modal" aria-hidden="true">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="messageModal" tabindex="1" role="dialog" aria-labelledby="messageLabel">
+    <div class="modal-dialog" role="document" style="width:500px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>消息</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary pipe_btn" data-dismiss="modal" aria-hidden="true">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Page script -->
+<link href="{% static 'css/noah/noah_index.css' %}" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="{{ "/static/js/noah/noah_index.js"|file_time_stamp }}"></script>
+{% endblock %}

@@ -1,0 +1,197 @@
+{% load static %}
+{% load horae_filter %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{{ page_title }}</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'AdminLTE-2.4.5/bower_components/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="{% static 'AdminLTE-2.4.5/bower_components/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- jQuery -->
+    <script src="{% static 'AdminLTE-2.4.5/bower_components/jquery/dist/jquery.min.js' %}"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'AdminLTE-2.4.5/bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+    <div style="height:100%">
+        <!--
+            <div style="margin: 10px 0px 10px 0px;">
+                <a href="javascript:void(0)" class="operateTask" id="add_task" onclick="addTask({{ pipeline.id }})"><i class="fa fa-plus"></i>&nbsp;添加</a><span style="border:1px solid #ced1d5"></span>
+                <a href="javascript:void(0)" class="operateTask" id="exec_button" onclick="execTask({{ pipeline.id }})"><i class="fa fa-edit"></i>&nbsp;执行任务</a><span style="border:1px solid #ced1d5"></span>
+                <a href="javascript:void(0)" onclick="window.close();" class="operateTask exitCss"><i class="fa fa-sign-out"></i>&nbsp;退出</a>
+            </div>
+        <!-->
+        <input type="hidden" id="pipe_id" name="variable" value="{{pipelineid}}">
+        <input type="hidden" id="runtime" name="variable" value="{{runtime}}" />
+        <input type="hidden" id="taskname" name="variable" value="{{task_name}}" />
+        <div id="pipeline-tasks-main" style="background-color:white">
+            <div id="task-area">
+                <div id="task-op-panel">
+                    <!--<button class="btn btn-primary" id="auto-layout">刷新</button>-->
+                </div>
+                <div id="pipeline-tasks" style="height:800px">
+                </div>
+            </div>
+            <div id="layout-engine" style="display: none;">dot</div>
+            <textarea id="dot-src" style="display: none;"></textarea>
+        </div>
+
+        <div style="" class="modal fade" id="messageview" tabindex="1" role="dialog" aria-labelledby="messageviewLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h5 class="modal-title" id="messageviewLabel">任务信息</h5>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-info  " style="" data-dismiss="modal">确认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--      <button id="returnbtn" class="btn btn-danger btn-lg" style="opacity:0.5;filter:opacity(50);position:absolute;top:50%;margin-top:-20px">返回</button>-->
+        <!--添加任务modal-->
+        <!--        <div class="modal fade" id="modal-task-form">
+                    <div class="modal-dialog" style="width:660px">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <span class="a-title-font">任务配置
+                                    <a class="close" data-dismiss="modal"><img src="{% static 'images/divClose.png' %}" /></a>
+                                </span>
+                            </div>
+
+                            <div class="modal-body" style="overflow-y:hidden" id="modal_permission">
+                                <form class="form-horizontal row-border" style="height:80px">
+                                    <div class="form-group">
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="modal-footer">
+                                <img id="grant_busy" src="{% static 'images/busy.gif' %}" style="display:none;">
+                                <button id="grant_ok" class="btn btn-primary" type="submit" onclick="grantPermission()">立即执行</button>
+                                <button id="grant_cancel" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">取消</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--执行任务modal-->
+        <div class="modal fade" id="execute_task">
+            <div class="modal-dialog" style="width:600px">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="a-title-font">
+                            执行任务
+                            <a class="close" data-dismiss="modal"><img src="{% static 'images/divClose.png' %}" /></a>
+                        </span>
+                    </div>
+
+                    <div class="modal-body" style="overflow-y:hidden;padding-left:30px;" id="exec_task_modal">
+                        <div class="form-group">
+                            <label>
+                                任务选择:&nbsp;&nbsp;
+                                <input type="checkbox" id="check_all_task">全选
+                            </label>
+                            <div class="checkbox" id="tasks_checkbox">
+                            </div>
+                        </div>
+                        -->
+                        <!--                    <div class="form-group">
+                                                <label>执行时间:</label>
+                                                <input class="form-control" style="width:300px;" type="text" id="run_time" placeholder="以,分隔，如20140101,20140102">-->
+                        <!--
+                        <input class="input-middle form-control" style="width:200px;display:inline;" type="text" name="time-start" id="time-start" placeholder="以,分隔，如20140101,20140102">
+                        <input class="input-middle form-control" style="width:200px;display:inline;" type="text" name="time-end" id="time-end">
+                        -->
+                        <!--     </div>
+
+                                            <div class="form-group">
+                                                <p>&nbsp;&nbsp;重跑时间举例，每次最多24个重跑时间：</p>
+                                                <p>&nbsp;&nbsp;天级：20140101</p>
+                                                <p>&nbsp;&nbsp;天级批量：20140101,20140102</p>
+                                                <p>&nbsp;&nbsp;小时级: 2014010112</p>
+                                                <p>&nbsp;&nbsp;天级区间: 20140101-2014040103</p>
+                                                <p>&nbsp;&nbsp;小时级级区间: 2014010101-201404010105</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <img id="grant_busy" src="{% static 'images/busy.gif' %}" style="display:none;">
+                                            <button id="grant_ok" class="btn btn-primary" type="submit" onclick="runTask()">立即执行</button>
+                                            <button id="grant_cancel" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">取消</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="contextMenu" class="dropdown clearfix" style="z-index:10000">
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display:block;position:static;margin-bottom:5px">
+                                    <li><a op="delete-task" tabindex="-1" href="#">删除任务</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        -->
+                    </div>
+                    <!--
+                     <div class="modal fade" id="messageModal" tabindex="1" role="dialog" aria-labelledby="messageLabel">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <span>TaskMessage</span>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          </div>
+                          <div class="modal-body">
+
+                          </div>
+                          <div class="modal-footer">
+                            <button class="btn btn-primary" data-dismiss="modal" style="background-color:rgb(0,187, 154);" aria-hidden="true"  data-dismiss="modal">确定</button>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+
+
+                    <div style="" class="modal fade" id="messageview" tabindex="1" role="dialog" aria-labelledby="messageviewLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h5 class="modal-title" id="messageviewLabel">提示</h5>
+                          </div>
+                          <div class="modal-body">
+
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-sm btn-info  " style="" data-dismiss="modal" >确认</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    -->
+
+                    <link href="{% static 'css/pipeline.css' %}" rel="stylesheet" type="text/css">
+                    <link href="{% static 'css/pipeline-tasks.css' %}" rel="stylesheet" type="text/css">
+                    <script type="text/javascript" src="{% static 'js/common/jsPlumb-Liviz/jquery/jquery-ui-1.10.3.custom.min.js' %}"></script>
+                    <script type="text/javascript" src="{% static 'js/common/jsPlumb-Liviz/jsPlumb/jquery.jsPlumb-1.4.1-all-min.js' %}"></script>
+                    <script type="text/javascript" src="{% static 'js/common/jsPlumb-Liviz/Liviz.js/global-util.js' %}"></script>
+                    <script type="text/javascript" src="{% static 'js/common/jsPlumb-Liviz/Liviz.js/workered.js' %}"></script>
+                    <script type="text/javascript" src="{% static 'js/common/jsPlumb-Liviz/Liviz.js/progress-view.js' %}"></script>
+                    <script type="text/javascript" src="{% static 'js/common/jsPlumb-Liviz/Liviz.js/progress-model.js' %}"></script>
+                    <script type="text/javascript" src="{% static 'js/common/jsPlumb-Liviz/Liviz.js/stopgo.js' |file_time_stamp%}"></script>
+                    <script type="text/javascript" src="{% static 'js/pipeline/pipeline-retasks.js'|file_time_stamp %} "></script>
+</body>
+</html>
