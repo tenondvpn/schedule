@@ -181,11 +181,9 @@ class AdminTaskBase(threading.Thread):
 
     def _check_prev_tasks_all_succeeded(
             self, 
-            str_task_id,
             run_time, 
             pipeline_map, 
             task_map, 
-            edge_map, 
             prev_nodes, 
             max_ct_time):
         if prev_nodes is None or len(prev_nodes) <= 0:
@@ -243,8 +241,6 @@ class AdminTaskBase(threading.Thread):
         if len(check_slow_level_list) > 0:
             # 检查所有上游依赖是否完成
             if not self.__sql_manager.check_all_task_succeeded(
-                    str_task_id,
-                    edge_map,
                     check_slow_level_list, 
                     min_run_time, 
                     run_time):
@@ -253,8 +249,6 @@ class AdminTaskBase(threading.Thread):
         if len(check_equal_level_list) > 0:
             # 检查所有上游依赖是否完成
             if not self.__sql_manager.check_all_task_succeeded(
-                    str_task_id,
-                    edge_map,
                     check_equal_level_list, 
                     middle_run_time, 
                     run_time):

@@ -264,7 +264,7 @@ class SqlManager(object):
                     str(ex), traceback.format_exc()))
             return None
 
-    def check_all_task_succeeded(self, next_str_task_id, edge_map, task_id_list, min_time, max_time):
+    def check_all_task_succeeded(self, task_id_list, min_time, max_time):
         if task_id_list is None or len(task_id_list) <= 0:
             return True
 

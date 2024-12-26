@@ -209,7 +209,6 @@ class CheckSucceededTasks(admin_task_base.AdminTaskBase):
                     run_time, 
                     self.__pipeline_map, 
                     self.__task_map, 
-                    self.__edge_map,
                     prev_nodes, 
                     prev_max_ct_time):
                 return False
