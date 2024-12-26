@@ -212,16 +212,19 @@ class CheckUncalledTasks(admin_task_base.AdminTaskBase):
         wait_task_set = set()
         waiting_task_list = self.__sql_manager.get_all_waiting_tasks(
                 wait_task_set)
+        self.__log.warn("0")
         if waiting_task_list is None or len(waiting_task_list) <= 0:
             return True
 
         self.__sql_del_list = []
         self.__sql_save_list = []
         self.__sql_list = []
+        self.__log.warn("1")
         for waiting_task in waiting_task_list:
             if str(waiting_task.task_id) not in self.__task_map:
                 continue
 
+            self.__log.warn("2")
             if not self.__check_task_uncalled(
                     str(waiting_task.task_id), 
                     waiting_task.run_time,
@@ -234,26 +237,32 @@ class CheckUncalledTasks(admin_task_base.AdminTaskBase):
             if not self._check_limit_num_can_run(owner_id, task_type):
                 continue
 
+            self.__log.warn("3")
             if not self.__write_new_task_into_ready_task(
                     str(waiting_task.task_id), 
                     waiting_task.run_time, 
                     waiting_task):
                 continue
 
+            self.__log.warn("4")
             if not self.__sql_manager.batch_execute_with_affect_one(
                     self.__sql_save_list, 
                     self.__sql_del_list,
                     self.__sql_list):
                 self.__log.warn("save or del db data failed!")
+
+            self.__log.warn("5")
             self.__sql_del_list = []
             self.__sql_save_list = []
             self.__sql_list = []
 
+        self.__log.warn("6")
         if not self.__sql_manager.batch_execute_with_affect_one(
                 self.__sql_save_list, 
                 self.__sql_del_list,
                 self.__sql_list):
             self.__log.warn("save or del db data failed!")
+        self.__log.warn("7")
         return True
 
 if __name__ == "__main__":
