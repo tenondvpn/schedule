@@ -156,10 +156,11 @@ if __name__ == "__main__":
             local_public_ip = tmp_public_ip
         else:
             local_public_ip = generate_local_network_ip()
-            config.set("node", "public_ip", local_public_ip)
             f = open("./conf/public_ip", "w")
             f.write(local_public_ip)
             f.close()
+            
+        config.set("node", "public_ip", local_public_ip)
 
     for tag in tag_list:
         if config.has_option("zk", tag):
