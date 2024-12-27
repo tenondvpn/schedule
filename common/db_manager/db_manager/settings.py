@@ -69,6 +69,7 @@ DATABASES = {
         'NAME': 'dags',
         'OPTIONS': {
             'init_command': 'SET default_storage_engine=INNODB;',
+            'connect_timeout': 10,
         },
         'USER': 'root',
         'PASSWORD': 'Xf4aGbTaf!',
