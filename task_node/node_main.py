@@ -147,10 +147,19 @@ if __name__ == "__main__":
     local_public_ip = config.get("node", "public_ip")
     if local_public_ip is None or local_public_ip.strip() == "":
         local_public_ip = task_util.StaticFunction.get_local_ip()
-
+      
     if task_util.StaticFunction.is_lan(local_public_ip):
-        local_public_ip = generate_local_network_ip()
-        config.set("node", "public_ip", local_public_ip)
+        f = open("./conf/public_ip", "r")
+        tmp_public_ip = f.read().strip()
+        f.close()
+        if tmp_public_ip != "":
+            local_public_ip = tmp_public_ip
+        else:
+            local_public_ip = generate_local_network_ip()
+            config.set("node", "public_ip", local_public_ip)
+            f = open("./conf/public_ip", "w")
+            f.write(local_public_ip)
+            f.close()
 
     for tag in tag_list:
         if config.has_option("zk", tag):
