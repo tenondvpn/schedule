@@ -60,9 +60,9 @@ class CheckLimitNum(threading.Thread):
 
             try:
                 if not self.__get_task_limit_num_from_db():
-                    self.__log.error("get task_limit info from db failed!")
+                    self.__log.error("CheckLimitNum get task_limit info from db failed!")
             except Exception as ex:
-                self.__log.error("handle request failed![ex:%s][trace: %s]" % (
+                self.__log.error("CheckLimitNum handle request failed![ex:%s][trace: %s]" % (
                         str(ex), traceback.format_exc()))
 
             if time.time() - log_begin_time >= 60:
@@ -70,7 +70,7 @@ class CheckLimitNum(threading.Thread):
                 self.__log.info("CheckLimitNum handle data "
                         "exit.use time[%f]" % use_time)
                 log_begin_time = time.time()
-            time.sleep(1)  # 失败后任然需要sleep
+            time.sleep(3)  # 失败后任然需要sleep
         self.__log.info("CheckLimitNum thread existed!")
 
     def check_limit_num_can_run(self, owner_id, task_type):
