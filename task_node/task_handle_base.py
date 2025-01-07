@@ -323,9 +323,9 @@ class TaskHandleBase(object):
                 self.__package_path, package_name)
         local_file_path = os.path.join(work_dir, package_name)
         admin_sshpass_cmd=self.__config.get("node", "admin_sshpass_cmd")
-        tar_cmd = "cp %s %s && cd %s && tar -zxvf %s" % (package_file_path, local_file_path, work_dir, package_name)
+        tar_cmd = "cp %s %s && cd %s && tar -zxmvf %s" % (package_file_path, local_file_path, work_dir, package_name)
         if admin_sshpass_cmd is not None and admin_sshpass_cmd.strip() != "":
-            tar_cmd = admin_sshpass_cmd.format(package_file_path, local_file_path) + " && cd %s && tar -zxvf %s" % (work_dir, package_name)
+            tar_cmd = admin_sshpass_cmd.format(package_file_path, local_file_path) + " && cd %s && tar -zmxvf %s" % (work_dir, package_name)
 
         self._log.info("download package: " + tar_cmd)
         stdout, stderr, return_code = self._sys_cmd.run_once(tar_cmd)
