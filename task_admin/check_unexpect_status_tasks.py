@@ -206,14 +206,14 @@ class CheckUnexpectStatusTasks(admin_task_base.AdminTaskBase):
                 if user["name"] not in dingding_names:
                     dingding_names.append(user["name"])
 
-        if pipeline.monitor_way == 0 or pipeline.monitor_way == 2:
+        if pipeline.monitor_way & 1 == 1:
             header = "Databaas监控报警"
             sub_header = "流程: %s, 任务: %s 执行失败！" % (pipeline.name, task.name)
             content = ("<b>%s:</b>\n <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;流程: <b>%s</b><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;任务：<b>%s</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;运行时间点：<b>%s</b> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='red'>执行失败了!</font>\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请登录平台检查: <b>http://10.109.112.6:8000/pipeline/history/%d/</b>" % 
             (", ".join(names), pipeline.name, task.name, unexp_task.run_time, task.pl_id))
             qq_mail.send_mail(receivers, header, sub_header, content)
 
-        if pipeline.monitor_way == 1 or pipeline.monitor_way == 2:
+        if pipeline.monitor_way & 4 == 1:
             content = "%s：\n    执行失败!\n    流程: %s\n    任务: %s\n    运行时间点: %s\n    请登录平台检查: http://10.109.112.6:8000/pipeline/history/%d/" % (
                     ", ".join(dingding_names), 
                     pipeline.name, task.name, unexp_task.run_time, task.pl_id)
