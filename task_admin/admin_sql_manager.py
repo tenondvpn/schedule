@@ -378,9 +378,9 @@ class SqlManager(object):
                     continue
 
                 if perm.permission == UserPermissionType.WRITE_STR:
-                    write_res_id_list.append(str(perm.applicant_id))
+                    write_res_id_list.append(perm.applicant_id)
                 elif perm.permission == UserPermissionType.READ_STR:
-                    read_res_id_list.append(str(perm.applicant_id))
+                    read_res_id_list.append(perm.applicant_id)
                 else:
                     pass
             return read_res_id_list, write_res_id_list
