@@ -206,7 +206,7 @@ class CheckUnexpectStatusTasks(admin_task_base.AdminTaskBase):
                 if user["name"] not in dingding_names:
                     dingding_names.append(user["name"])
 
-        self.__log.info(f"montor way: {pipeline.monitor_way}, {(pipeline.monitor_way & 1 == 1)}, receivers: {receivers}, write_list: {write_list}")
+        self.__log.info(f"montor way: {pipeline.monitor_way}, users: {users}, {(pipeline.monitor_way & 1 == 1)}, receivers: {receivers}, write_list: {write_list}")
         if pipeline.monitor_way & 1 == 1:
             header = "Databaas监控报警"
             sub_header = "流程: %s, 任务: %s 执行失败！" % (pipeline.name, task.name)
