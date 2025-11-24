@@ -212,6 +212,12 @@ class CheckUnexpectStatusTasks(admin_task_base.AdminTaskBase):
             sub_header = "流程: %s, 任务: %s 执行失败！" % (pipeline.name, task.name)
             content = ("<b>%s:</b>\n <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;流程: <b>%s</b><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;任务：<b>%s</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;运行时间点：<b>%s</b> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='red'>执行失败了!</font>\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请登录平台检查: <b>http://82.156.224.174:8004/runing/%d/</b>" % 
             (", ".join(names), pipeline.name, task.name, unexp_task.run_time, task.pl_id))
+            if pipeline.type == 2:
+                header = "华康能管监控报警"
+                sub_header = "监测组: %s, 监测策略: %s 失败！" % (pipeline.name, task.name)
+                content = ("<b>%s:</b>\n <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;监测组: <b>%s</b><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;监测策略<b>%s</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;监测时间点：<b>%s</b> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='red'>监测失败!</font>\n<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请登录平台检查: <b>http://82.156.224.174:8004/runing/%d/</b>" % 
+                (", ".join(names), pipeline.name, task.name, unexp_task.run_time, task.pl_id))
+
             qq_mail.send_mail(receivers, header, sub_header, content)
 
         if pipeline.monitor_way & 4 == 1:
