@@ -43,6 +43,7 @@ class ScriptDaemonHandler(threading.Thread):
         self.__finish_time = None
         self.__over_time = over_time
         self.__exp_ret = exp_ret
+        self.__run_ret = 0
 
     def run(self):
         try:
@@ -59,7 +60,7 @@ class ScriptDaemonHandler(threading.Thread):
         return self.__finish_time
 
     def get_task_status(self):
-        return self.__status
+        return self.__status, self.__run_ret
 
     def stop_task(self):
         self.__stop_task = True
@@ -87,6 +88,7 @@ class ScriptDaemonHandler(threading.Thread):
                     self.__log.error("task has not finished ,will wait...")
 
                 ret = subprocess.Popen.poll(sub_pro) 
+                self.__run_ret = ret
                 if ret is not None: 
                     if ret != self.__exp_ret:
                         self.__log.warn("task has finished but "

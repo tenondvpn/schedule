@@ -166,20 +166,19 @@ class LocalDockerTaskHandler(task_handle_base.TaskHandleBase):
         self._update_run_history_end_time(self._schedule_id)
         if self._task_handler is not None and self._task_handler.startswith("jb-aiinference"):
             ret = self.__get_local_docker_job_status(task_info)
+            if ret in (
+                    task_util.TaskState.TASK_FAILED,
+                    task_util.TaskState.TASK_SUCCEED):
+                if not self._write_task_status_to_db(
+                        ret,
+                        task_util.TaskState.TASK_RUNNING,
+                        ret_code=ret_code):
+                    err_log = ("write_start_task_status_to_db failed!")
+                    self._log.warn(err_log)
+                    self._add_error_log(err_log)
+                    ret = task_util.TaskState.TASK_FAILED
         else:
             ret = self.__get_python_status(task_info)
-        
-        if ret in (
-                task_util.TaskState.TASK_FAILED,
-                task_util.TaskState.TASK_SUCCEED):
-            if not self._write_task_status_to_db(
-                    ret,
-                    task_util.TaskState.TASK_RUNNING,
-                    ret_code=ret_code):
-                err_log = ("write_start_task_status_to_db failed!")
-                self._log.warn(err_log)
-                self._add_error_log(err_log)
-                ret = task_util.TaskState.TASK_FAILED
 
         err_log_file = os.path.join(
             self.__job_work_dir,

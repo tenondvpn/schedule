@@ -148,11 +148,11 @@ class GetTaskStatus(tornado.web.RequestHandler):
                 self.write("error:schedule_id is none")
                 return
             schedule_id = int(schedule_id)
-            status = HttpHandlerParams().task_manager.get_task_status(
+            status, ret_code = HttpHandlerParams().task_manager.get_task_status(
                     schedule_id)
             if status is None:
                 status = task_util.TaskState.TASK_FAILED
-            self.write(str(status))
+            self.write(str(status) + "," + str(ret_code))
         except Exception as ex:
             logging.error("get task status failed![ex:%s][trace:%s]" % (
                     str(ex), traceback.format_exc()))

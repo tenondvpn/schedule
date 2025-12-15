@@ -171,20 +171,19 @@ class ScriptTaskHandler(task_handle_base.TaskHandleBase):
         self._update_run_history_end_time(self._schedule_id)
         if self._task_handler is not None and self._task_handler.startswith("jb-aiinference"):
             ret = self.__get_v100_job_status(task_info)
+            if ret in (
+                    task_util.TaskState.TASK_FAILED,
+                    task_util.TaskState.TASK_SUCCEED):
+                if not self._write_task_status_to_db(
+                        ret,
+                        task_util.TaskState.TASK_RUNNING,
+                        ret_code=ret_code):
+                    err_log = ("write_start_task_status_to_db failed!")
+                    self._log.warn(err_log)
+                    self._add_error_log(err_log)
+                    ret = task_util.TaskState.TASK_FAILED
         else:
             ret = self.__get_python_status(task_info)
-        
-        if ret in (
-                task_util.TaskState.TASK_FAILED,
-                task_util.TaskState.TASK_SUCCEED):
-            if not self._write_task_status_to_db(
-                    ret,
-                    task_util.TaskState.TASK_RUNNING,
-                    ret_code=ret_code):
-                err_log = ("write_start_task_status_to_db failed!")
-                self._log.warn(err_log)
-                self._add_error_log(err_log)
-                ret = task_util.TaskState.TASK_FAILED
 
         err_log_file = os.path.join(
             self.__job_work_dir,
@@ -544,13 +543,19 @@ class ScriptTaskHandler(task_handle_base.TaskHandleBase):
             return task_util.TaskState.TASK_RUNNING
 
         status = task_util.TaskState.TASK_FAILED
+        ret_code = 0
         if http_res.startswith("error"):
             err_log = ("run task failed:%s[res:%s]" % (
                 daemon_req_url, http_res))
             self._log.error(err_log)
             self._add_error_log(err_log)
         else:
-            status = int(http_res)
+            result = http_res.split(",")
+            if len(result) == 2:
+                status = int(result[0])
+                ret_code = int(result[1])
+            else:
+                status = int(http_res)
 
         if status == task_util.TaskState.TASK_TIMEOUT:
             err_log = ("task time out[%s]" % str(task_info))
@@ -563,7 +568,8 @@ class ScriptTaskHandler(task_handle_base.TaskHandleBase):
                 task_util.TaskState.TASK_SUCCEED):
             if not self._write_task_status_to_db(
                     status,
-                    task_util.TaskState.TASK_RUNNING):
+                    task_util.TaskState.TASK_RUNNING,
+                    ret_code=ret_code):
                 err_log = ("write_start_task_status_to_db failed!")
                 self._log.warn(err_log)
                 self._add_error_log(err_log)
