@@ -174,6 +174,7 @@ if __name__ == "__main__":
     config.set("node", "public_ip", local_public_ip)
 
     for tag in tag_list:
+        print(f"start {tag}")
         if config.has_option("zk", tag):
              config.set(
                     "zk", 
@@ -189,6 +190,7 @@ if __name__ == "__main__":
                     zk_path,
                     tag,
                     local_tag))
+        print(f"over: {tag}")
 
     common_logger.init_log(config.get("log", "log_dir"))
     node_main = NodeMain(config)
