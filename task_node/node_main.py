@@ -156,9 +156,12 @@ if __name__ == "__main__":
         local_public_ip = task_util.StaticFunction.get_local_ip()
       
     public_ip_path = "./conf/public_ip_" + public_ip_index
-    f = open(public_ip_path, "r")
-    tmp_public_ip = f.read().strip()
-    f.close()
+    tmp_public_ip = ""
+    if os.path.exists(public_ip_path):
+        f = open(public_ip_path, "r")
+        tmp_public_ip = f.read().strip()
+        f.close()
+        
     if tmp_public_ip != "":
         local_public_ip = tmp_public_ip
     else:
