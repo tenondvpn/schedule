@@ -44,9 +44,15 @@ class NodeMain(object):
                 hosts = config.get("zk", "hosts"),
                 logger=self.__log)
         # 防止同一个IP启动两个进程，否则会造成任务状态错误，必须避免
+        self.__http_server = node_http_server.NodeHttpServer(
+                config,
+                self.__handle_ready_task)
+        
         if not self.__can_run():
             raise EnvironmentError("this ip is handling data!")
-
+        self.__http_server.start()
+        self.__http_port = self.__http_server.get_real_http_port()
+        self.__log.info("__http_server started now: %d" % self.__http_port)
         # 注意顺序
         self.__check_limit_num = check_limit_num.CheckLimitNum()
 
@@ -54,9 +60,7 @@ class NodeMain(object):
                 config,
                 self.__zk_manager)
         self.__handle_ready_task = handle_ready_tasks.ReadyTasksCreator(config)
-        self.__http_server = node_http_server.NodeHttpServer(
-                config,
-                self.__handle_ready_task)
+        
         self.__kafka_manager = node_http_server.KafkaRequestManager(config)
         self.__register_signal()
 
@@ -67,8 +71,7 @@ class NodeMain(object):
         self.__check_limit_num.start()
         self.__log.info("__kafka_manager started now!")
         self.__kafka_manager.start()
-        self.__log.info("__http_server started now!")
-        self.__http_server.start()
+
 
         self.__log.info("task node ended! wait all the thread exit!")
 
@@ -94,9 +97,10 @@ class NodeMain(object):
         if local_public_ip is None or local_public_ip.strip() == "":
             local_public_ip = task_util.StaticFunction.get_local_ip()
 
-        ip_lock_path = "%s/%s" % (
+        ip_lock_path = "%s/%s:%d" % (
                 config.get("zk", "ip_lock"),
-                local_public_ip)
+                local_public_ip,
+                self.__http_port)
         print(ip_lock_path)
         if self.__zk_manager.exists(ip_lock_path) is None:
             if self.__zk_manager.create(ip_lock_path) is None:

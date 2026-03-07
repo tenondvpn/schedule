@@ -304,6 +304,9 @@ class NodeHttpServer(object):
                 self.__disks,
                 self.__config)
         
+    def get_real_http_port(self):
+        return self.__node_http_port
+
     def start(self):
         self.__app = tornado.web.Application(handlers=[
                 (r"/list_work_dir", ListWorkDirHandler),
@@ -317,6 +320,13 @@ class NodeHttpServer(object):
         #self.__httpserver.listen(self.__node_http_port)
         #self.__httpserver.start()
         self.__app.listen(self.__node_http_port)
+        # 获取并打印真实端口
+        if self.__node_http_port == 0:
+            socket = self.__app.get_sockets()[0]
+            real_port = socket.getsockname()[1]
+            print(f"Service started on port: {real_port}")
+            self.__node_http_port = real_port
+
         tornado.ioloop.IOLoop.instance().start()
 
     def stop(self):
