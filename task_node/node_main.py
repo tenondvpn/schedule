@@ -44,6 +44,7 @@ class NodeMain(object):
                 hosts = config.get("zk", "hosts"),
                 logger=self.__log)
         # 防止同一个IP启动两个进程，否则会造成任务状态错误，必须避免
+        self.__handle_ready_task = handle_ready_tasks.ReadyTasksCreator(config)
         self.__http_server = node_http_server.NodeHttpServer(
                 config,
                 self.__handle_ready_task)
@@ -59,7 +60,6 @@ class NodeMain(object):
         self.__zk_path_mgr = zookeeper_path_manager.ZooKeeperPathManager(
                 config,
                 self.__zk_manager)
-        self.__handle_ready_task = handle_ready_tasks.ReadyTasksCreator(config)
         
         self.__kafka_manager = node_http_server.KafkaRequestManager(config)
         self.__register_signal()
@@ -161,7 +161,7 @@ if __name__ == "__main__":
         f = open(public_ip_path, "r")
         tmp_public_ip = f.read().strip()
         f.close()
-        
+
     if tmp_public_ip != "":
         local_public_ip = tmp_public_ip
     else:
