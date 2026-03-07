@@ -44,23 +44,20 @@ class NodeMain(object):
                 hosts = config.get("zk", "hosts"),
                 logger=self.__log)
         # 防止同一个IP启动两个进程，否则会造成任务状态错误，必须避免
-        self.__handle_ready_task = handle_ready_tasks.ReadyTasksCreator(config)
-        self.__http_server = node_http_server.NodeHttpServer(
-                config,
-                self.__handle_ready_task)
         
         if not self.__can_run():
             raise EnvironmentError("this ip is handling data!")
         self.__http_server.start()
-        self.__http_port = self.__http_server.get_real_http_port()
-        self.__log.info("__http_server started now: %d" % self.__http_port)
         # 注意顺序
         self.__check_limit_num = check_limit_num.CheckLimitNum()
 
         self.__zk_path_mgr = zookeeper_path_manager.ZooKeeperPathManager(
                 config,
                 self.__zk_manager)
-        
+        self.__handle_ready_task = handle_ready_tasks.ReadyTasksCreator(config)
+        self.__http_server = node_http_server.NodeHttpServer(
+                config,
+                self.__handle_ready_task)
         self.__kafka_manager = node_http_server.KafkaRequestManager(config)
         self.__register_signal()
 
