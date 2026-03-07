@@ -47,7 +47,6 @@ class NodeMain(object):
         
         if not self.__can_run():
             raise EnvironmentError("this ip is handling data!")
-        self.__http_server.start()
         # 注意顺序
         self.__check_limit_num = check_limit_num.CheckLimitNum()
 
@@ -58,6 +57,7 @@ class NodeMain(object):
         self.__http_server = node_http_server.NodeHttpServer(
                 config,
                 self.__handle_ready_task)
+        self.__http_server.start()
         self.__kafka_manager = node_http_server.KafkaRequestManager(config)
         self.__register_signal()
 
