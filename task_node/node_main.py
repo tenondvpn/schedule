@@ -97,10 +97,9 @@ class NodeMain(object):
         if local_public_ip is None or local_public_ip.strip() == "":
             local_public_ip = task_util.StaticFunction.get_local_ip()
 
-        ip_lock_path = "%s/%s:%d" % (
+        ip_lock_path = "%s/%s" % (
                 config.get("zk", "ip_lock"),
-                local_public_ip,
-                self.__http_port)
+                local_public_ip)
         print(ip_lock_path)
         if self.__zk_manager.exists(ip_lock_path) is None:
             if self.__zk_manager.create(ip_lock_path) is None:
@@ -125,14 +124,15 @@ def generate_local_network_ip():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.description='please enter two parameters a and b ...'
-    parser.add_argument("-i", "--tag", help="", dest="tag", type=str, default="")
+    parser.add_argument("-i", "--tag",  help="", dest="tag", type=str, default="")
+    parser.add_argument("-p", "--pc",  help="", dest="pc", type=str, default="")
     args = parser.parse_args()
     if args.tag.strip() == "":
         print("请输入--tag 参数，指定本机的算力标签")
         sys.exit(1)
 
-        
     local_tag = args.tag.strip()
+    public_ip_index = args.pc.strip()
     config = configparser.ConfigParser()
     config.read("./conf/node.conf")
 
@@ -155,19 +155,19 @@ if __name__ == "__main__":
     if local_public_ip is None or local_public_ip.strip() == "":
         local_public_ip = task_util.StaticFunction.get_local_ip()
       
-    if task_util.StaticFunction.is_lan(local_public_ip):
-        f = open("./conf/public_ip", "r")
-        tmp_public_ip = f.read().strip()
+    public_ip_path = "./conf/public_ip_" + public_ip_index
+    f = open(public_ip_path, "r")
+    tmp_public_ip = f.read().strip()
+    f.close()
+    if tmp_public_ip != "":
+        local_public_ip = tmp_public_ip
+    else:
+        local_public_ip = generate_local_network_ip()
+        f = open(public_ip_path, "w")
+        f.write(local_public_ip)
         f.close()
-        if tmp_public_ip != "":
-            local_public_ip = tmp_public_ip
-        else:
-            local_public_ip = generate_local_network_ip()
-            f = open("./conf/public_ip", "w")
-            f.write(local_public_ip)
-            f.close()
-            
-        config.set("node", "public_ip", local_public_ip)
+        
+    config.set("node", "public_ip", local_public_ip)
 
     for tag in tag_list:
         if config.has_option("zk", tag):

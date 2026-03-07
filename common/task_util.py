@@ -388,10 +388,12 @@ class StaticFunction(object):
 
     @staticmethod
     def is_lan(ip):
-        try:
-            res = ipaddress.ip_address(ip.strip()).is_private
-            print(ip + ":" + str(res))
-            return res
-        except Exception as e:
-            print(ip + ": not valid")
-            return False
+        # only use kafka
+        return True
+        # try:
+        #     res = ipaddress.ip_address(ip.strip()).is_private
+        #     print(ip + ":" + str(res))
+        #     return res
+        # except Exception as e:
+        #     print(ip + ": not valid")
+        #     return False
