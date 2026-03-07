@@ -63,12 +63,15 @@ class NodeMain(object):
 
     def start(self):
         self.__log.info("task node started now!")
+        print("task node started zk now!")
         self.__zk_path_mgr.start()
+        print("task node started ready task thread now!")
         self.__handle_ready_task.start()
+        print("task node started check limit thread now!")
         self.__check_limit_num.start()
         self.__log.info("__kafka_manager started now!")
+        print("task node started kafka thread now!")
         self.__kafka_manager.start()
-
 
         self.__log.info("task node ended! wait all the thread exit!")
 
