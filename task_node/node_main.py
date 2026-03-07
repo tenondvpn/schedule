@@ -57,7 +57,6 @@ class NodeMain(object):
         self.__http_server = node_http_server.NodeHttpServer(
                 config,
                 self.__handle_ready_task)
-        self.__http_server.start()
         self.__kafka_manager = node_http_server.KafkaRequestManager(config)
         self.__register_signal()
 
@@ -73,6 +72,7 @@ class NodeMain(object):
         self.__log.info("__kafka_manager started now!")
         print("task node started kafka thread now!")
         self.__kafka_manager.start()
+        self.__http_server.start()
 
         self.__log.info("task node ended! wait all the thread exit!")
 
