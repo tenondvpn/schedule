@@ -62,8 +62,9 @@ class NodeMain(object):
         self.__register_signal()
 
     def start(self):
-        self.__log.info("task node started now!")
         print("task node started zk now!")
+        self.__log.info("task node started now!")
+        print("1 task node started zk now!")
         self.__zk_path_mgr.start()
         print("task node started ready task thread now!")
         self.__handle_ready_task.start()
