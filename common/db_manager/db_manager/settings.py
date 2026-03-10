@@ -65,7 +65,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'HOST': '82.156.224.174',
-        'PORT': 3306,
+        'PORT': 6033,
         'NAME': 'dags',
         'OPTIONS': {
             'init_command': 'SET default_storage_engine=INNODB;',
