@@ -27,7 +27,7 @@ from horae import tools_util
 from horae import zk_manager
 from horae import graph_manager
 from kafka import KafkaConsumer
-from kafka import KafkaProducer
+from kafka import KafkaProducer, KafkaConsumer  # _direct_consumer_fix
 
 global_queue_lock = threading.Lock()
 class KafkaRequestManager(threading.Thread):
@@ -78,9 +78,8 @@ class KafkaRequestManager(threading.Thread):
                             res_map = json.loads(data[key][0].value)
                             self.__msg_map[res_map["msg_id"]] = res_map["data"]
                             self.__log.info("get data: %s" % (data[key][0].value))
-                            global_queue_lock.release()
-                        except:
-                            pass
+                        except Exception as _e:
+                            self.__log.error("kafka parse error: %s" % str(_e))
                         finally:
                             global_queue_lock.release()
             except:
@@ -155,14 +154,13 @@ class PipelineManager(object):
             print("__watch_admin_ip_dir ip addr coming." + child + ', ' + self.__admin_ip + ', ' + field_list[1].strip())
 
     def is_lan(self, ip):
-        return False
-        # try:
-        #     res = ipaddress.ip_address(ip.strip()).is_private
-        #     print(ip + ":" + str(res))
-        #     return res
-        # except Exception as e:
-        #     print(ip + ": not valid")
-        #     return False
+        try:
+            res = ipaddress.ip_address(ip.strip()).is_private
+            print(ip + ":" + str(res))
+            return res
+        except Exception as e:
+            print(ip + ": not valid")
+            return False
         
     def get_project_tree(self, user_id, type=0):
         projects = self.__sql_manager.get_all_projects(type)
