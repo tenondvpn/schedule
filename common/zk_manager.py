@@ -34,7 +34,7 @@ class ZookeeperManager(task_util.Singleton):
     def __init__(
             self, 
             hosts,
-            timeout=10.0, 
+            timeout=120.0, 
             client_id=None, 
             handler=None,
             default_acl=None, 
@@ -87,19 +87,11 @@ class ZookeeperManager(task_util.Singleton):
                 kazoo.protocol.states.KazooState.LOST, 
                 kazoo.protocol.states.KazooState.SUSPENDED):
             self.__log.error("connecting to zookeeper failed! will restart")
-            # self.__zk.restart()
-            # 经测试，发现重连有问题，所以此处error后直接返回
-            # retry_count = 0
-            # while not task_util.CONSTANTS.GLOBAL_STOP:
-            #     try:
-            #         self.__connect_to_zookeeper()
-            #         break
-            #     except Exception as ex:
-            #         self.__log.error("zk restart failed[%s], "
-            #                 "will retried:%d[trace:%s]" % (
-            #                 str(ex), retry_count, traceback.format_exc()))
-            #         retry_count = retry_count + 1
-            #     time.sleep(1)
+            try:
+                self.__zk.restart()
+                self.__log.error("zookeeper restarted ok")
+            except Exception as ex:
+                self.__log.error("zk restart failed: %s" % str(ex))
 
     def exists(self, path):
         try:

@@ -64,15 +64,15 @@ WSGI_APPLICATION = 'db_manager.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': '82.156.224.174',
-        'PORT': 6033,
+        'HOST': '127.0.0.1',
+        'PORT': 3306,
         'NAME': 'dags',
         'OPTIONS': {
             'init_command': 'SET default_storage_engine=INNODB;',
             'connect_timeout': 10,
         },
         'USER': 'root',
-        'PASSWORD': 'Xf4aGbTaf!',
+        'PASSWORD': 'localroot',
         'TEST_CHARSET': "utf8",
         'TEST_COLLATION': "utf8_general_ci",
     }

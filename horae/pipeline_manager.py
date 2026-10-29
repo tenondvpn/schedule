@@ -972,7 +972,7 @@ class PipelineManager(object):
         self.__log.error(node_req_url)
         url_stream = "FAIL"
         try:
-            url_stream = urllib.request.urlopen(node_req_url).read().decode('utf-8')
+            url_stream = urllib.request.urlopen(node_req_url, timeout=30).read().decode('utf-8')
         except Exception as ex:
             url_stream = str(ex)
 
@@ -1041,7 +1041,7 @@ class PipelineManager(object):
                         schedule_id,
                         sub_path,
                         rerun_id))
-            url_stream = urllib.request.urlopen(node_req_url).read().decode('utf-8')
+            url_stream = urllib.request.urlopen(node_req_url, timeout=30).read().decode('utf-8')
         except Exception as ex:
             return self.__get_default_ret_map(1, str(ex))
         '''
@@ -1098,7 +1098,7 @@ class PipelineManager(object):
                 schedule_id,
                 sub_path,
                 rerun_id))
-            url_stream = urllib.request.urlopen(node_req_url).read().decode('utf-8')
+            url_stream = urllib.request.urlopen(node_req_url, timeout=30).read().decode('utf-8')
             if url_stream.startswith("error") \
                     and not url_stream.startswith("error.log"):
                 return self.__get_default_ret_map(1, url_stream)
@@ -1128,7 +1128,7 @@ class PipelineManager(object):
                             "schedule_id=%s&file=%s&start=%s&len=%s&rerun_id=%s" % (
                                 self.__admin_ip, self.__admin_port, schedule_id,
                                 file_name, file_offset, str_len, rerun_id))
-            url_stream = urllib.request.urlopen(node_req_url).read().decode('utf-8')
+            url_stream = urllib.request.urlopen(node_req_url, timeout=30).read().decode('utf-8')
         except Exception as ex:
             return self.__get_default_ret_map(1, str(ex))
         '''
@@ -1178,7 +1178,7 @@ class PipelineManager(object):
                         file_offset,
                         str_len,
                         rerun_id))
-            url_stream = urllib.request.urlopen(node_req_url).read().decode('utf-8')
+            url_stream = urllib.request.urlopen(node_req_url, timeout=30).read().decode('utf-8')
             if url_stream.startswith("error"):
                 return self.__get_default_ret_map(1, url_stream)
             return url_stream
@@ -1199,7 +1199,7 @@ class PipelineManager(object):
                                 schedule_id,
                                 file_name,
                                 rerun_id))
-            url_stream = urllib.request.urlopen(node_req_url).read().decode('utf-8')
+            url_stream = urllib.request.urlopen(node_req_url, timeout=30).read().decode('utf-8')
         except Exception as ex:
             return self.__get_default_ret_map(1, str(ex))
         '''
@@ -1251,7 +1251,7 @@ class PipelineManager(object):
                         schedule_id,
                         file_name,
                         rerun_id))
-            url_stream = urllib.request.urlopen(node_req_url).read().decode('utf-8')
+            url_stream = urllib.request.urlopen(node_req_url, timeout=30).read().decode('utf-8')
             if url_stream.startswith("error"):
                 return self.__get_default_ret_map(1, url_stream)
 
@@ -1324,7 +1324,7 @@ class PipelineManager(object):
                             ordered))
         url_stream = "FAIL"
         try:
-            url_stream = urllib.request.urlopen(node_req_url).read().decode('utf-8')
+            url_stream = urllib.request.urlopen(node_req_url, timeout=30).read().decode('utf-8')
         except Exception as ex:
             url_stream = str(ex)
 
@@ -1366,7 +1366,7 @@ class PipelineManager(object):
         while not tools_util.CONSTANTS.GLOBAL_STOP:
             url_stream = "FAIL"
             try:
-                url_stream = urllib.request.urlopen(node_req_url).read().decode('utf-8')
+                url_stream = urllib.request.urlopen(node_req_url, timeout=30).read().decode('utf-8')
             except Exception as ex:
                 url_stream = str(ex)
 
@@ -1461,7 +1461,7 @@ class PipelineManager(object):
                             ordered))
         url_stream = "FAIL"
         try:
-            url_stream = urllib.request.urlopen(node_req_url).read().decode('utf-8')
+            url_stream = urllib.request.urlopen(node_req_url, timeout=30).read().decode('utf-8')
         except Exception as ex:
             url_stream = str(ex)
 
@@ -1559,7 +1559,7 @@ class PipelineManager(object):
                             ordered))
         url_stream = "FAIL"
         try:
-            url_stream = urllib.request.urlopen(node_req_url).read().decode('utf-8')
+            url_stream = urllib.request.urlopen(node_req_url, timeout=30).read().decode('utf-8')
         except Exception as ex:
             url_stream = str(ex)
 
