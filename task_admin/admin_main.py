@@ -7,6 +7,8 @@
 Authors: xielei
 """
 
+import pymysql
+pymysql.install_as_MySQLdb()
 import signal
 import sys
 import os
