@@ -52,17 +52,16 @@ class CheckSucceededTasks(admin_task_base.AdminTaskBase):
 
             begin_time = time.time()
             self.__log.info("CheckSuccededTasks handle data starting...")
-            while True:
+            try:  # _thread_crash_guard
                 self.__edge_map, \
                 self.__task_map, \
                 self.__pipeline_map, \
                 self.__sub_graph_list, \
                 self.__graph = self._get_task_info_copy()
-                if len(self.__sub_graph_list) <= 0:
-                    break
-
-                self.__call_succeeded_tasks()
-                break
+                if self.__sub_graph_list is not None and len(self.__sub_graph_list) > 0:
+                    self.__call_succeeded_tasks()
+            except Exception as ex:
+                self.__log.error("CheckSuccededTasks unexpected error: %s\n%s" % (str(ex), traceback.format_exc()))
             use_time = time.time() - begin_time
             self.__log.info("CheckSuccededTasks handle data "
                     "exit.use time[%f]" % use_time)

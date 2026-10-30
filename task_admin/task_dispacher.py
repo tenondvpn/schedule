@@ -11,6 +11,7 @@ import sys
 import time
 import datetime
 import logging
+import traceback
 
 import horae.models
 
@@ -62,14 +63,17 @@ class TaskDispatcher(admin_task_base.AdminTaskBase):
             task_util.CONSTANTS.TASK_DISPATCHER_IS_RUNNING = True
             self.__log.info("TaskDispatcher dispatcher started.")
             begin_time = time.time()
-            while True:
-                if not self.__init():
-                    self.__log.warn("TaskDispatcher handle init failed")
+            try:  # _thread_crash_guard
+                while True:
+                    if not self.__init():
+                        self.__log.warn("TaskDispatcher handle init failed")
+                        break
+
+                    if not self.__get_beign_task_from_schedule():
+                        break
                     break
- 
-                if not self.__get_beign_task_from_schedule():
-                    break
-                break
+            except Exception as ex:
+                self.__log.error("TaskDispatcher unexpected error: %s\n%s" % (str(ex), traceback.format_exc()))
             task_util.CONSTANTS.TASK_DISPATCHER_IS_RUNNING = False
             use_time = time.time() - begin_time
             self.__log.info("TaskDispatcher dispatcher "

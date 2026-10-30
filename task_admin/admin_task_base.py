@@ -118,10 +118,17 @@ class AdminTaskBase(threading.Thread):
             return None, None
         max_ct_time = '* * * * *'
         max_task_id = None
-        for task_id in prev_node_list:
+        for task_id in prev_node_list:  # _missing_key_guard
+            if task_id not in task_map:
+                self._log.warn("_get_max_prev_ct_time: task_id %s not in task_map, skip" % task_id)
+                continue
+            pl_id = task_map[task_id][1]
+            if pl_id not in pipeline_map:
+                self._log.warn("_get_max_prev_ct_time: pipeline_id %s not in pipeline_map, skip" % pl_id)
+                continue
             tmp_max_ct_time = self._max_ct_time(
                     max_ct_time, 
-                    pipeline_map[task_map[task_id][1]].ct_time)
+                    pipeline_map[pl_id].ct_time)
             if tmp_max_ct_time == max_ct_time:
                 continue
             max_ct_time = tmp_max_ct_time

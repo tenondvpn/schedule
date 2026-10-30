@@ -11,6 +11,7 @@ import time
 import sys
 import copy
 import logging
+import traceback
 
 import horae.models
 
@@ -45,29 +46,21 @@ class CheckUncalledTasks(admin_task_base.AdminTaskBase):
             if task_util.CONSTANTS.HOLD_FOR_ZOOKEEPER_LOCK:
                 time.sleep(1)
                 continue
-            while True:
+            try:  # _thread_crash_guard
                 begin_time = time.time()
                 self.__log.info("CheckUncalledTasks handle data starting...")
-                del self.__edge_map
-                del self.__task_map
-                del self.__pipeline_map
-                del self.__sub_graph_list
-                del self.__graph
-
                 self.__edge_map, \
                 self.__task_map, \
                 self.__pipeline_map, \
                 self.__sub_graph_list, \
                 self.__graph = self._get_task_info_copy()
-                if len(self.__sub_graph_list) <= 0:
-                    break
-
-                self.__call_waiting_tasks()
-
+                if self.__sub_graph_list is not None and len(self.__sub_graph_list) > 0:
+                    self.__call_waiting_tasks()
                 use_time = time.time() - begin_time
                 self.__log.info("CheckUncalledTasks handle data "
                         "exit.use time[%f]" % use_time)
-                break
+            except Exception as ex:
+                self.__log.error("CheckUncalledTasks unexpected error: %s\n%s" % (str(ex), traceback.format_exc()))
 
             time.sleep(10)  # 失败后任然需要sleep
 
